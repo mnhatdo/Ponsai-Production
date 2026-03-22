@@ -6,7 +6,8 @@
   "scripts": {
     "setup": "node setup.js",
     "dev": "node dev.js",
-    "start": "npm run dev",
+    "start": "npm run start:backend",
+    "postinstall": "npm --prefix backend install && npm --prefix backend run build",
     "start:backend": "cd backend && npm start",
     "start:frontend": "cd frontend && npm start",
     "dev:backend": "cd backend && npm run dev",
@@ -33,8 +34,8 @@
     "concurrently": "^8.2.2"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
+    "node": "20.x",
+    "npm": ">=10 <11"
   },
   "dependencies": {
     "lucide-angular": "^0.577.0"

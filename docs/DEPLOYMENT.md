@@ -451,6 +451,25 @@ mongorestore --db furni /backup/20251231/furni
 4. Review logs: `pm2 logs furni-api`
 5. Check readiness endpoint: `curl http://localhost:3000/readyz`
 
+### Render error: `Cannot find module '/opt/render/project/src/index.js'`
+
+If Render logs show `Running 'node index.js'` and then module-not-found:
+
+1. Ensure service root is `backend` (or keep root and use provided fallback `index.js`).
+2. Set Build Command to: `npm ci && npm run build`
+3. Set Start Command to: `npm start`
+4. Confirm `render.yaml` is detected from repository root.
+
+If Render does not use blueprint settings, configure Build/Start manually in dashboard.
+
+### Platform auto-upgraded Node to v25
+
+This repository pins Node to 20.x in package `engines`.
+If platform still uses another version, set runtime manually:
+
+- Render: set environment variable `NODE_VERSION=20`
+- Vercel: Project Settings -> General -> Node.js Version -> `20.x`
+
 ### Frontend shows API errors
 
 1. Verify backend is running and accessible
