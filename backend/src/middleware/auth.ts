@@ -5,6 +5,11 @@ import { AppError } from './errorHandler';
 
 export interface AuthRequest extends Request {
   user?: any;
+  body: any;
+  params: any;
+  query: any;
+  headers: any;
+  ip: string;
 }
 
 export const protect = async (
