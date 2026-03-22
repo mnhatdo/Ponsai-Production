@@ -6,9 +6,9 @@ import { catchError, throwError } from 'rxjs';
 // Debug flag - set to false in production to reduce console noise
 const DEBUG_MODE = false;
 
-const normalizeApiErrorMessage = (message: string): string => {
-  if (!message) {
-    return message;
+const normalizeApiErrorMessage = (message: unknown): string => {
+  if (typeof message !== 'string' || !message) {
+    return 'An unexpected error occurred';
   }
 
   if (message.startsWith('Duplicate field value entered')) {

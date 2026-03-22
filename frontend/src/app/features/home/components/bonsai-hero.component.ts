@@ -530,7 +530,7 @@ export class BonsaiHeroComponent implements OnInit, AfterViewInit, OnDestroy {
   private loadModel(): void {
     const loader = new GLTFLoader();
     loader.load(
-      'assets/demo-import/3d-trees/tree2.glb',
+      '/assets/demo-import/3d-trees/tree2.glb',
       (gltf) => {
         const model = gltf.scene;
 
@@ -562,13 +562,47 @@ export class BonsaiHeroComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       },
       undefined,
-      (error) => {
-        console.error('GLB load error:', error);
+      () => {
+        const fallbackTree = this.createFallbackTree();
+        this.model = fallbackTree;
+        this.scene.add(fallbackTree);
         this.ngZone.run(() => {
           this.isLoading = false;
         });
       }
     );
+  }
+
+  private createFallbackTree(): THREE.Group {
+    const group = new THREE.Group();
+
+    const trunk = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.1, 0.14, 1.1, 14),
+      new THREE.MeshStandardMaterial({ color: 0x5c3a21, roughness: 0.9, metalness: 0.05 })
+    );
+    trunk.position.y = 0.55;
+    trunk.castShadow = this.shadowsEnabled;
+    group.add(trunk);
+
+    const foliage = new THREE.Mesh(
+      new THREE.SphereGeometry(0.55, 20, 18),
+      new THREE.MeshStandardMaterial({ color: 0x2b7a4b, roughness: 0.75, metalness: 0.02 })
+    );
+    foliage.position.y = 1.35;
+    foliage.scale.set(1.1, 0.9, 1.05);
+    foliage.castShadow = this.shadowsEnabled;
+    group.add(foliage);
+
+    const pot = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.5, 0.42, 0.32, 20),
+      new THREE.MeshStandardMaterial({ color: 0x8e5f4b, roughness: 0.85, metalness: 0.03 })
+    );
+    pot.position.y = 0.16;
+    pot.castShadow = this.shadowsEnabled;
+    group.add(pot);
+
+    this.cameraTarget.y = 0.9;
+    return group;
   }
 
   private startRenderLoop(): void {

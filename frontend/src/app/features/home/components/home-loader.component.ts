@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
       <iframe
         class="demo-home-loader__animation"
         [class.demo-home-loader__animation--hidden]="hideFlowers"
-        src="assets/demo-import/interactive-flowers/index.html"
+        src="/assets/demo-import/interactive-flowers/index.html"
         title="Page loading animation"
         tabindex="-1"
       ></iframe>
@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
         [class.demo-home-loader__brand--visible]="showBrand"
       >
         <img
-          src="assets/demo-import/loader/logo-red.png"
+          src="/assets/demo-import/loader/logo-red.png"
           alt="Ponsai"
           class="demo-home-loader__brand-img"
           [class.demo-home-loader__brand-img--visible]="showBrand"
