@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PONSAI Color Palette Reference</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Core Brand Colors */
+      --deep-space-blue: #153243ff;
+      --yale-blue: #284b63ff;
+      --lemon-lime: #c3d350ff;
+      --alabaster-grey: #e6e6eaff;
+
+      /* HSL Format */
+      --deep-space-blue-hsl: hsla(202, 52%, 17%, 1);
+      --yale-blue-hsl: hsla(204, 42%, 27%, 1);
+      --lemon-lime-hsl: hsla(67, 60%, 57%, 1);
+      --alabaster-grey-hsl: hsla(240, 9%, 91%, 1);
+
+      /* RGB Format */
+      --deep-space-blue-rgb: rgba(21, 50, 67, 1);
+      --yale-blue-rgb: rgba(40, 75, 99, 1);
+      --lemon-lime-rgb: rgba(195, 211, 80, 1);
+      --alabaster-grey-rgb: rgba(230, 230, 234, 1);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+      background: #f5f5f5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: var(--deep-space-blue);
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .color-card {
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .color-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .color-swatch {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .swatch-deep-space-blue {
+      background: var(--deep-space-blue);
+      color: white;
+    }
+
+    .swatch-yale-blue {
+      background: var(--yale-blue);
+      color: white;
+    }
+
+    .swatch-lemon-lime {
+      background: var(--lemon-lime);
+      color: var(--deep-space-blue);
+    }
+
+    .swatch-alabaster-grey {
+      background: var(--alabaster-grey);
+      color: var(--deep-space-blue);
+    }
+
+    .color-info {
+      padding: 1.5rem;
+      background: #f9f9f9;
+    }
+
+    .color-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: var(--deep-space-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .color-values {
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .color-value {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .color-value:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      font-weight: 600;
+      color: #666;
+    }
+
+    .value {
+      font-family: 'Courier New', monospace;
+      color: #333;
+    }
+
+    .section-title {
+      color: var(--deep-space-blue);
+      margin: 3rem 0 1.5rem 0;
+      font-size: 1.8rem;
+      border-bottom: 3px solid var(--lemon-lime);
+      padding-bottom: 0.5rem;
+    }
+
+    .gradient-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .gradient-box {
+      height: 120px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .gradient-1 { background: linear-gradient(0deg, #153243ff, #284b63ff, #c3d350ff, #e6e6eaff); }
+    .gradient-2 { background: linear-gradient(90deg, #153243ff, #284b63ff, #c3d350ff, #e6e6eaff); }
+    .gradient-3 { background: linear-gradient(180deg, #153243ff, #284b63ff, #c3d350ff, #e6e6eaff); }
+    .gradient-4 { background: linear-gradient(270deg, #153243ff, #284b63ff, #c3d350ff, #e6e6eaff); }
+    .gradient-5 { background: linear-gradient(45deg, #153243ff, #284b63ff, #c3d350ff, #e6e6eaff); }
+    .gradient-6 { background: linear-gradient(135deg, #153243ff, #284b63ff, #c3d350ff, #e6e6eaff); }
+    .gradient-7 { background: linear-gradient(225deg, #153243ff, #284b63ff, #c3d350ff, #e6e6eaff); }
+    .gradient-8 { background: linear-gradient(315deg, #153243ff, #284b63ff, #c3d350ff, #e6e6eaff); }
+    .gradient-9 { background: radial-gradient(#153243ff, #284b63ff, #c3d350ff, #e6e6eaff); }
+
+    .usage-examples {
+      background: var(--alabaster-grey);
+      padding: 2rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+
+    .example-btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--deep-space-blue);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0d1f29;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(21, 50, 67, 0.3);
+    }
+
+    .btn-accent {
+      background: var(--lemon-lime);
+      color: var(--deep-space-blue);
+    }
+
+    .btn-accent:hover {
+      background: #a8b839;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(195, 211, 80, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--yale-blue);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #1a3648;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(40, 75, 99, 0.3);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 2px solid var(--alabaster-grey);
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 PONSAI Color Palette</h1>
+    <p class="subtitle">Official Brand Color System Reference</p>
+
+    <div class="color-grid">
+      <!-- Deep Space Blue -->
+      <div class="color-card">
+        <div class="color-swatch swatch-deep-space-blue">
+          Deep Space Blue
+        </div>
+        <div class="color-info">
+          <div class="color-name">Deep Space Blue</div>
+          <div class="color-values">
+            <div class="color-value">
+              <span class="label">HEX:</span>
+              <span class="value">#153243</span>
+            </div>
+            <div class="color-value">
+              <span class="label">RGB:</span>
+              <span class="value">21, 50, 67</span>
+            </div>
+            <div class="color-value">
+              <span class="label">HSL:</span>
+              <span class="value">202°, 52%, 17%</span>
+            </div>
+            <div class="color-value">
+              <span class="label">SCSS:</span>
+              <span class="value">$deep-space-blue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yale Blue -->
+      <div class="color-card">
+        <div class="color-swatch swatch-yale-blue">
+          Yale Blue
+        </div>
+        <div class="color-info">
+          <div class="color-name">Yale Blue</div>
+          <div class="color-values">
+            <div class="color-value">
+              <span class="label">HEX:</span>
+              <span class="value">#284b63</span>
+            </div>
+            <div class="color-value">
+              <span class="label">RGB:</span>
+              <span class="value">40, 75, 99</span>
+            </div>
+            <div class="color-value">
+              <span class="label">HSL:</span>
+              <span class="value">204°, 42%, 27%</span>
+            </div>
+            <div class="color-value">
+              <span class="label">SCSS:</span>
+              <span class="value">$yale-blue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lemon Lime -->
+      <div class="color-card">
+        <div class="color-swatch swatch-lemon-lime">
+          Lemon Lime
+        </div>
+        <div class="color-info">
+          <div class="color-name">Lemon Lime</div>
+          <div class="color-values">
+            <div class="color-value">
+              <span class="label">HEX:</span>
+              <span class="value">#c3d350</span>
+            </div>
+            <div class="color-value">
+              <span class="label">RGB:</span>
+              <span class="value">195, 211, 80</span>
+            </div>
+            <div class="color-value">
+              <span class="label">HSL:</span>
+              <span class="value">67°, 60%, 57%</span>
+            </div>
+            <div class="color-value">
+              <span class="label">SCSS:</span>
+              <span class="value">$lemon-lime</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alabaster Grey -->
+      <div class="color-card">
+        <div class="color-swatch swatch-alabaster-grey">
+          Alabaster Grey
+        </div>
+        <div class="color-info">
+          <div class="color-name">Alabaster Grey</div>
+          <div class="color-values">
+            <div class="color-value">
+              <span class="label">HEX:</span>
+              <span class="value">#e6e6ea</span>
+            </div>
+            <div class="color-value">
+              <span class="label">RGB:</span>
+              <span class="value">230, 230, 234</span>
+            </div>
+            <div class="color-value">
+              <span class="label">HSL:</span>
+              <span class="value">240°, 9%, 91%</span>
+            </div>
+            <div class="color-value">
+              <span class="label">SCSS:</span>
+              <span class="value">$alabaster-grey</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Gradient Presets</h2>
+    <div class="gradient-showcase">
+      <div class="gradient-box gradient-1">Top (0°)</div>
+      <div class="gradient-box gradient-2">Right (90°)</div>
+      <div class="gradient-box gradient-3">Bottom (180°)</div>
+      <div class="gradient-box gradient-4">Left (270°)</div>
+      <div class="gradient-box gradient-5">Top-Right (45°)</div>
+      <div class="gradient-box gradient-6">Bottom-Right (135°)</div>
+      <div class="gradient-box gradient-7">Top-Left (225°)</div>
+      <div class="gradient-box gradient-8">Bottom-Left (315°)</div>
+      <div class="gradient-box gradient-9">Radial</div>
+    </div>
+
+    <h2 class="section-title">Usage Examples</h2>
+    <div class="usage-examples">
+      <button class="example-btn btn-primary">Primary Button</button>
+      <button class="example-btn btn-accent">Accent Button</button>
+      <button class="example-btn btn-secondary">Secondary Button</button>
+    </div>
+
+    <div class="footer">
+      <p><strong>PONSAI Brand Color Palette</strong></p>
+      <p>Version 1.0.0 | January 8, 2026</p>
+      <p>For development use only - Open in browser to view interactive reference</p>
+    </div>
+  </div>
+</body>
+</html>

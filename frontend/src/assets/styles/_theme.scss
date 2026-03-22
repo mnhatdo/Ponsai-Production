@@ -1,0 +1,151 @@
+// PONSAI Professional Theme
+// Modern, clean design with Deep Space Blue and Lemon Lime accents
+
+@import 'colors';
+
+// Theme Variables
+$theme-primary: $brand-primary;
+$theme-primary-hover: $brand-primary-dark;
+$theme-accent: $brand-accent;
+$theme-accent-hover: $brand-accent-dark;
+
+// Button Mixins
+@mixin button-primary {
+  background: $brand-primary;
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background: $brand-primary-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(21, 50, 67, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-accent {
+  background: $brand-accent;
+  color: $brand-primary-dark;
+  border: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+
+  &:hover:not(:disabled) {
+    background: $brand-accent-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(195, 211, 80, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-outline {
+  background: white;
+  color: $brand-primary;
+  border: 2px solid $brand-primary;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background: $brand-primary;
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Card Styles
+@mixin card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px $shadow-sm;
+  overflow: hidden;
+}
+
+@mixin card-hover {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px $shadow-md;
+  }
+}
+
+// Input Styles
+@mixin input-focus {
+  &:focus {
+    border-color: $brand-primary;
+    box-shadow: 0 0 0 4px rgba(21, 50, 67, 0.1);
+    outline: none;
+  }
+}
+
+// Gradient Backgrounds
+@mixin gradient-primary {
+  background: linear-gradient(135deg, $brand-primary 0%, $brand-primary-light 100%);
+}
+
+@mixin gradient-accent {
+  background: linear-gradient(135deg, $brand-accent 0%, $brand-accent-light 100%);
+}
+
+@mixin gradient-hero {
+  background: linear-gradient(135deg, $brand-primary-dark 0%, $brand-primary 50%, $brand-secondary 100%);
+}
+
+// Text Utilities
+@mixin text-gradient {
+  background: linear-gradient(135deg, $brand-primary, $brand-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+$spacing-3xl: 4rem;
+
+// Border Radius
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-2xl: 24px;
+$radius-full: 9999px;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Z-index
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;

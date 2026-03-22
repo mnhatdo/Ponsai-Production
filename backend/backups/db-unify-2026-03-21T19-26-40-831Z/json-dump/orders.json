@@ -1,0 +1,283 @@
+[
+  {
+    "_id": "69b8ee4b4940125050bebec8",
+    "user": "696910941400aac13842ca7e",
+    "items": [
+      {
+        "product": "696910913bf9fb0c7e928860",
+        "quantity": 1,
+        "price": 27.94,
+        "_id": "69b8ee4b4940125050bebec9"
+      },
+      {
+        "product": "696910913bf9fb0c7e928868",
+        "quantity": 1,
+        "price": 57.14,
+        "_id": "69b8ee4b4940125050bebeca"
+      }
+    ],
+    "totalAmount": 85.08,
+    "shippingAddress": {
+      "street": "Đường Trương Văn Hải",
+      "city": "Khu phố 5",
+      "state": "Tỉnh Đồng Nai",
+      "zipCode": "71000",
+      "country": "Việt Nam"
+    },
+    "status": "pending",
+    "paymentStatus": "pending",
+    "paymentMethod": "momo",
+    "createdAt": "2026-03-17T06:01:47.525Z",
+    "updatedAt": "2026-03-17T06:01:48.098Z",
+    "__v": 0,
+    "paymentDetails": {
+      "gateway": "momo",
+      "momoOrderId": "MOMO69b8ee4b4940125050bebec81773727307944",
+      "momoRequestId": "MOMOBKUN201805291773727307944",
+      "amountGBP": 85.08,
+      "amountVND": 2968000
+    }
+  },
+  {
+    "_id": "69b909ba5bbf2f1d8da05805",
+    "orderNumber": "ORD-20260317-5F3KHN",
+    "user": "696910941400aac13842ca7e",
+    "items": [
+      {
+        "product": "696910913bf9fb0c7e928860",
+        "quantity": 1,
+        "price": 27.94,
+        "_id": "69b909ba5bbf2f1d8da05806"
+      },
+      {
+        "product": "696910913bf9fb0c7e928868",
+        "quantity": 1,
+        "price": 57.14,
+        "_id": "69b909ba5bbf2f1d8da05807"
+      }
+    ],
+    "totalAmount": 85.08,
+    "shippingAddress": {
+      "street": "Đường Trương Văn Hải",
+      "city": "Khu phố 5",
+      "state": "Tỉnh Đồng Nai",
+      "zipCode": "71000",
+      "country": "Việt Nam"
+    },
+    "status": "pending",
+    "paymentStatus": "pending",
+    "paymentMethod": "bank_transfer",
+    "createdAt": "2026-03-17T07:58:50.989Z",
+    "updatedAt": "2026-03-17T07:58:51.065Z",
+    "__v": 0,
+    "paymentDetails": {
+      "gateway": "bank_transfer_international"
+    }
+  },
+  {
+    "_id": "69b96e77f4925d85de05830f",
+    "orderNumber": "ORD-20260317-CPT5X5",
+    "user": "696910941400aac13842ca7e",
+    "items": [
+      {
+        "product": "696910913bf9fb0c7e928860",
+        "quantity": 1,
+        "price": 27.94,
+        "_id": "69b96e77f4925d85de058310"
+      },
+      {
+        "product": "696910913bf9fb0c7e928868",
+        "quantity": 1,
+        "price": 57.14,
+        "_id": "69b96e77f4925d85de058311"
+      }
+    ],
+    "totalAmount": 85.08,
+    "shippingAddress": {
+      "street": "100 Test Street",
+      "city": "Test City",
+      "state": "Test State",
+      "zipCode": "10000",
+      "country": "Vietnam"
+    },
+    "status": "pending",
+    "paymentStatus": "pending",
+    "paymentMethod": "momo",
+    "createdAt": "2026-03-17T15:08:39.360Z",
+    "updatedAt": "2026-03-17T15:08:39.866Z",
+    "__v": 0,
+    "paymentDetails": {
+      "gateway": "momo",
+      "momoOrderId": "MOMO69b96e77f4925d85de05830f1773760119738",
+      "momoRequestId": "MOMOBKUN201805291773760119738",
+      "amountGBP": 85.08,
+      "amountVND": 2977000
+    }
+  },
+  {
+    "_id": "69b96ea2f4925d85de058344",
+    "orderNumber": "ORD-20260317-UKEV04",
+    "user": "696910941400aac13842ca7e",
+    "items": [
+      {
+        "product": "696910913bf9fb0c7e928860",
+        "quantity": 1,
+        "price": 27.94,
+        "_id": "69b96ea2f4925d85de058345"
+      },
+      {
+        "product": "696910913bf9fb0c7e928868",
+        "quantity": 1,
+        "price": 57.14,
+        "_id": "69b96ea2f4925d85de058346"
+      }
+    ],
+    "totalAmount": 85.08,
+    "shippingAddress": {
+      "street": "100 Test Street",
+      "city": "Test City",
+      "state": "Test State",
+      "zipCode": "10000",
+      "country": "Vietnam"
+    },
+    "status": "pending",
+    "paymentStatus": "pending",
+    "paymentMethod": "momo",
+    "createdAt": "2026-03-17T15:09:22.430Z",
+    "updatedAt": "2026-03-17T15:09:22.595Z",
+    "__v": 0,
+    "paymentDetails": {
+      "gateway": "momo",
+      "momoOrderId": "MOMO69b96ea2f4925d85de0583441773760162495",
+      "momoRequestId": "MOMOBKUN201805291773760162495",
+      "amountGBP": 85.08,
+      "amountVND": 2977000
+    }
+  },
+  {
+    "_id": "69b96ee5f4925d85de058379",
+    "orderNumber": "ORD-20260317-RXAMIT",
+    "user": "696910941400aac13842ca7e",
+    "items": [
+      {
+        "product": "696910913bf9fb0c7e928860",
+        "quantity": 1,
+        "price": 27.94,
+        "_id": "69b96ee5f4925d85de05837a"
+      },
+      {
+        "product": "696910913bf9fb0c7e928868",
+        "quantity": 1,
+        "price": 57.14,
+        "_id": "69b96ee5f4925d85de05837b"
+      }
+    ],
+    "totalAmount": 85.08,
+    "shippingAddress": {
+      "street": "100 Test Street",
+      "city": "Test City",
+      "state": "Test State",
+      "zipCode": "10000",
+      "country": "Vietnam"
+    },
+    "status": "pending_manual_payment",
+    "paymentStatus": "pending_manual_payment",
+    "paymentMethod": "manual_payment",
+    "paymentDetails": {
+      "gateway": "manual_payment"
+    },
+    "createdAt": "2026-03-17T15:10:29.342Z",
+    "updatedAt": "2026-03-17T15:10:29.342Z",
+    "__v": 0
+  },
+  {
+    "_id": "69ba6395135f7f1d8e4a3ecc",
+    "orderNumber": "ORD-20260318-T1N9MN",
+    "user": "696910920643a8f987e1da7f",
+    "items": [
+      {
+        "product": "696910913bf9fb0c7e928868",
+        "quantity": 1,
+        "price": 57.14,
+        "_id": "69ba6395135f7f1d8e4a3ecd"
+      },
+      {
+        "product": "696910913bf9fb0c7e928860",
+        "quantity": 1,
+        "price": 27.94,
+        "_id": "69ba6395135f7f1d8e4a3ece"
+      },
+      {
+        "product": "696910913bf9fb0c7e928862",
+        "quantity": 2,
+        "price": 69.84,
+        "_id": "69ba6395135f7f1d8e4a3ecf"
+      }
+    ],
+    "totalAmount": 224.76,
+    "shippingAddress": {
+      "street": "Đường Trương Văn Hải",
+      "city": "Khu phố 5",
+      "state": "Tỉnh Đồng Nai",
+      "zipCode": "71000",
+      "country": "Việt Nam"
+    },
+    "status": "cancelled",
+    "paymentStatus": "cancelled",
+    "paymentMethod": "bank_transfer",
+    "createdAt": "2026-03-18T08:34:29.563Z",
+    "updatedAt": "2026-03-18T08:35:13.685Z",
+    "__v": 0,
+    "paymentDetails": {
+      "gateway": "bank_transfer_international"
+    }
+  },
+  {
+    "_id": "69bd073667d2bc8de8e0ac77",
+    "orderNumber": "ORD-20260320-07OR0O",
+    "user": "696910920643a8f987e1da7f",
+    "items": [
+      {
+        "product": "696910913bf9fb0c7e928860",
+        "quantity": 1,
+        "price": 27.94,
+        "_id": "69bd073667d2bc8de8e0ac78"
+      },
+      {
+        "product": "696910913bf9fb0c7e928862",
+        "quantity": 2,
+        "price": 69.84,
+        "_id": "69bd073667d2bc8de8e0ac79"
+      },
+      {
+        "product": "696910913bf9fb0c7e928868",
+        "quantity": 1,
+        "price": 57.14,
+        "_id": "69bd073667d2bc8de8e0ac7a"
+      },
+      {
+        "product": "696910913bf9fb0c7e92886a",
+        "quantity": 1,
+        "price": 114.29,
+        "_id": "69bd073667d2bc8de8e0ac7b"
+      }
+    ],
+    "totalAmount": 339.05,
+    "shippingAddress": {
+      "street": "Đường Trương Văn Hải",
+      "city": "Khu phố 5",
+      "state": "Tỉnh Đồng Nai",
+      "zipCode": "71000",
+      "country": "Việt Nam"
+    },
+    "status": "pending_manual_payment",
+    "paymentStatus": "pending_manual_payment",
+    "paymentMethod": "manual_payment",
+    "paymentDetails": {
+      "gateway": "manual_payment"
+    },
+    "createdAt": "2026-03-20T08:37:10.678Z",
+    "updatedAt": "2026-03-20T08:37:10.678Z",
+    "__v": 0
+  }
+]

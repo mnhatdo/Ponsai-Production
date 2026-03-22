@@ -1,0 +1,848 @@
+================================================================================
+                    FURNI E-COMMERCE - AI CUSTOMER SUPPORT
+                         TRAINING DATA FOR CHATBOT
+================================================================================
+Version: 1.0
+Last Updated: March 12, 2026
+Website: Furni - Vietnamese Furniture & Bonsai E-commerce
+Language: Vietnamese & English
+
+================================================================================
+                            BUSINESS OVERVIEW
+================================================================================
+
+Company Name: Furni (Ponsai)
+Business Type: E-commerce platform
+Main Products: 
+- Vietnamese bonsai trees and plants
+- Indoor/outdoor furniture
+- Garden accessories and tools
+- Decorative items
+
+Unique Features:
+- 3D Bonsai Hero showcase
+- Multi-language support (Vietnamese/English)
+- Multiple payment methods (MOMO, Bank Transfer, Credit Card)
+- International shipping to 40+ countries
+- Product review system with verified purchases
+- Promotion codes and free shipping offers
+
+================================================================================
+                         PRODUCT INFORMATION
+================================================================================
+
+Q: Bạn bán những sản phẩm gì?
+A: Chúng tôi chuyên cung cấp:
+- Cây bonsai cao cấp: Mai, tùng, trúc, cúc, đào...
+- Nội thất: Bàn ghế, sofa, tủ, kệ trang trí
+- Phụ kiện trang trí: Chậu cây, đèn, gối, thảm
+- Dụng cụ làm vườn: Kéo tỉa, bình tưới, phân bón
+
+Q: What types of bonsai do you sell?
+A: We offer a curated selection of traditional Vietnamese bonsai including:
+- Mai (Apricot blossom) - symbol of Lunar New Year
+- Pine trees - representing longevity
+- Bamboo - symbolizing resilience
+- Chrysanthemum - classic ornamental plant
+- Peach blossom - spring beauty
+All our bonsai are carefully cultivated by experienced artisans.
+
+Q: Sản phẩm có chất lượng không?
+A: Tất cả sản phẩm đều:
+- Được chọn lọc kỹ lưỡng từ nhà cung cấp uy tín
+- Có hình ảnh thực tế 100%
+- Đi kèm hướng dẫn chăm sóc chi tiết
+- Bảo hành theo chính sách nhà sản xuất
+- Có hệ thống đánh giá từ khách hàng đã mua
+
+Q: How can I see product reviews?
+A: Each product page shows:
+- Overall rating (1-5 stars)
+- Number of reviews
+- Verified purchase badges
+- Customer photos and comments
+- Helpful votes from other customers
+You can filter reviews by rating or sort by most helpful/recent.
+
+Q: Can I leave a review after purchasing?
+A: Yes! After your order is delivered:
+- Go to "My Orders" section
+- Find your completed order
+- Click "Write Review" button
+- Rate the product (1-5 stars)
+- Add title, comments, and optional photos
+Verified purchases are marked with a special badge.
+
+================================================================================
+                          ACCOUNT & AUTHENTICATION
+================================================================================
+
+Q: Làm sao để đăng ký tài khoản?
+A: Bạn có 2 cách đăng ký:
+1. Email thông thường:
+   - Vào trang Đăng ký
+   - Nhập tên, email, mật khẩu, số điện thoại
+   - Nhận mã OTP qua email
+   - Nhập OTP để xác thực
+   - Hoàn tất đăng ký
+
+2. Google Sign-In:
+   - Click nút "Continue with Google"
+   - Chọn tài khoản Google
+   - Tự động tạo tài khoản và đăng nhập
+
+Q: I didn't receive the OTP code, what should I do?
+A: If you don't receive the OTP:
+1. Check your spam/junk folder
+2. Wait 1-2 minutes (sometimes delayed)
+3. Click "Resend OTP" button
+4. In development mode, the OTP is shown in console for testing
+5. Contact support if still not receiving: support@furni.vn
+
+Q: Tôi quên mật khẩu, làm sao lấy lại?
+A: Hiện tại chức năng "Forgot Password" đang được phát triển. 
+Vui lòng liên hệ support@furni.vn với thông tin:
+- Email đăng ký
+- Tên tài khoản
+- Số điện thoại đã đăng ký
+Chúng tôi sẽ hỗ trợ reset mật khẩu trong 24h.
+
+Q: Can I change my password?
+A: Yes, after logging in:
+- Go to Account Settings
+- Click "Change Password"
+- Enter current password
+- Enter new password (minimum 6 characters)
+- Confirm new password
+- Click "Update Password"
+
+Q: How do I update my profile information?
+A: In your Account Settings, you can update:
+- Name
+- Phone number
+- Avatar/profile picture
+- Shipping addresses
+- Preferred language (Vietnamese/English)
+All changes are saved automatically.
+
+================================================================================
+                        SHOPPING CART & CHECKOUT
+================================================================================
+
+Q: Làm sao để thêm sản phẩm vào giỏ hàng?
+A: Rất đơn giản:
+1. Vào trang sản phẩm
+2. Chọn số lượng mong muốn
+3. Click nút "Add to Cart"
+4. Sản phẩm sẽ hiện trong giỏ hàng (icon góc phải màn hình)
+5. Bạn có thể tiếp tục mua hoặc thanh toán ngay
+
+Q: Can I modify cart items?
+A: Yes! In your cart, you can:
+- Increase/decrease quantity using +/- buttons
+- Remove items by clicking X icon
+- See real-time total updates
+- Apply promotion codes
+- See estimated shipping fee
+
+Q: Giỏ hàng có bị mất khi tôi thoát trang không?
+A: Không! Giỏ hàng được lưu:
+- Nếu đã đăng nhập: Lưu trên server, truy cập từ bất kỳ thiết bị nào
+- Nếu chưa đăng nhập: Lưu trong trình duyệt (localStorage)
+Giỏ hàng sẽ giữ nguyên khi bạn quay lại.
+
+Q: What information do I need for checkout?
+A: You'll need to provide:
+- Full name
+- Email address
+- Phone number
+- Shipping address (street, city, country)
+- Payment method selection
+For international orders, country selection is very important for shipping calculation.
+
+Q: Tôi có thể sử dụng địa chỉ giao hàng khác không?
+A: Có! Bạn có thể:
+- Nhập địa chỉ mới trong form checkout
+- Hoặc chọn từ các địa chỉ đã lưu (nếu đã đăng nhập)
+- Lưu địa chỉ mới để dùng cho lần sau
+- Sử dụng chức năng "Get My Location" để tự động điền địa chỉ (cần cấp quyền vị trí)
+
+================================================================================
+                           PAYMENT METHODS
+================================================================================
+
+Q: Trang web hỗ trợ những hình thức thanh toán nào?
+A: Chúng tôi chấp nhận 3 phương thức:
+
+1. MOMO WALLET (Ví MoMo):
+   - Thanh toán nhanh qua app MoMo
+   - Quét QR code hoặc deeplink
+   - Xác nhận tức thì
+   - Ưu đãi từ MoMo
+
+2. BANK TRANSFER (Chuyển khoản ngân hàng):
+   - Chuyển khoản đến tài khoản UK
+   - Nhận invoice với số tài khoản IBAN
+   - Thời hạn thanh toán: 3 ngày
+   - Admin xác nhận sau khi nhận tiền
+
+3. CREDIT/DEBIT CARD (Thẻ tín dụng):
+   - Visa, Mastercard, American Express
+   - Thanh toán an toàn qua cổng payment
+   - Xác thực 3D Secure
+
+Q: How does MoMo payment work?
+A: MoMo payment process:
+1. Select MoMo at checkout
+2. Enter your MoMo phone number
+3. Click "Pay with MoMo"
+4. You'll be redirected to MoMo app or see QR code
+5. Confirm payment in MoMo app
+6. Automatically redirected back with confirmation
+7. Order status updates to "Paid" immediately
+
+Q: Chuyển khoản ngân hàng mất bao lâu để xác nhận?
+A: Quy trình như sau:
+- Bạn đặt hàng → Nhận invoice với thông tin chuyển khoản
+- Chuyển tiền trong 3 ngày (ghi rõ mã tham chiếu)
+- Admin kiểm tra tài khoản ngân hàng
+- Xác nhận thanh toán (thường trong 2-24 giờ làm việc)
+- Đơn hàng chuyển sang trạng thái "Paid" → Bắt đầu xử lý
+
+Q: What is the payment reference number for?
+A: The payment reference (e.g., "GBPORD-12345678") is CRUCIAL:
+- It helps us identify your payment
+- Format: GBPORD-[order_number]
+- MUST be included in bank transfer description
+- Without it, payment confirmation will be delayed
+- You can copy it from the invoice page
+
+Q: Thông tin ngân hàng để chuyển khoản?
+A: Bank details for transfer:
+- Bank Name: NatWest Bank (UK)
+- Account Name: Furni Ltd
+- IBAN: GB29NWBK60161331926819
+- SWIFT/BIC: NWBKGB2L
+- Sort Code: 60-16-13
+- Account Number: 31926819
+- Currency: GBP (British Pounds)
+
+IMPORTANT: Always include payment reference in transfer description!
+
+Q: Can I pay with credit card?
+A: Yes! Card payment process:
+1. Select "Credit/Debit Card" at checkout
+2. Enter card details:
+   - Card number (16 digits)
+   - Cardholder name
+   - Expiry date (MM/YY)
+   - CVV (3-digit security code)
+3. Click "Pay Now"
+4. Complete 3D Secure verification if required
+5. Payment processed instantly
+
+Q: Thanh toán có an toàn không?
+A: Hoàn toàn an toàn:
+- MoMo: Được MoMo bảo mật
+- Bank Transfer: Direct to our official UK account
+- Card: PCI-DSS compliant gateway
+- SSL encryption cho mọi transaction
+- Không lưu thông tin thẻ trên server
+- Tuân thủ chuẩn bảo mật quốc tế
+
+================================================================================
+                         SHIPPING & DELIVERY
+================================================================================
+
+Q: Phí vận chuyển được tính như thế nào?
+A: Phí vận chuyển phụ thuộc vào quốc gia:
+
+VIỆT NAM:
+- Thủ Đức: MIỄN PHÍ (0đ)
+- TP.HCM: 20,000đ
+- Các tỉnh thành: 40,000đ - 100,000đ
+
+QUỐC TẾ:
+- Đông Nam Á (Thái Lan, Singapore...): 180,000đ - 220,000đ
+- Châu Á (Nhật, Hàn...): 230,000đ - 280,000đ
+- Châu Mỹ (Mỹ, Canada...): 450,000đ - 550,000đ
+- Châu Âu (UK, Pháp, Đức...): 450,000đ
+- Châu Đại Dương (Úc, New Zealand): 500,000đ
+- Quốc gia khác: 400,000đ
+
+Q: Do you offer free shipping?
+A: Yes! Free shipping for:
+- Thu Duc district (HCMC) orders - ALWAYS FREE
+- Previously we had ₫1,000,000 threshold but it's been removed for international fairness
+
+Q: How long does shipping take?
+A: Delivery time by region:
+
+DOMESTIC (Vietnam):
+- Thu Duc: 1-2 days
+- HCMC: 2-3 days
+- Provinces: 3-5 days
+
+INTERNATIONAL:
+- Southeast Asia: 7-14 days
+- Asia Pacific: 10-14 days
+- Americas: 14-21 days
+- Europe: 14-21 days
+- Oceania: 14-21 days
+- Other countries: 14-30 days
+
+Q: Tôi có thể theo dõi đơn hàng không?
+A: Có! Sau khi đơn hàng được giao cho đơn vị vận chuyển:
+- Bạn nhận email với mã tracking
+- Vào "My Orders" để xem trạng thái
+- Click vào đơn hàng để xem chi tiết
+- Tracking number liên kết với carrier website
+
+Q: What are the order statuses?
+A: Order statuses explained:
+
+1. PENDING - Order created, awaiting payment
+2. PAID - Payment confirmed (for MoMo/Card) or pending verification (Bank Transfer)
+3. CONFIRMED - Admin confirmed the order, preparing items
+4. PROCESSING - Order is being packed
+5. SHIPPED - Order sent to shipping carrier
+6. DELIVERED - Order successfully delivered
+7. CANCELLED - Order cancelled (before shipping)
+8. REFUNDED - Money returned to customer
+
+Q: Tôi có thể thay đổi địa chỉ giao hàng sau khi đặt không?
+A: Phụ thuộc vào trạng thái:
+- Pending/Paid: Có thể thay đổi (liên hệ ngay)
+- Processing: Có thể thay đổi nhưng khó khăn
+- Shipped: KHÔNG THỂ thay đổi
+
+Liên hệ support@furni.vn hoặc chat support càng sớm càng tốt.
+
+Q: Can I ship to a different country?
+A: Yes! We ship to 40+ countries including:
+- All Southeast Asian countries
+- Japan, South Korea, China, Taiwan, Hong Kong
+- USA, Canada, Mexico, Brazil
+- UK, France, Germany, Italy, Spain
+- Australia, New Zealand
+- And many more!
+
+Select your country at checkout to see accurate shipping fee.
+
+================================================================================
+                        PROMOTIONS & DISCOUNTS
+================================================================================
+
+Q: Làm sao để sử dụng mã giảm giá?
+A: Rất đơn giản:
+1. Thêm sản phẩm vào giỏ hàng
+2. Vào trang Checkout
+3. Tìm ô "Promotion Code" bên phải
+4. Nhập mã khuyến mãi
+5. Click "Apply"
+6. Giảm giá sẽ được tính tự động
+
+Q: Where can I find promotion codes?
+A: You can find codes from:
+- Email newsletters (subscribe on homepage)
+- Social media (Facebook, Instagram)
+- Special events (holidays, anniversaries)
+- Welcome discount for new customers
+- Loyalty rewards for repeat customers
+
+Q: Mã giảm giá không hoạt động, tại sao?
+A: Kiểm tra các điều kiện:
+- Mã còn hiệu lực (chưa hết hạn)?
+- Đơn hàng đạt giá trị tối thiểu?
+- Sản phẩm có áp dụng được không? (một số mã chỉ cho danh mục cụ thể)
+- Đã dùng mã này rồi? (một số mã chỉ dùng 1 lần)
+- Viết đúng chính xác (phân biệt chữ hoa/thường)
+
+Q: Can I use multiple promotion codes?
+A: No, currently only ONE promotion code per order.
+Choose the code that gives you the best discount!
+
+Q: Có chương trình giảm giá nào hiện tại không?
+A: Các chương trình thường xuyên:
+- Flash Sale: Cuối tuần
+- Seasonal Sales: Tết, Summer, Christmas
+- New Customer: Giảm 10% đơn đầu tiên
+- Bulk Purchase: Mua nhiều giảm nhiều
+- Free Shipping Events: Định kỳ
+
+Theo dõi website và email để cập nhật!
+
+================================================================================
+                         RETURNS & REFUNDS
+================================================================================
+
+Q: Chính sách đổi trả như thế nào?
+A: Chính sách đổi trả:
+
+ĐỔI TRẢ ĐƯỢC CHẤP NHẬN:
+- Sản phẩm lỗi, hư hỏng do vận chuyển
+- Sản phẩm không đúng mô tả
+- Sản phẩm bị thiếu phụ kiện
+- Thời gian: Trong 7 ngày sau khi nhận hàng
+
+ĐIỀU KIỆN:
+- Sản phẩm chưa qua sử dụng
+- Còn nguyên tem mác, bao bì
+- Có hóa đơn/đơn hàng kèm theo
+
+KHÔNG ĐỔI TRẢ:
+- Sản phẩm đặt hàng riêng theo yêu cầu
+- Cây cảnh đã chết do chăm sóc không đúng cách
+- Sản phẩm đã qua sử dụng
+
+Q: How do I request a return?
+A: Return process:
+1. Contact support within 7 days: support@furni.vn
+2. Provide order number and reason
+3. Send photos of defective/damaged item
+4. Wait for return approval
+5. Ship item back (we'll provide address)
+6. Refund processed after inspection (3-5 days)
+
+Q: Hoàn tiền mất bao lâu?
+A: Thời gian hoàn tiền:
+- MoMo: 3-5 ngày làm việc
+- Bank Transfer: 5-7 ngày làm việc
+- Credit Card: 7-14 ngày (tùy ngân hàng)
+
+Bạn sẽ nhận email xác nhận khi hoàn tiền thành công.
+
+Q: Who pays for return shipping?
+A: It depends:
+- Our fault (defective/wrong item): WE pay
+- Customer's fault (changed mind): YOU pay
+- International returns: Usually customer pays unless clear defect
+
+================================================================================
+                      TECHNICAL SUPPORT & ISSUES
+================================================================================
+
+Q: Website bị lỗi, tôi không thể đặt hàng?
+A: Thử các bước sau:
+1. Làm mới trang (F5 hoặc Ctrl+R)
+2. Xóa cache và cookies của trình duyệt
+3. Thử trình duyệt khác (Chrome, Firefox, Safari)
+4. Kiểm tra kết nối internet
+5. Thử lại sau vài phút
+6. Nếu vẫn lỗi: Chụp ảnh màn hình và gửi support@furni.vn
+
+Q: I can't login to my account
+A: Troubleshooting login issues:
+1. Make sure email is correct (check spelling)
+2. Password is case-sensitive
+3. Try "Forgot Password" to reset
+4. Clear browser cache
+5. Disable browser extensions temporarily
+6. Try incognito/private mode
+7. Contact support if still can't access
+
+Q: Không nhận được email xác nhận đơn hàng?
+A: Kiểm tra:
+1. Hộp thư spam/junk
+2. Đúng địa chỉ email khi đặt hàng?
+3. Email có thể bị delay 5-10 phút
+4. Thêm support@furni.vn vào danh bạ để tránh spam
+5. Kiểm tra "My Orders" để xác nhận đơn hàng đã tạo
+
+Q: The website is in the wrong language
+A: To change language:
+- Look for language switcher in top right corner (Flag icon)
+- Click to toggle between Vietnamese (vi) and English (en)
+- Language preference is saved automatically
+- Works on all pages instantly
+
+Q: Product images are not loading
+A: Try these solutions:
+1. Check your internet connection
+2. Disable ad-blocker or VPN temporarily
+3. Hard refresh: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
+4. Clear browser cache
+5. Try different browser
+6. Images might be loading slowly, wait a moment
+
+================================================================================
+                          CONTACT INFORMATION
+================================================================================
+
+Q: Làm sao để liên hệ với bộ phận hỗ trợ?
+A: Nhiều cách để liên hệ:
+
+EMAIL: support@furni.vn
+- Phản hồi trong 24 giờ (ngày làm việc)
+- Gửi kèm ảnh/video nếu cần
+
+HOTLINE: +84 (24) xxxx-xxxx
+- Thứ 2 - Thứ 6: 8:00 - 18:00
+- Thứ 7: 9:00 - 17:00
+- Chủ nhật: Nghỉ
+
+LIVE CHAT: Trên website
+- Click icon chat góc phải màn hình
+- Chat trực tiếp với support team
+
+SOCIAL MEDIA:
+- Facebook: fb.com/furni.vietnam
+- Instagram: @furni.vietnam
+- Zalo OA: Furni Official
+
+Q: What information should I include when contacting support?
+A: To help us help you faster, include:
+- Your full name
+- Email address used for order
+- Order number (if applicable)
+- Clear description of issue
+- Screenshots/photos if relevant
+- Steps you've already tried
+
+Q: Do you have a physical store?
+A: We are primarily an online e-commerce platform.
+Our warehouse and office are located in Thu Duc, HCMC.
+For in-person pickup or viewing, please contact us to schedule an appointment.
+
+================================================================================
+                       ADMIN & SELLER FEATURES
+================================================================================
+
+Q: Tôi là admin, làm sao truy cập admin panel?
+A: Admin panel access:
+1. Login with admin account
+2. Go to: http://localhost:4200/admin
+3. Or click "Admin Dashboard" in account menu
+
+Admin accounts must have role='admin' in database.
+
+Q: What can admin do?
+A: Admin features:
+- Dashboard: Overview statistics, charts
+- Orders: View, update status, confirm payments
+- Products: Add, edit, delete products
+- Users: Manage customer accounts
+- Promotions: Create and manage discount codes
+- Inventory: Track stock levels
+- Analytics: Sales reports, revenue tracking
+- Audit Logs: Track all admin actions
+- Settings: Configure system settings
+
+Q: How to confirm bank transfer payment?
+A: Admin bank transfer confirmation:
+1. Go to Admin > Orders
+2. Filter by "Pending" status
+3. Find order with "Bank Transfer" payment method
+4. Check your bank account for received payment
+5. Match payment reference with order number
+6. Click "Confirm Payment" button
+7. Enter optional bank transaction ID
+8. Order status updates to "Paid"
+
+Q: Can I export data?
+A: Yes, export features available:
+- Orders: CSV/Excel export
+- Products: CSV export
+- Analytics: PDF reports
+- Customer list: CSV export
+- Sales data: JSON/CSV
+
+================================================================================
+                          PRODUCT CARE GUIDES
+================================================================================
+
+Q: Làm sao chăm sóc cây bonsai?
+A: Hướng dẫn chăm sóc cơ bản:
+
+TƯỚI NƯỚC:
+- Kiểm tra đất mỗi ngày
+- Tưới khi đất khô 2-3cm bề mặt
+- Tưới vào sáng sớm hoặc chiều mát
+- Không tưới quá nhiều (gây úng rễ)
+
+ÁNH SÁNG:
+- Để ở nơi có ánh sáng gián tiếp
+- Không để nắng trực tiếp giữa trưa
+- Xoay chậu định kỳ để cây đều ánh sáng
+
+BÓN PHÂN:
+- Bón phân NPK loãng 2 tuần/lần
+- Mùa sinh trưởng: Tăng dinh dưỡng
+- Mùa nghỉ: Giảm hoặc ngưng bón
+
+TỈA CÀNH:
+- Tỉa cành khô, yếu thường xuyên
+- Tạo dáng 2-3 tháng/lần
+- Dùng kéo chuyên dụng sắc, sạch
+
+Q: How to maintain furniture?
+A: Furniture care tips:
+
+WOODEN FURNITURE:
+- Dust regularly with soft cloth
+- Use wood polish every 3-6 months
+- Avoid direct sunlight
+- Keep away from moisture
+- Use coasters for hot/cold items
+
+OUTDOOR FURNITURE:
+- Clean with mild soap and water
+- Apply protective coating annually
+- Cover during heavy rain
+- Store cushions when not in use
+
+FABRIC/UPHOLSTERY:
+- Vacuum weekly
+- Spot clean stains immediately
+- Professional cleaning once a year
+- Rotate cushions for even wear
+
+================================================================================
+                         FREQUENTLY ASKED QUESTIONS
+================================================================================
+
+Q: Trang web có uy tín không?
+A: Furni là nền tảng thương mại điện tử uy tín:
+- Hoạt động từ 2020
+- Hơn 10,000+ khách hàng hài lòng
+- Đánh giá 4.8/5 sao từ người dùng
+- Chính sách bảo vệ người mua rõ ràng
+- Thanh toán qua cổng bảo mật quốc tế
+- Chăm sóc khách hàng 24/7
+
+Q: What makes your bonsai special?
+A: Our bonsai are special because:
+- Sourced from skilled Vietnamese artisans
+- 5-10 years old (mature, shaped)
+- Traditional Vietnamese species
+- Come with care instructions in both languages
+- Verified photos (what you see is what you get)
+- Packed carefully for safe delivery
+
+Q: Có giao hàng tận nơi không?
+A: Có! Chúng tôi giao hàng:
+- Toàn quốc (Việt Nam)
+- Quốc tế (40+ quốc gia)
+- Đến tận địa chỉ bạn cung cấp
+- Đóng gói cẩn thận, chuyên nghiệp
+- Tracking number để theo dõi
+
+Q: Can I cancel my order?
+A: Yes, but depends on status:
+- Pending payment: Cancel anytime
+- Paid but not shipped: Contact us immediately
+- Already shipped: Cannot cancel (can return after delivery)
+
+To cancel:
+1. Go to "My Orders"
+2. Find the order
+3. Click "Cancel Order" button
+4. Confirm cancellation
+5. Refund processed if already paid
+
+Q: Tôi muốn mua số lượng lớn, có giảm giá không?
+A: Có! Cho đơn hàng số lượng lớn:
+- Liên hệ: wholesale@furni.vn
+- Cung cấp: Loại sản phẩm, số lượng
+- Nhận báo giá đặc biệt trong 24h
+- Giảm giá 5-20% tùy số lượng
+- Hỗ trợ vận chuyển và thanh toán linh hoạt
+
+Q: Do you ship live plants internationally?
+A: Yes, but with restrictions:
+- We ship bonsai and plants worldwide
+- Some countries have phytosanitary requirements
+- May need import permits (customer responsibility)
+- Extra packaging for live plants (+50,000đ)
+- Delivery time 7-21 days
+- Not responsible for customs issues
+
+Contact us before ordering international plants.
+
+================================================================================
+                       COMMON ISSUES & SOLUTIONS
+================================================================================
+
+ISSUE: "Payment failed"
+SOLUTION:
+- Check card details are correct
+- Ensure sufficient balance
+- Check if card supports international transactions
+- Try different payment method
+- Contact your bank
+- Try again later (may be temporary gateway issue)
+
+ISSUE: "Out of stock"
+SOLUTION:
+- Click "Notify when available" button
+- Receive email when restocked
+- Check "Similar Products" for alternatives
+- Contact us for restock timeline
+- Pre-order option may be available
+
+ISSUE: "Shipping fee too high"
+SOLUTION:
+- Shipping fee is based on destination country
+- International shipping is inherently expensive
+- Consider bulk purchase to offset cost
+- Wait for free shipping promotions
+- Choose slower shipping method if available
+
+ISSUE: "Can't apply promotion code"
+SOLUTION:
+- Check code spelling (case-sensitive)
+- Verify expiry date
+- Check minimum order value requirement
+- Some codes are product/category specific
+- One code per order only
+- Contact support for assistance
+
+ISSUE: "Website slow or loading"
+SOLUTION:
+- Check your internet speed
+- Clear browser cache
+- Disable browser extensions
+- Try different browser
+- Try mobile app (if available)
+- Peak hours may be slower (try later)
+
+================================================================================
+                            CHATBOT RESPONSES
+================================================================================
+
+GREETING:
+"Xin chào! Tôi là trợ lý ảo của Furni. Tôi có thể giúp gì cho bạn hôm nay? 🌱"
+"Hello! I'm Furni's virtual assistant. How can I help you today? 🌱"
+
+THANK YOU:
+"Cảm ơn bạn đã liên hệ! Nếu cần thêm hỗ trợ, đừng ngần ngại nhé! 😊"
+"Thank you for contacting us! Feel free to reach out if you need more help! 😊"
+
+GOODBYE:
+"Chúc bạn một ngày tốt lành! Hẹn gặp lại! 🌟"
+"Have a great day! See you soon! 🌟"
+
+UNABLE TO HELP:
+"Xin lỗi, tôi chưa hiểu rõ câu hỏi của bạn. Bạn có thể diễn đạt lại hoặc liên hệ support@furni.vn để được hỗ trợ trực tiếp nhé!"
+"Sorry, I don't quite understand your question. Could you rephrase or contact support@furni.vn for direct assistance?"
+
+NEED HUMAN:
+"Tôi sẽ chuyển bạn đến nhân viên hỗ trợ. Vui lòng chờ trong giây lát..."
+"I'll transfer you to a human agent. Please wait a moment..."
+
+ORDER INQUIRY:
+"Để kiểm tra đơn hàng, bạn vui lòng cung cấp:
+- Mã đơn hàng (Order ID)
+- Email đặt hàng
+Hoặc đăng nhập và vào 'My Orders' để xem chi tiết nhé!"
+
+PRODUCT RECOMMENDATION:
+"Dựa trên sở thích của bạn, tôi gợi ý:
+- Cây bonsai mai (Mai bonsai) - Biểu tượng Tết
+- Bàn gỗ vintage (Vintage wooden table) - Phong cách cổ điển
+- Ghế sofa hiện đại (Modern sofa) - Thoải mái và sang trọng
+Bạn quan tâm loại nào?"
+
+================================================================================
+                         CONVERSATION EXAMPLES
+================================================================================
+
+Example 1: Order Tracking
+Customer: "Đơn hàng của tôi đến đâu rồi?"
+AI: "Để kiểm tra trạng thái đơn hàng, bạn có thể:
+1. Đăng nhập vào tài khoản
+2. Vào mục 'My Orders'
+3. Click vào đơn hàng cần xem
+Bạn cũng có thể cung cấp mã đơn hàng, tôi sẽ kiểm tra giúp nhé!"
+
+Example 2: Payment Question
+Customer: "Can I pay with PayPal?"
+AI: "Currently, we accept these payment methods:
+- MoMo Wallet (Vietnamese e-wallet)
+- Bank Transfer (International - UK account)
+- Credit/Debit Card (Visa, Mastercard, Amex)
+
+PayPal is not available yet, but it's on our roadmap! 
+Would you like help with any of our current payment methods?"
+
+Example 3: Product Care
+Customer: "Cây mai chăm sóc thế nào?"
+AI: "Chăm sóc cây mai đơn giản thôi! 🌸
+- Tưới nước: 1-2 lần/ngày, sáng và chiều
+- Ánh sáng: Đặt nơi có ánh sáng tán xạ
+- Bón phân: 2 tuần/lần bằng phân NPK loãng
+- Tỉa cành: Sau mùa ra hoa
+
+Mỗi cây đều kèm hướng dẫn chi tiết. Bạn muốn biết thêm gì không?"
+
+Example 4: Promotion
+Customer: "Có mã giảm giá không?"
+AI: "Hiện tại có các mã giảm giá:
+- WELCOME10: Giảm 10% cho khách mới
+- TETNEW2026: Giảm 15% dịp Tết (hết hạn 15/02/2026)
+- FREESHIP: Miễn phí ship cho đơn từ 500k
+
+Nhập mã ở trang checkout trong ô 'Promotion Code' nhé!
+Bạn cần hỗ trợ đặt hàng không?"
+
+Example 5: Technical Issue
+Customer: "Website bị lỗi không load được ảnh"
+AI: "Xin lỗi vì sự bất tiện! Bạn thử các cách này nhé:
+1. Bấm Ctrl+Shift+R để làm mới trang
+2. Xóa cache trình duyệt
+3. Thử trình duyệt khác (Chrome, Firefox)
+4. Tắt AdBlock tạm thời
+
+Nếu vẫn lỗi, chụp màn hình gửi support@furni.vn. 
+Chúng tôi sẽ khắc phục ngay! 🔧"
+
+================================================================================
+                              KEYWORDS
+================================================================================
+
+PRODUCT KEYWORDS:
+bonsai, cây cảnh, mai, tùng, cúc, furniture, nội thất, sofa, table, chair, 
+bàn, ghế, tủ, kệ, chậu, pot, plants, decorations, accessories, tools
+
+ORDER KEYWORDS:
+order, đơn hàng, mua, buy, cart, giỏ hàng, checkout, thanh toán, payment,
+track, theo dõi, status, trạng thái, delivery, giao hàng
+
+PAYMENT KEYWORDS:
+pay, trả, momo, bank transfer, chuyển khoản, card, thẻ, visa, mastercard,
+invoice, hóa đơn, receipt, refund, hoàn tiền
+
+SHIPPING KEYWORDS:
+ship, giao, delivery, vận chuyển, fee, phí, international, quốc tế, 
+tracking, free shipping, miễn phí
+
+SUPPORT KEYWORDS:
+help, giúp, support, hỗ trợ, problem, vấn đề, issue, lỗi, error,
+question, câu hỏi, contact, liên hệ
+
+ACCOUNT KEYWORDS:
+login, đăng nhập, register, đăng ký, password, mật khẩu, profile,
+account, tài khoản, forgot, quên
+
+PROMOTION KEYWORDS:
+discount, giảm giá, promo, khuyến mãi, code, mã, coupon, sale,
+offer, ưu đãi
+
+================================================================================
+                         END OF TRAINING DATA
+================================================================================
+
+This training data should be used to train an AI chatbot/customer support agent
+that can:
+1. Answer customer questions in Vietnamese and English
+2. Provide accurate information about products, policies, and procedures
+3. Guide customers through purchasing and checkout process
+4. Troubleshoot common issues
+5. Escalate complex issues to human support
+6. Maintain friendly, professional tone
+
+Note: Some information may need to be updated as the business evolves.
+Regular updates to this training data are recommended.
+
+Last Updated: March 12, 2026
+Contact: support@furni.vn

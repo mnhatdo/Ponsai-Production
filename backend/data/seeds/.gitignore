@@ -1,0 +1,9 @@
+# Ignore large JSON data files
+bonsai/*.json
+
+# Keep README
+!bonsai/README.md
+
+# Ignore IDE files
+.idea/
+*.iml

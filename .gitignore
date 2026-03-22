@@ -1,0 +1,181 @@
+# ========================================
+# DEPENDENCIES
+# ========================================
+node_modules/
+jspm_packages/
+bower_components/
+
+# ========================================
+# ENVIRONMENT FILES
+# ========================================
+.env
+.env.*
+!.env.example
+!.env.sample
+backend/.env
+.env.ml
+
+# ========================================
+# BUILD OUTPUTS
+# ========================================
+dist/
+build/
+out/
+backend/dist/
+frontend/dist/
+frontend/.angular/
+frontend/.angular-cache/
+
+# ========================================
+# LOGS
+# ========================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# ========================================
+# PYTHON
+# ========================================
+# Virtual environments
+backend/data/seeds/bonsai/.venv/
+ml-service/venv/
+venv/
+env/
+.venv/
+.Python
+
+# Python cache
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+*$py.class
+
+# Python pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ML models (saved trained models - can be large)
+ml-service/models/*.joblib
+ml-service/models/*.pkl
+ml-service/models/*.h5
+
+# ========================================
+# DATABASE & BACKUPS
+# ========================================
+backup/
+*.dump
+dump/
+mongo-data/
+
+# ========================================
+# UPLOADS & SESSIONS
+# ========================================
+backend/uploads/
+uploads/
+public/uploads/
+sessions/
+
+# ========================================
+# TESTING & COVERAGE
+# ========================================
+coverage/
+*.coverage
+.nyc_output/
+.lcov
+*.lcov
+
+# ========================================
+# CACHE FILES
+# ========================================
+.cache/
+.parcel-cache/
+.next/
+.npm
+.eslintcache
+.node_repl_history
+
+# ========================================
+# TEMPORARY FILES
+# ========================================
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*~
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ========================================
+# IDE & EDITORS
+# ========================================
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json.example
+*.code-workspace
+
+# JetBrains IDEs (IntelliJ, WebStorm, PyCharm)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Editor backup files
+*.swp
+*.swo
+
+# ========================================
+# OPERATING SYSTEMS
+# ========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.fuse_hidden*
+.directory
+.Trash-*
+
+# ========================================
+# PROJECT SPECIFIC
+# ========================================
+# Test and development scripts (temporary)
+test-*.http
+test-*.ps1
+test-*.js
+verify-*.ps1
+*-test-*.mjs
+
+# Old/archived files
+*.old
+_archive/
+
+# Local development files
+.local/
+*.local
+
+# Lock files (optional - uncomment to ignore)
+# package-lock.json
+# yarn.lock
+

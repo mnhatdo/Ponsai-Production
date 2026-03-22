@@ -1,0 +1,1035 @@
+@import '../../../assets/styles/colors';
+
+.hero {
+  background: linear-gradient(135deg, $brand-primary 0%, $brand-primary-dark 100%);
+  padding: 80px 0 60px;
+  color: white;
+
+  .intro-excerpt {
+    h1 {
+      color: white;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.checkout-section {
+  padding: 60px 0;
+  background-color: $bg-tertiary;
+  min-height: 60vh;
+}
+
+// Empty State
+.empty-state {
+  background: white;
+  border-radius: 12px;
+  padding: 60px 20px;
+
+  .empty-icon {
+    font-size: 80px;
+    color: $border-light;
+
+    i {
+      display: inline-block;
+    }
+  }
+}
+
+// Cards
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+
+  .card-header {
+    background-color: $bg-primary;
+    border-bottom: 2px solid $border-light;
+    padding: 1.25rem 1.5rem;
+
+    &.bg-primary {
+      background-color: $brand-primary !important;
+      border-bottom: none;
+      
+      h5 {
+        color: white !important;
+      }
+    }
+
+    &.bg-accent {
+      background-color: $brand-accent !important;
+      border-bottom: none;
+      
+      h5 {
+        color: $brand-primary-dark !important;
+        font-weight: 700;
+      }
+    }
+
+    h5 {
+      margin: 0;
+      color: $brand-primary-dark;
+      font-weight: 600;
+    }
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+}
+
+// Payment Methods
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.payment-method-card {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  border: 2px solid $border-light;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  position: relative;
+
+  &:hover {
+    border-color: $brand-secondary;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &.selected {
+    border-color: $brand-primary;
+    background-color: lighten($brand-accent, 45%);
+    box-shadow: 0 4px 16px rgba(21, 50, 67, 0.15);
+    border-left: 4px solid $brand-accent;
+
+    .method-radio input {
+      border-color: $brand-primary;
+      
+      &:checked {
+        background-color: $brand-primary;
+      }
+    }
+    
+    .method-name {
+      color: $brand-primary;
+      font-weight: 700;
+    }
+  }
+
+  .method-radio {
+    margin-right: 1rem;
+
+    input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: $brand-primary;
+    }
+  }
+
+  .method-icon {
+    font-size: 2rem;
+    color: $brand-primary;
+    margin-right: 1rem;
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .method-details {
+    flex: 1;
+
+    .method-name {
+      margin: 0 0 0.25rem 0;
+      font-weight: 600;
+      color: $brand-primary-dark;
+    }
+
+    .method-description {
+      margin: 0 0 0.25rem 0;
+      font-size: 0.9rem;
+      color: $text-secondary;
+    }
+  }
+}
+
+// Card Payment Form
+.card-payment-form {
+  background-color: $bg-tertiary;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid $border-light;
+
+  h6 {
+    color: $brand-primary-dark;
+    font-weight: 600;
+  }
+}
+
+// ============================================
+// Bank Transfer Invoice - Professional Design
+// ============================================
+.bank-invoice-card {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid $border-light;
+  
+  .invoice-header {
+    background: linear-gradient(135deg, $brand-primary 0%, $brand-primary-dark 100%);
+    color: white;
+    padding: 2rem;
+    
+    h4 {
+      color: white;
+      font-weight: 700;
+      margin: 0;
+    }
+    
+    .invoice-meta {
+      .invoice-number {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: $brand-accent;
+        font-family: 'Courier New', monospace;
+      }
+    }
+  }
+  
+  // Notice Box
+  .notice-box {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background-color: lighten($brand-secondary, 50%);
+    border-left: 4px solid $brand-secondary;
+    border-radius: 6px;
+    
+    .notice-icon {
+      font-size: 1.5rem;
+      color: $brand-secondary;
+      flex-shrink: 0;
+    }
+    
+    .notice-content {
+      strong {
+        display: block;
+        color: $brand-primary-dark;
+        margin-bottom: 0.25rem;
+      }
+      
+      p {
+        color: $text-primary;
+        font-size: 0.95rem;
+      }
+    }
+  }
+  
+  // Amount Section - Highlighted
+  .amount-section {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(to bottom, lighten($brand-accent, 45%), lighten($brand-accent, 48%));
+    border-radius: 10px;
+    border: 2px solid $brand-accent;
+    
+    .amount-label {
+      font-size: 0.9rem;
+      color: $text-secondary;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .amount-value {
+      font-size: 3rem;
+      font-weight: 700;
+      color: $brand-primary;
+      line-height: 1;
+      font-family: 'Courier New', monospace;
+    }
+    
+    .amount-currency {
+      font-size: 1rem;
+      color: $text-secondary;
+      margin-top: 0.25rem;
+    }
+  }
+  
+  // Bank Details Table
+  .bank-details-table {
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: $brand-primary-dark;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid $border-light;
+    }
+    
+    .details-table {
+      width: 100%;
+      
+      tbody tr {
+        border-bottom: 1px solid $border-light;
+        
+        &:last-child {
+          border-bottom: none;
+        }
+        
+        td {
+          padding: 0.875rem 0;
+        }
+        
+        .label-col {
+          color: $text-secondary;
+          font-weight: 500;
+          width: 35%;
+        }
+        
+        .value-col {
+          color: $brand-primary-dark;
+          
+          strong {
+            font-weight: 600;
+          }
+          
+          .code-value {
+            background-color: $bg-secondary;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: $brand-primary;
+            border: 1px solid $border-light;
+          }
+        }
+      }
+    }
+  }
+  
+  // Payment Reference Section - Most Important
+  .reference-section {
+    background-color: white;
+    border: 2px solid $border-medium;
+    border-radius: 8px;
+    padding: 1.25rem;
+    
+    .reference-label {
+      margin-bottom: 0.75rem;
+      color: $brand-primary-dark;
+      font-size: 1rem;
+      
+      strong {
+        font-weight: 600;
+      }
+    }
+    
+    .reference-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background-color: $bg-secondary;
+      padding: 1rem;
+      border-radius: 6px;
+      border: 1px solid $border-light;
+      
+      .reference-code {
+        flex: 1;
+        font-family: 'Courier New', monospace;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: $brand-primary;
+        letter-spacing: 1px;
+      }
+      
+      .btn-copy-ref {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: $brand-primary;
+        color: white;
+        border: none;
+        padding: 0.625rem 1.25rem;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        
+        i {
+          font-size: 1.1rem;
+        }
+        
+        &:hover {
+          background-color: $brand-primary-dark;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+    
+    .reference-note {
+      display: block;
+      margin-top: 0.5rem;
+      color: $text-secondary;
+      font-size: 0.875rem;
+    }
+  }
+  
+  // Instructions Section with Toggle
+  .instructions-section {
+    .instructions-toggle {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      border: 2px solid $border-medium;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-weight: 600;
+      color: $brand-primary-dark;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background-color: $bg-secondary;
+        border-color: $brand-primary;
+      }
+      
+      i {
+        font-size: 1.25rem;
+        transition: transform 0.2s ease;
+      }
+    }
+    
+    .instructions-box {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 2px solid $border-medium;
+      
+      .instruction-list {
+        margin: 0;
+        padding-left: 1.25rem;
+        
+        li {
+          color: $text-primary;
+          margin-bottom: 0.75rem;
+          line-height: 1.6;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+          
+          strong {
+            color: $brand-primary-dark;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+  
+  // Action Buttons - Same Design
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    
+    .btn-action {
+      flex: 1;
+      background: linear-gradient(135deg, $brand-primary 0%, $brand-primary-dark 100%);
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 0.875rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(21, 50, 67, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      
+      &:hover {
+        background: linear-gradient(135deg, $brand-primary-dark 0%, $brand-primary 100%);
+        box-shadow: 0 6px 16px rgba(21, 50, 67, 0.3);
+        transform: translateY(-2px);
+      }
+      
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(21, 50, 67, 0.2);
+      }
+    }
+  }
+}
+
+// Quick Actions
+.quick-actions {
+  .btn-outline-secondary {
+    border-width: 2px;
+    font-weight: 600;
+    
+    &:hover {
+      background-color: $gray-100;
+      border-color: $gray-400;
+    }
+  }
+}
+
+// Old Bank Transfer Card (Remove or keep as fallback)
+.bank-transfer-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  
+  .bank-details {
+    background-color: $bg-secondary;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    border: 1px solid $border-light;
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid $border-light;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.highlight {
+        background-color: lighten($brand-accent, 40%);
+        padding: 1rem;
+        margin: 0.5rem -1rem;
+        border-radius: 6px;
+        border: 2px solid $brand-accent;
+        
+        .label {
+          color: $brand-primary-dark;
+          font-weight: 600;
+        }
+        
+        .value {
+          color: $brand-primary-dark;
+          font-weight: 700;
+          font-size: 1.1rem;
+        }
+      }
+
+      .label {
+        font-weight: 500;
+        color: $text-secondary;
+        min-width: 180px;
+      }
+
+      .value-with-copy {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        
+        .value {
+          font-weight: 600;
+          color: $brand-primary-dark;
+        }
+        
+        button {
+          transition: all 0.2s ease;
+          
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+
+  .verify-section {
+    background-color: lighten($brand-accent, 45%);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid $brand-primary;
+  }
+}
+
+// Order Items
+.order-items {
+  max-height: 400px;
+  overflow-y: auto;
+
+  .img-thumbnail {
+    border-radius: 8px;
+    border: 1px solid $border-light;
+  }
+
+  h6 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $brand-primary-dark;
+  }
+}
+
+// Price Summary
+.price-summary {
+  .text-muted {
+    color: $text-secondary !important;
+  }
+
+  hr {
+    border-top: 2px solid $border-light;
+  }
+}
+
+// Buttons
+.btn-primary {
+  background: linear-gradient(135deg, $brand-primary 0%, $brand-primary-dark 100%);
+  border: none;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(21, 50, 67, 0.2);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: linear-gradient(135deg, $brand-primary-dark 0%, $brand-primary 100%);
+    box-shadow: 0 6px 16px rgba(21, 50, 67, 0.3);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(21, 50, 67, 0.2);
+  }
+
+  &:disabled {
+    background: $gray-400;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+.btn-outline-primary {
+  color: $brand-primary;
+  border-color: $brand-primary;
+
+  &:hover {
+    background-color: $brand-primary;
+    border-color: $brand-primary;
+    color: white;
+  }
+}
+
+.btn-outline-secondary {
+  &:hover {
+    background-color: $gray-600;
+    border-color: $gray-600;
+  }
+}
+
+.btn-outline-danger {
+  &:hover {
+    background-color: $alert-danger;
+    border-color: $alert-danger;
+  }
+}
+
+// Form Controls
+.form-control {
+  border-radius: 6px;
+  border: 1px solid $border-medium;
+  padding: 0.6rem 0.75rem;
+
+  &:focus {
+    border-color: $brand-primary;
+    box-shadow: 0 0 0 0.2rem rgba(21, 50, 67, 0.15);
+  }
+
+  &.is-invalid {
+    border-color: $alert-danger;
+
+    &:focus {
+      border-color: $alert-danger;
+      box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15);
+    }
+  }
+}
+
+.form-label {
+  font-weight: 500;
+  color: $brand-primary-dark;
+  margin-bottom: 0.5rem;
+
+  .text-danger {
+    color: $alert-danger !important;
+  }
+}
+
+// Alerts
+.alert {
+  border-radius: 8px;
+  border: none;
+  padding: 1rem 1.25rem;
+
+  .btn-close {
+    padding: 0.5rem;
+  }
+}
+
+.alert-danger {
+  background-color: lighten($alert-danger, 40%);
+  color: darken($alert-danger, 30%);
+
+  i {
+    color: darken($alert-danger, 30%);
+  }
+}
+
+.alert-success {
+  background-color: lighten($status-success, 45%);
+  color: darken($status-success, 35%);
+
+  i {
+    color: darken($status-success, 35%);
+  }
+}
+
+.alert-info {
+  background-color: lighten($brand-secondary, 45%);
+  color: $brand-primary-dark;
+  border-left: 4px solid $brand-secondary;
+  
+  i {
+    color: $brand-secondary;
+  }
+}
+
+.alert-warning {
+  background-color: lighten($status-warning, 25%);
+  color: darken($status-warning, 45%);
+
+  i {
+    color: darken($status-warning, 45%);
+  }
+}
+
+// Text Colors
+.text-primary {
+  color: $brand-primary !important;
+}
+
+// Badges
+.badge {
+  font-weight: 500;
+  padding: 0.35em 0.65em;
+}
+
+// Sticky Sidebar
+.sticky-top {
+  position: sticky;
+  top: 20px;
+  z-index: 1020;
+}
+
+// Responsive
+@media (max-width: 991px) {
+  .sticky-top {
+    position: relative;
+    top: 0 !important;
+    margin-top: 2rem;
+  }
+
+  .payment-method-card {
+    .method-icon {
+      font-size: 1.5rem;
+      min-width: 40px;
+    }
+  }
+  
+  // Bank Invoice Responsive
+  .bank-invoice-card {
+    .invoice-header {
+      padding: 1.5rem 1rem;
+      
+      h4 {
+        font-size: 1.25rem;
+      }
+      
+      .invoice-meta {
+        margin-top: 0.5rem;
+        
+        .invoice-number {
+          font-size: 1rem;
+        }
+      }
+    }
+    
+    .amount-section {
+      padding: 1.5rem 1rem;
+      
+      .amount-value {
+        font-size: 2.5rem;
+      }
+    }
+    
+    .bank-details-table {
+      .details-table {
+        font-size: 0.9rem;
+        
+        tbody tr {
+          td {
+            padding: 0.75rem 0;
+          }
+          
+          .label-col {
+            width: 40%;
+          }
+        }
+      }
+    }
+    
+    .reference-section {
+      .reference-box {
+        flex-direction: column;
+        gap: 0.5rem;
+        
+        .reference-code {
+          font-size: 1rem;
+          text-align: center;
+        }
+        
+        .btn-copy-ref {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 60px 0 40px;
+
+    .intro-excerpt {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .payment-method-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+
+    .method-radio {
+      margin-bottom: 0.5rem;
+    }
+
+    .method-icon {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .bank-details {
+    .detail-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+
+      .label {
+        min-width: auto;
+        font-size: 0.9rem;
+      }
+
+      .value-with-copy {
+        width: 100%;
+      }
+    }
+  }
+  
+  // Bank Invoice Mobile
+  .bank-invoice-card {
+    .invoice-header {
+      .d-flex {
+        flex-direction: column;
+        text-align: center;
+        
+        .invoice-meta {
+          text-align: center;
+          margin-top: 1rem;
+        }
+      }
+    }
+    
+    .amount-section {
+      .amount-value {
+        font-size: 2rem;
+      }
+    }
+    
+    .bank-details-table {
+      .details-table {
+        display: block;
+        
+        tbody {
+          display: block;
+          
+          tr {
+            display: flex;
+            flex-direction: column;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid $border-light;
+            
+            td {
+              padding: 0.25rem 0;
+            }
+            
+            .label-col {
+              width: 100%;
+              font-size: 0.85rem;
+              color: $text-secondary;
+            }
+            
+            .value-col {
+              width: 100%;
+              margin-top: 0.25rem;
+            }
+          }
+        }
+      }
+    }
+    
+    .notice-box {
+      flex-direction: column;
+      text-align: center;
+      
+      .notice-icon {
+        margin: 0 auto 0.5rem;
+      }
+    }
+  }
+}
+
+// Promotion Code Section
+.promotion-section {
+  border-top: 1px dashed $border-light;
+  border-bottom: 1px dashed $border-light;
+  padding: 16px 0;
+
+  .promotion-input-group {
+    display: flex;
+    gap: 8px;
+
+    .promotion-input {
+      flex: 1;
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: 2px solid $border-medium;
+      border-radius: 8px;
+      padding: 10px 12px;
+
+      &:focus {
+        border-color: $brand-accent;
+        box-shadow: 0 0 0 3px rgba(195, 211, 80, 0.1);
+      }
+
+      &:disabled {
+        background-color: $bg-secondary;
+        cursor: not-allowed;
+      }
+    }
+
+    .apply-btn,
+    .remove-btn {
+      min-width: 80px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.2s;
+
+      &:hover:not(:disabled) {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    .apply-btn {
+      background: linear-gradient(135deg, $brand-accent 0%, $brand-accent-dark 100%);
+      border-color: $brand-accent;
+      color: $brand-primary;
+
+      &:hover:not(:disabled) {
+        background: linear-gradient(135deg, $brand-accent-light 0%, $brand-accent 100%);
+      }
+    }
+
+    .remove-btn {
+      background: white;
+      border: 2px solid #dc3545;
+      color: #dc3545;
+
+      &:hover:not(:disabled) {
+        background: #dc3545;
+        color: white;
+      }
+    }
+  }
+
+  .applied-promo-badge {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border-radius: 8px;
+    border-left: 3px solid #28a745;
+
+    .promo-code {
+      font-family: monospace;
+      font-weight: 700;
+      color: $brand-primary;
+      margin-right: 6px;
+    }
+
+    .promo-name {
+      color: $text-secondary;
+      font-size: 13px;
+    }
+  }
+}
+
+// Savings Badge
+.savings-badge {
+  text-align: center;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+  border-radius: 8px;
+  color: #856404;
+  font-weight: 600;
+  border-left: 3px solid #ffc107;
+  box-shadow: 0 2px 6px rgba(255, 193, 7, 0.2);
+
+  i {
+    margin-right: 6px;
+  }
+}
+

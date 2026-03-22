@@ -1,0 +1,653 @@
+<!-- Hero Section -->
+<div class="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-12">
+        <div class="intro-excerpt">
+          <h1>{{ 'checkout.title' | translate }}</h1>
+          <p class="mb-0">{{ 'checkout.subtitle' | translate }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Checkout Content -->
+<div class="checkout-section">
+  <div class="container">
+    <!-- Alert Messages -->
+    @if (error()) {
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <strong>{{ 'message.error' | translate }}:</strong> {{ error() }}
+        <button type="button" class="btn-close" (click)="error.set(null)"></button>
+      </div>
+    }
+
+    @if (success()) {
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        {{ success() }}
+        <button type="button" class="btn-close" (click)="success.set(null)"></button>
+      </div>
+    }
+
+    <!-- Bank Transfer Invoice Display (Priority #1 - Show even if cart is empty) -->
+    @if (bankTransferDetails()) {
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="card bank-invoice-card">
+              <!-- Header -->
+              <div class="invoice-header">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h4 class="mb-1">{{ 'checkout.paymentInvoice' | translate }}</h4>
+                    <p class="text-muted mb-0">{{ 'checkout.bankTransferInstructions' | translate }}</p>
+                  </div>
+                  <div class="invoice-meta text-end">
+                    <div class="invoice-number">{{ bankTransferDetails()?.invoiceNumber || 'N/A' }}</div>
+                    <small class="text-muted">{{ 'checkout.order' | translate }}: {{ bankTransferDetails()?.orderId || 'N/A' }}</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-body p-4">
+                <!-- Important Notice -->
+                <div class="notice-box mb-4">
+                  <div class="notice-icon">
+                    <i class="bi bi-clock-history"></i>
+                  </div>
+                  <div class="notice-content">
+                    <strong>{{ 'checkout.paymentDeadline' | translate }}</strong>
+                    <p class="mb-0">{{ 'checkout.completeTransferWithin' | translate }} ({{ bankTransferDetails()?.dueDate | date:'MMM dd, yyyy' }})</p>
+                  </div>
+                </div>
+
+                <!-- Payment Amount - Highlighted -->
+                <div class="amount-section mb-4">
+                  <div class="amount-label">{{ 'checkout.totalAmountToTransfer' | translate }}</div>
+                  <div class="amount-value">£{{ bankTransferDetails()?.amount?.toFixed(2) || '0.00' }}</div>
+                  <div class="amount-currency">{{ bankTransferDetails()?.currency || 'GBP' }}</div>
+                </div>
+
+                <!-- Bank Details Table -->
+                <div class="bank-details-table mb-4">
+                  <h6 class="section-title">{{ 'checkout.bankAccountDetails' | translate }}</h6>
+                  
+                  <table class="details-table">
+                    <tbody>
+                      <tr>
+                        <td class="label-col">{{ 'checkout.bankName' | translate }}</td>
+                        <td class="value-col">
+                          <strong>{{ bankTransferDetails()?.bankDetails?.bankName || 'N/A' }}</strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label-col">{{ 'checkout.accountName' | translate }}</td>
+                        <td class="value-col">
+                          <strong>{{ bankTransferDetails()?.bankDetails?.accountName || 'N/A' }}</strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label-col">IBAN</td>
+                        <td class="value-col">
+                          <code class="code-value">{{ bankTransferDetails()?.bankDetails?.iban || 'N/A' }}</code>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label-col">SWIFT/BIC</td>
+                        <td class="value-col">
+                          <code class="code-value">{{ bankTransferDetails()?.bankDetails?.swift || 'N/A' }}</code>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label-col">{{ 'checkout.sortCode' | translate }}</td>
+                        <td class="value-col">
+                          <strong>{{ bankTransferDetails()?.bankDetails?.sortCode || 'N/A' }}</strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label-col">{{ 'checkout.accountNumber' | translate }}</td>
+                        <td class="value-col">
+                          <strong>{{ bankTransferDetails()?.bankDetails?.accountNumber || 'N/A' }}</strong>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Payment Reference - Most Important -->
+                <div class="reference-section mb-4">
+                  <div class="reference-label">
+                    <strong>{{ 'checkout.paymentReference' | translate }}</strong>
+                  </div>
+                  <div class="reference-box">
+                    <div class="reference-code">{{ bankTransferDetails()?.reference || 'N/A' }}</div>
+                    <button 
+                      class="btn-copy-ref" 
+                      (click)="copyToClipboard(bankTransferDetails().reference)"
+                      [title]="'button.copy' | translate">
+                      <i class="bi bi-clipboard"></i>
+                      <span>{{ 'button.copy' | translate }}</span>
+                    </button>
+                  </div>
+                  <small class="reference-note">
+                    {{ 'checkout.includeReference' | translate }}
+                  </small>
+                </div>
+
+                <!-- Quick Copy All Details -->
+                <div class="quick-actions mb-4">
+                  <button 
+                    class="btn btn-outline-secondary w-100" 
+                    (click)="copyAllBankDetails()">
+                    <i class="bi bi-files me-2"></i>
+                    {{ 'checkout.copyAllBankDetails' | translate }}
+                  </button>
+                </div>
+
+                <!-- Instructions - Collapsible -->
+                <div class="instructions-section mb-4">
+                  <button 
+                    class="instructions-toggle w-100" 
+                    (click)="showInstructions.set(!showInstructions())"
+                    type="button">
+                    <span>{{ 'checkout.transferInstructions' | translate }}</span>
+                    <i class="bi" [class.bi-chevron-down]="!showInstructions()" [class.bi-chevron-up]="showInstructions()"></i>
+                  </button>
+                  @if (showInstructions()) {
+                    <div class="instructions-box mt-3">
+                      <ol class="instruction-list">
+                        <li>{{ 'checkout.instruction1' | translate }}</li>
+                        <li>{{ 'checkout.instruction2' | translate }}</li>
+                        <li>{{ 'checkout.instruction3' | translate }}</li>
+                        <li><strong>{{ 'checkout.instruction4' | translate }}</strong></li>
+                        <li>{{ 'checkout.instruction5' | translate }}</li>
+                        <li>{{ 'checkout.instruction6' | translate }}</li>
+                      </ol>
+                    </div>
+                  }
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons mt-4">
+                  <button class="btn btn-action" (click)="router.navigate(['/'])">
+                    {{ 'button.continueShopping' | translate }}
+                  </button>
+                  <button class="btn btn-action" (click)="router.navigate(['/profile'])">
+                    {{ 'checkout.viewMyOrders' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    } @else if (cartService.items().length === 0) {
+      <!-- Empty Cart State (Only show if NO bank transfer invoice) -->
+      <div class="empty-state text-center py-5">
+        <div class="empty-icon mb-4">
+          <i class="bi bi-cart-x"></i>
+        </div>
+        <h3>{{ 'cart.empty' | translate }}</h3>
+        <p class="text-muted mb-4">{{ 'checkout.emptyCartMessage' | translate }}</p>
+        <a routerLink="/shop" class="btn btn-primary">
+          <i class="bi bi-shop me-2"></i>
+          {{ 'button.continueShopping' | translate }}
+        </a>
+      </div>
+    } @else {
+      <!-- Normal Checkout Flow -->
+        <div class="row g-4">
+          <!-- Left Column: Forms -->
+          <div class="col-lg-7">
+            <!-- Shipping Form -->
+            <div class="card mb-4">
+              <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-truck me-2"></i>{{ 'checkout.shippingInformation' | translate }}</h5>
+              </div>
+              <div class="card-body">
+                <!-- Geolocation Button -->
+                @if (locationSupported()) {
+                  <div class="alert alert-info d-flex align-items-center justify-content-between mb-3">
+                    <div>
+                      <i class="bi bi-geo-alt-fill me-2"></i>
+                      <span>{{ 'checkout.autoFillLocation' | translate }}</span>
+                    </div>
+                    <button 
+                      type="button" 
+                      class="btn btn-sm btn-primary" 
+                      (click)="getMyLocation()"
+                      [disabled]="isGettingLocation()"
+                    >
+                      @if (isGettingLocation()) {
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        {{ 'checkout.gettingLocation' | translate }}
+                      } @else {
+                        <i class="bi bi-crosshair me-2"></i>
+                        {{ 'checkout.useMyLocation' | translate }}
+                      }
+                    </button>
+                  </div>
+                }
+                
+                <!-- Location Error -->
+                @if (locationError()) {
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i>{{ locationError() }}
+                    <button type="button" class="btn-close" (click)="locationError.set(null)"></button>
+                  </div>
+                }
+                
+                <form [formGroup]="checkoutForm">
+                  <div class="mb-3">
+                    <label for="street" class="form-label">{{ 'form.streetAddress' | translate }} <span class="text-danger">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="street"
+                      formControlName="street"
+                      [placeholder]="'form.streetPlaceholder' | translate"
+                      [class.is-invalid]="checkoutForm.get('street')?.invalid && checkoutForm.get('street')?.touched"
+                    />
+                    @if (checkoutForm.get('street')?.invalid && checkoutForm.get('street')?.touched) {
+                      <div class="invalid-feedback">{{ 'form.streetRequired' | translate }}</div>
+                    }
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="city" class="form-label">{{ 'form.city' | translate }} <span class="text-danger">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="city"
+                        formControlName="city"
+                        [placeholder]="'form.cityPlaceholder' | translate"
+                        [class.is-invalid]="checkoutForm.get('city')?.invalid && checkoutForm.get('city')?.touched"
+                      />
+                      @if (checkoutForm.get('city')?.invalid && checkoutForm.get('city')?.touched) {
+                        <div class="invalid-feedback">{{ 'form.cityRequired' | translate }}</div>
+                      }
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="state" class="form-label">{{ 'form.stateProvince' | translate }} <span class="text-danger">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="state"
+                        formControlName="state"
+                        [placeholder]="'form.statePlaceholder' | translate"
+                        [class.is-invalid]="checkoutForm.get('state')?.invalid && checkoutForm.get('state')?.touched"
+                      />
+                      @if (checkoutForm.get('state')?.invalid && checkoutForm.get('state')?.touched) {
+                        <div class="invalid-feedback">{{ 'form.stateRequired' | translate }}</div>
+                      }
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="zipCode" class="form-label">{{ 'form.zipCode' | translate }} <span class="text-danger">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="zipCode"
+                        formControlName="zipCode"
+                        [placeholder]="'form.zipPlaceholder' | translate"
+                        [class.is-invalid]="checkoutForm.get('zipCode')?.invalid && checkoutForm.get('zipCode')?.touched"
+                      />
+                      @if (checkoutForm.get('zipCode')?.invalid && checkoutForm.get('zipCode')?.touched) {
+                        <div class="invalid-feedback">{{ 'form.zipRequired' | translate }}</div>
+                      }
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="country" class="form-label">{{ 'form.country' | translate }} <span class="text-danger">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="country"
+                        formControlName="country"
+                        [placeholder]="'form.countryPlaceholder' | translate"
+                        [class.is-invalid]="checkoutForm.get('country')?.invalid && checkoutForm.get('country')?.touched"
+                      />
+                      @if (checkoutForm.get('country')?.invalid && checkoutForm.get('country')?.touched) {
+                        <div class="invalid-feedback">{{ 'form.countryRequired' | translate }}</div>
+                      }
+                    </div>
+                  </div>
+
+                  <div class="mb-0">
+                    <label for="notes" class="form-label">{{ 'checkout.orderNotes' | translate }} <small class="text-muted">({{ 'form.optional' | translate }})</small></label>
+                    <textarea
+                      class="form-control"
+                      id="notes"
+                      formControlName="notes"
+                      rows="3"
+                      [placeholder]="'checkout.notesPlaceholder' | translate"
+                    ></textarea>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Payment Method Selection -->
+            <div class="card">
+              <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-credit-card me-2"></i>{{ 'checkout.paymentMethod' | translate }}</h5>
+              </div>
+              <div class="card-body">
+                @if (isLoadingMethods()) {
+                  <div class="text-center py-4">
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">{{ 'button.loading' | translate }}</span>
+                    </div>
+                    <p class="text-muted mt-2">{{ 'checkout.loadingPaymentMethods' | translate }}</p>
+                  </div>
+                } @else {
+                  <!-- Payment Method Cards -->
+                  <div class="payment-methods">
+                    @for (method of paymentMethods(); track method.id) {
+                      <div 
+                        class="payment-method-card"
+                        [class.selected]="selectedPaymentMethod() === method.id"
+                        (click)="selectPaymentMethod(method.id)"
+                      >
+                        <div class="method-radio">
+                          <input
+                            type="radio"
+                            [id]="'method-' + method.id"
+                            [value]="method.id"
+                            [checked]="selectedPaymentMethod() === method.id"
+                            (change)="selectPaymentMethod(method.id)"
+                          />
+                        </div>
+                        <div class="method-icon">
+                          <i class="bi bi-{{ getPaymentIcon(method.type) }}"></i>
+                        </div>
+                        <div class="method-details">
+                          <h6 class="method-name">{{ method.name }}</h6>
+                          <p class="method-description">{{ method.description }}</p>
+                          @if (method.processingTime) {
+                            <small class="text-muted">
+                              <i class="bi bi-clock me-1"></i>{{ method.processingTime }}
+                            </small>
+                          }
+                        </div>
+                      </div>
+                    }
+                  </div>
+
+                  <!-- Card Payment Form (shown when card selected) -->
+                  @if (selectedPaymentMethod() === 'card') {
+                    <div class="card-payment-form mt-4">
+                      <h6 class="mb-3">{{ 'checkout.cardDetails' | translate }}</h6>
+                      <form [formGroup]="cardForm">
+                        <div class="mb-3">
+                          <label for="cardNumber" class="form-label">{{ 'checkout.cardNumber' | translate }} <span class="text-danger">*</span></label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="cardNumber"
+                            formControlName="cardNumber"
+                            placeholder="1234 5678 9012 3456"
+                            maxlength="19"
+                            (input)="formatCardNumber($event)"
+                            [class.is-invalid]="cardForm.get('cardNumber')?.invalid && cardForm.get('cardNumber')?.touched"
+                          />
+                          @if (cardForm.get('cardNumber')?.invalid && cardForm.get('cardNumber')?.touched) {
+                            <div class="invalid-feedback">{{ 'checkout.cardNumberRequired' | translate }}</div>
+                          }
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="cardHolder" class="form-label">{{ 'checkout.cardholderName' | translate }} <span class="text-danger">*</span></label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="cardHolder"
+                            formControlName="cardHolder"
+                            [placeholder]="'checkout.cardholderPlaceholder' | translate"
+                            [class.is-invalid]="cardForm.get('cardHolder')?.invalid && cardForm.get('cardHolder')?.touched"
+                          />
+                          @if (cardForm.get('cardHolder')?.invalid && cardForm.get('cardHolder')?.touched) {
+                            <div class="invalid-feedback">{{ 'checkout.cardholderRequired' | translate }}</div>
+                          }
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-4 mb-3">
+                            <label for="expiryMonth" class="form-label">{{ 'checkout.month' | translate }} <span class="text-danger">*</span></label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="expiryMonth"
+                              formControlName="expiryMonth"
+                              placeholder="MM"
+                              maxlength="2"
+                              [class.is-invalid]="cardForm.get('expiryMonth')?.invalid && cardForm.get('expiryMonth')?.touched"
+                            />
+                          </div>
+                          <div class="col-md-4 mb-3">
+                            <label for="expiryYear" class="form-label">{{ 'checkout.year' | translate }} <span class="text-danger">*</span></label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="expiryYear"
+                              formControlName="expiryYear"
+                              placeholder="YY"
+                              maxlength="2"
+                              [class.is-invalid]="cardForm.get('expiryYear')?.invalid && cardForm.get('expiryYear')?.touched"
+                            />
+                          </div>
+                          <div class="col-md-4 mb-3">
+                            <label for="cvv" class="form-label">CVV <span class="text-danger">*</span></label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="cvv"
+                              formControlName="cvv"
+                              placeholder="123"
+                              maxlength="4"
+                              [class.is-invalid]="cardForm.get('cvv')?.invalid && cardForm.get('cvv')?.touched"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                          <small>
+                            <i class="bi bi-info-circle me-1"></i>
+                            {{ 'checkout.testCardsInfo' | translate }}
+                          </small>
+                        </div>
+                      </form>
+                    </div>
+                  }
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Order Summary -->
+          <div class="col-lg-5">
+            <div class="card sticky-top" style="top: 20px;">
+              <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-receipt me-2"></i>{{ 'checkout.orderSummary' | translate }}</h5>
+              </div>
+              <div class="card-body">
+                <!-- Cart Items -->
+                <div class="order-items mb-3">
+                  @for (item of cartService.items(); track item.product._id) {
+                    <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                      <div class="flex-shrink-0 me-3">
+                        <img
+                          [src]="item.product.images[0] || '/assets/images/placeholder.png'"
+                          [alt]="item.product.name"
+                          class="img-thumbnail"
+                          style="width: 60px; height: 60px; object-fit: cover;"
+                        />
+                      </div>
+                      <div class="flex-grow-1">
+                        <h6 class="mb-1">{{ item.product.name }}</h6>
+                        <small class="text-muted">{{ 'cart.qty' | translate }}: {{ item.quantity }}</small>
+                      </div>
+                      <div class="text-end">
+                        <strong>£{{ (item.product.price * item.quantity).toFixed(2) }}</strong>
+                      </div>
+                    </div>
+                  }
+                </div>
+
+                <!-- Promotion Code Input -->
+                <div class="promotion-section mb-4">
+                  <div class="promotion-input-group">
+                    <input
+                      type="text"
+                      class="form-control promotion-input"
+                      [placeholder]="'checkout.enterPromoCode' | translate"
+                      [(ngModel)]="promotionCode"
+                      [disabled]="isApplyingPromo() || !!appliedPromotion()"
+                      (keyup.enter)="applyPromotion()"
+                    />
+                    @if (!appliedPromotion()) {
+                      <button
+                        class="btn btn-outline-primary apply-btn"
+                        (click)="applyPromotion()"
+                        [disabled]="!promotionCode.trim() || isApplyingPromo()"
+                      >
+                        @if (isApplyingPromo()) {
+                          <span class="spinner-border spinner-border-sm"></span>
+                        } @else {
+                          {{ 'button.apply' | translate }}
+                        }
+                      </button>
+                    } @else {
+                      <button
+                        class="btn btn-outline-danger remove-btn"
+                        (click)="removePromotion()"
+                        [title]="'checkout.removePromo' | translate"
+                      >
+                        <i class="bi bi-x-lg"></i>
+                      </button>
+                    }
+                  </div>
+
+                  <!-- Applied Promotion Display -->
+                  @if (appliedPromotion()) {
+                    <div class="applied-promo-badge mt-2">
+                      <i class="bi bi-check-circle-fill text-success me-2"></i>
+                      <span class="promo-code">{{ appliedPromotion()!.code }}</span>
+                      <span class="promo-name">- {{ appliedPromotion()!.name }}</span>
+                    </div>
+                  }
+
+                  <!-- Promotion Error -->
+                  @if (promoError()) {
+                    <div class="alert alert-danger mt-2 mb-0 p-2">
+                      <small>
+                        <i class="bi bi-exclamation-circle me-1"></i>
+                        {{ promoError() }}
+                      </small>
+                    </div>
+                  }
+                </div>
+
+                <!-- Price Summary -->
+                <div class="price-summary">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted">{{ 'cart.subtotal' | translate }}</span>
+                    <strong>£{{ cartService.total().toFixed(2) }}</strong>
+                  </div>
+                  
+                  <!-- Promotion Discount -->
+                  @if (promotionDiscount() > 0) {
+                    <div class="d-flex justify-content-between mb-2 text-success">
+                      <span>
+                        <i class="bi bi-tag-fill me-1"></i>{{ 'checkout.promotionDiscount' | translate }}
+                      </span>
+                      <strong>-£{{ promotionDiscount().toFixed(2) }}</strong>
+                    </div>
+                  }
+
+                  <!-- Shipping Fee -->
+                  <div class="d-flex justify-content-between mb-2 align-items-center">
+                    <span class="text-muted">
+                      <i class="bi bi-truck me-1"></i>{{ 'shipping.fee' | translate }}
+                    </span>
+                    @if (isCalculatingShipping()) {
+                      <span class="text-muted small">
+                        <span class="spinner-border spinner-border-sm me-1"></span>
+                        {{ 'shipping.calculating' | translate }}
+                      </span>
+                    } @else if (freeShipping() || shippingFee() === 0) {
+                      <span class="badge bg-success">{{ 'shipping.free' | translate }}</span>
+                    } @else {
+                      <strong>£{{ shippingFee().toFixed(2) }}</strong>
+                    }
+                  </div>
+                  
+                  <!-- Shipping Info -->
+                  @if (!isCalculatingShipping() && shippingInfo()) {
+                    <div class="shipping-info mb-2">
+                      <small class="text-muted">
+                        <i class="bi bi-info-circle me-1"></i>{{ shippingInfo() }}
+                      </small>
+                    </div>
+                  }
+                  
+                  <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted">{{ 'cart.tax' | translate }}</span>
+                    <span>{{ 'checkout.included' | translate }}</span>
+                  </div>
+                  <hr class="my-3" />
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="mb-0">{{ 'cart.total' | translate }}</h5>
+                    <h4 class="mb-0 text-primary">£{{ finalTotal().toFixed(2) }}</h4>
+                  </div>
+                  
+                  <!-- Savings Display -->
+                  @if (promotionDiscount() > 0) {
+                    <div class="savings-badge mb-3">
+                      <i class="bi bi-piggy-bank me-1"></i>
+                      {{ 'checkout.youSave' | translate }} £{{ promotionDiscount().toFixed(2) }}!
+                    </div>
+                  }
+                </div>
+
+                <!-- Payment Button -->
+                <button
+                  class="btn btn-primary btn-lg w-100 mb-3"
+                  [disabled]="isProcessing() || checkoutForm.invalid || cartService.items().length === 0 || !selectedPaymentMethod()"
+                  (click)="proceedToPayment()"
+                >
+                  @if (isProcessing()) {
+                    <span class="spinner-border spinner-border-sm me-2"></span>
+                    {{ 'button.processing' | translate }}...
+                  } @else if (isProcessingCard()) {
+                    <span class="spinner-border spinner-border-sm me-2"></span>
+                    {{ 'checkout.processingCard' | translate }}...
+                  } @else {
+                    <i class="bi bi-lock-fill me-2"></i>
+                    {{ 'checkout.completeOrder' | translate }}
+                  }
+                </button>
+
+                <!-- Security Badge -->
+                <div class="text-center">
+                  <small class="text-muted d-block">
+                    <i class="bi bi-shield-check me-1"></i>
+                    {{ 'checkout.securePayment' | translate }}
+                  </small>
+                  @if (selectedPaymentMethod() === 'momo') {
+                    <small class="text-muted d-block mt-1">
+                      {{ 'checkout.momoConversion' | translate }}
+                    </small>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    }
+  </div>
+</div>
+

@@ -1,0 +1,129 @@
+[
+  {
+    "_id": "69b97f2cf4925d85de058598",
+    "action": "category_create",
+    "entityType": "category",
+    "entityId": "69b97f2cf4925d85de058596",
+    "entityName": "Cat Test 01",
+    "user": "696910920643a8f987e1da7f",
+    "userName": "Nhật Đỗ Admin",
+    "userRole": "admin",
+    "ipAddress": "::1",
+    "userAgent": "PostmanRuntime/7.52.0",
+    "newData": {
+      "name": "Cat Test 01",
+      "description": "demo",
+      "active": true,
+      "slug": "cat-test-01",
+      "parent": null
+    },
+    "status": "success",
+    "createdAt": "2026-03-17T16:19:56.575Z",
+    "updatedAt": "2026-03-17T16:19:56.575Z",
+    "__v": 0
+  },
+  {
+    "_id": "69b97fc0f4925d85de0585a0",
+    "action": "category_update",
+    "entityType": "category",
+    "entityId": "696910903bf9fb0c7e92852c",
+    "entityName": "Books & Guides",
+    "user": "696910920643a8f987e1da7f",
+    "userName": "Nhật Đỗ Admin",
+    "userRole": "admin",
+    "ipAddress": "::1",
+    "userAgent": "PostmanRuntime/7.52.0",
+    "previousData": {
+      "_id": "696910903bf9fb0c7e92852c",
+      "name": "Books & Guides",
+      "description": "Educational materials for bonsai enthusiasts",
+      "slug": "books-&-guides",
+      "parent": null,
+      "active": true,
+      "createdAt": "2026-01-15T16:06:40.365Z",
+      "updatedAt": "2026-01-15T16:06:40.365Z",
+      "__v": 0
+    },
+    "newData": {
+      "parent": null
+    },
+    "status": "success",
+    "createdAt": "2026-03-17T16:22:24.260Z",
+    "updatedAt": "2026-03-17T16:22:24.260Z",
+    "__v": 0
+  },
+  {
+    "_id": "69ba37d0135f7f1d8e4a19c8",
+    "action": "category_update",
+    "entityType": "category",
+    "entityId": "696910903bf9fb0c7e928529",
+    "entityName": "Accessories",
+    "user": "696910920643a8f987e1da7f",
+    "userName": "Nhật Đỗ Admin",
+    "userRole": "admin",
+    "ipAddress": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0",
+    "previousData": {
+      "_id": "696910903bf9fb0c7e928529",
+      "name": "Accessories",
+      "description": "Wire, soil, fertilizers, and more",
+      "slug": "accessories",
+      "parent": null,
+      "active": true,
+      "createdAt": "2026-01-15T16:06:40.362Z",
+      "updatedAt": "2026-01-15T16:06:40.362Z",
+      "__v": 0
+    },
+    "newData": {
+      "active": false,
+      "parent": null
+    },
+    "changes": {
+      "active": {
+        "from": true,
+        "to": false
+      }
+    },
+    "status": "success",
+    "createdAt": "2026-03-18T05:27:44.870Z",
+    "updatedAt": "2026-03-18T05:27:44.870Z",
+    "__v": 0
+  },
+  {
+    "_id": "69ba37d3135f7f1d8e4a19d0",
+    "action": "category_update",
+    "entityType": "category",
+    "entityId": "696910903bf9fb0c7e928529",
+    "entityName": "Accessories",
+    "user": "696910920643a8f987e1da7f",
+    "userName": "Nhật Đỗ Admin",
+    "userRole": "admin",
+    "ipAddress": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0",
+    "previousData": {
+      "_id": "696910903bf9fb0c7e928529",
+      "name": "Accessories",
+      "description": "Wire, soil, fertilizers, and more",
+      "slug": "accessories",
+      "parent": null,
+      "active": false,
+      "createdAt": "2026-01-15T16:06:40.362Z",
+      "updatedAt": "2026-03-18T05:27:44.839Z",
+      "__v": 0
+    },
+    "newData": {
+      "active": true,
+      "parent": null
+    },
+    "changes": {
+      "active": {
+        "from": false,
+        "to": true
+      }
+    },
+    "status": "success",
+    "createdAt": "2026-03-18T05:27:47.779Z",
+    "updatedAt": "2026-03-18T05:27:47.779Z",
+    "__v": 0
+  }
+]
