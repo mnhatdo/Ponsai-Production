@@ -13,6 +13,63 @@ interface OTPEmailData {
   expiresIn?: string;
 }
 
+interface ResendResponse {
+  id?: string;
+  message?: string;
+}
+
+const RESEND_API_URL = 'https://api.resend.com/emails';
+
+const getResendApiKey = (): string => (process.env.RESEND_API_KEY || '').trim();
+
+const getFromAddress = (): string => {
+  return (process.env.SMTP_FROM || process.env.SMTP_USER || 'noreply@ponsai.com').trim();
+};
+
+const sendViaResend = async (options: EmailOptions): Promise<boolean> => {
+  const apiKey = getResendApiKey();
+
+  if (!apiKey) {
+    return false;
+  }
+
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+
+    const response = await fetch(RESEND_API_URL, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: getFromAddress(),
+        to: [options.to],
+        subject: options.subject,
+        html: options.html,
+        text: options.text
+      }),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeout);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`📧 Resend API error [${response.status}]:`, errorText);
+      return false;
+    }
+
+    const data = (await response.json()) as ResendResponse;
+    console.log('📧 Email sent via Resend API:', data.id || 'ok');
+    return true;
+  } catch (error) {
+    console.error('📧 Resend send failed:', error);
+    return false;
+  }
+};
+
 // Create transporter based on environment
 const createTransporter = () => {
   const smtpHost = process.env.SMTP_HOST?.trim();
@@ -74,7 +131,12 @@ export const initEmailService = async () => {
   transporter = createTransporter();
   
   if (!transporter) {
-    console.warn('📧 Email service: Disabled (missing SMTP configuration)');
+    if (getResendApiKey()) {
+      console.log('📧 Email service: SMTP unavailable, Resend API fallback enabled');
+      return;
+    }
+
+    console.warn('📧 Email service: Disabled (missing SMTP and RESEND_API_KEY configuration)');
     return;
   }
 
@@ -84,6 +146,10 @@ export const initEmailService = async () => {
   } catch (error) {
     console.error('📧 Email service: Connection failed', error);
     transporter = null;
+
+    if (getResendApiKey()) {
+      console.log('📧 Email service: Using Resend API fallback after SMTP failure');
+    }
   }
 };
 
@@ -233,28 +299,32 @@ const generateWelcomeEmailTemplate = (name: string): string => {
 
 // Send email function
 export const sendEmail = async (options: EmailOptions): Promise<boolean> => {
-  if (!transporter) {
-    console.log(`📧 [DEV] Would send email to: ${options.to}`);
-    console.log(`📧 [DEV] Subject: ${options.subject}`);
-    return false; // Return false to indicate email wasn't actually sent
+  if (transporter) {
+    try {
+      const mailOptions = {
+        from: `"Ponsai" <${getFromAddress()}>`,
+        to: options.to,
+        subject: options.subject,
+        html: options.html,
+        text: options.text
+      };
+
+      const info = await transporter.sendMail(mailOptions);
+      console.log(`📧 Email sent via SMTP: ${info.messageId}`);
+      return true;
+    } catch (error) {
+      console.error('📧 SMTP send failed:', error);
+    }
   }
 
-  try {
-    const mailOptions = {
-      from: `"Ponsai" <${process.env.SMTP_FROM || process.env.SMTP_USER || 'noreply@ponsai.com'}>`,
-      to: options.to,
-      subject: options.subject,
-      html: options.html,
-      text: options.text
-    };
-
-    const info = await transporter.sendMail(mailOptions);
-    console.log(`📧 Email sent: ${info.messageId}`);
+  const resendOk = await sendViaResend(options);
+  if (resendOk) {
     return true;
-  } catch (error) {
-    console.error('📧 Error sending email:', error);
-    return false;
   }
+
+  console.log(`📧 [DEV/FALLBACK] Would send email to: ${options.to}`);
+  console.log(`📧 [DEV/FALLBACK] Subject: ${options.subject}`);
+  return false;
 };
 
 // Send OTP Email
@@ -275,7 +345,7 @@ export const sendWelcomeEmail = async (to: string, name: string): Promise<boolea
   
   return sendEmail({
     to,
-    subject: '� Welcome to Ponsai!',
+    subject: 'Welcome to Ponsai!',
     html,
     text: `Hi ${name}, welcome to Ponsai! Your account is now active.`
   });
