@@ -47,7 +47,7 @@ const createAuditLog = async (
       user: req.user?.id,
       userName: req.user?.name || req.user?.email,
       userRole: req.user?.role,
-      ipAddress: req.ip || req.headers['x-forwarded-for'] || req.socket?.remoteAddress,
+      ipAddress: req.ip || req.headers['x-forwarded-for'],
       userAgent: req.headers['user-agent'],
       previousData,
       newData,
