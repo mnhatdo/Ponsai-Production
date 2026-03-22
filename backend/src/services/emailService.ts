@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { OAuth2Client } from 'google-auth-library';
 
 interface EmailOptions {
   to: string;
@@ -24,6 +25,96 @@ const getResendApiKey = (): string => (process.env.RESEND_API_KEY || '').trim();
 
 const getFromAddress = (): string => {
   return (process.env.SMTP_FROM || process.env.SMTP_USER || 'noreply@ponsai.com').trim();
+};
+
+const getGmailApiConfig = () => ({
+  clientId: (process.env.GMAIL_API_CLIENT_ID || '').trim(),
+  clientSecret: (process.env.GMAIL_API_CLIENT_SECRET || '').trim(),
+  refreshToken: (process.env.GMAIL_API_REFRESH_TOKEN || '').trim(),
+  sender: (process.env.GMAIL_API_SENDER || process.env.SMTP_FROM || process.env.SMTP_USER || '').trim()
+});
+
+const hasGmailApiConfig = (): boolean => {
+  const { clientId, clientSecret, refreshToken, sender } = getGmailApiConfig();
+  return !!(clientId && clientSecret && refreshToken && sender);
+};
+
+const encodeBase64Url = (input: string): string => {
+  return Buffer.from(input)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
+};
+
+const buildGmailMimeMessage = (options: EmailOptions, sender: string): string => {
+  const encodedSubject = `=?UTF-8?B?${Buffer.from(options.subject).toString('base64')}?=`;
+  const body = options.html || `<pre>${options.text || ''}</pre>`;
+
+  return [
+    `From: Ponsai <${sender}>`,
+    `To: ${options.to}`,
+    `Subject: ${encodedSubject}`,
+    'MIME-Version: 1.0',
+    'Content-Type: text/html; charset=UTF-8',
+    'Content-Transfer-Encoding: 7bit',
+    '',
+    body
+  ].join('\r\n');
+};
+
+const sendViaGmailApi = async (options: EmailOptions): Promise<boolean> => {
+  if (!hasGmailApiConfig()) {
+    return false;
+  }
+
+  const { clientId, clientSecret, refreshToken, sender } = getGmailApiConfig();
+
+  try {
+    const oauthClient = new OAuth2Client(
+      clientId,
+      clientSecret,
+      'https://developers.google.com/oauthplayground'
+    );
+
+    oauthClient.setCredentials({ refresh_token: refreshToken });
+
+    const tokenResult = await oauthClient.getAccessToken();
+    const accessToken = typeof tokenResult === 'string' ? tokenResult : tokenResult?.token;
+
+    if (!accessToken) {
+      console.error('📧 Gmail API fallback failed: access token is empty');
+      return false;
+    }
+
+    const rawMessage = encodeBase64Url(buildGmailMimeMessage(options, sender));
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+
+    const response = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ raw: rawMessage }),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeout);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`📧 Gmail API error [${response.status}]:`, errorText);
+      return false;
+    }
+
+    console.log('📧 Email sent via Gmail API fallback');
+    return true;
+  } catch (error) {
+    console.error('📧 Gmail API fallback failed:', error);
+    return false;
+  }
 };
 
 const sendViaResend = async (options: EmailOptions): Promise<boolean> => {
@@ -131,12 +222,17 @@ export const initEmailService = async () => {
   transporter = createTransporter();
   
   if (!transporter) {
+    if (hasGmailApiConfig()) {
+      console.log('📧 Email service: SMTP unavailable, Gmail API fallback enabled');
+      return;
+    }
+
     if (getResendApiKey()) {
       console.log('📧 Email service: SMTP unavailable, Resend API fallback enabled');
       return;
     }
 
-    console.warn('📧 Email service: Disabled (missing SMTP and RESEND_API_KEY configuration)');
+    console.warn('📧 Email service: Disabled (missing SMTP, Gmail API, and Resend configuration)');
     return;
   }
 
@@ -146,6 +242,11 @@ export const initEmailService = async () => {
   } catch (error) {
     console.error('📧 Email service: Connection failed', error);
     transporter = null;
+
+    if (hasGmailApiConfig()) {
+      console.log('📧 Email service: Using Gmail API fallback after SMTP failure');
+      return;
+    }
 
     if (getResendApiKey()) {
       console.log('📧 Email service: Using Resend API fallback after SMTP failure');
@@ -315,6 +416,11 @@ export const sendEmail = async (options: EmailOptions): Promise<boolean> => {
     } catch (error) {
       console.error('📧 SMTP send failed:', error);
     }
+  }
+
+  const gmailApiOk = await sendViaGmailApi(options);
+  if (gmailApiOk) {
+    return true;
   }
 
   const resendOk = await sendViaResend(options);
