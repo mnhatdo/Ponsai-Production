@@ -30,10 +30,11 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 const API_PREFIX = process.env.API_PREFIX || '/api';
 const API_VERSION = process.env.API_VERSION || 'v1';
 const SHOULD_EXIT_ON_FATAL = NODE_ENV === 'production';
-const CORS_ORIGINS = (process.env.CORS_ORIGIN || 'http://localhost:4200')
+const CORS_ORIGINS = (process.env.CORS_ORIGIN || 'https://ponsai.vercel.app,http://localhost:4200')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
+const ALLOW_VERCEL_PREVIEWS = (process.env.CORS_ALLOW_VERCEL_PREVIEWS || 'true') === 'true';
 
 // Middleware
 app.use(requestIdMiddleware); // Request ID tracking (must be first)
@@ -48,6 +49,12 @@ app.use(cors({
     }
 
     if (CORS_ORIGINS.includes(origin)) {
+      callback(null, true);
+      return;
+    }
+
+    // Allow Vercel preview deployments when enabled.
+    if (ALLOW_VERCEL_PREVIEWS && /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
       callback(null, true);
       return;
     }
