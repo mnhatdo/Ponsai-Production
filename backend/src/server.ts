@@ -146,9 +146,6 @@ const startServer = async () => {
     // Connect to MongoDB
     await connectDatabase();
 
-    // Initialize email service
-    await initEmailService();
-
     // Initialize MOMO service
     momoService.init();
     
@@ -168,6 +165,11 @@ const startServer = async () => {
 ║                                                            ║
 ╚════════════════════════════════════════════════════════════╝
       `);
+    });
+
+    // Initialize email service in background so SMTP issues do not block startup.
+    initEmailService().catch((error) => {
+      console.error('📧 Email service init error:', error);
     });
   } catch (error: any) {
     console.error('\n💀 ========== SERVER STARTUP FAILED ==========' );

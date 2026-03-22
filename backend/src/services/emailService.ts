@@ -15,11 +15,17 @@ interface OTPEmailData {
 
 // Create transporter based on environment
 const createTransporter = () => {
-  const smtpHost = process.env.SMTP_HOST;
-  const smtpPort = parseInt(process.env.SMTP_PORT || '587', 10);
-  const smtpSecure = process.env.SMTP_SECURE === 'true';
-  const smtpUser = process.env.SMTP_USER;
-  const smtpPass = process.env.SMTP_PASS;
+  const smtpHost = process.env.SMTP_HOST?.trim();
+  const smtpPort = parseInt((process.env.SMTP_PORT || '587').trim(), 10);
+  const smtpSecure = (process.env.SMTP_SECURE || 'false').trim().toLowerCase() === 'true';
+  const smtpUser = process.env.SMTP_USER?.trim();
+  let smtpPass = process.env.SMTP_PASS?.trim();
+
+  // Gmail app password is often copied in 4-char blocks separated by spaces.
+  // Normalize it to avoid authentication failures caused by formatting.
+  if (smtpHost?.includes('gmail.com') && smtpPass) {
+    smtpPass = smtpPass.replace(/\s+/g, '');
+  }
 
   // For production, use real SMTP service (Gmail, SendGrid, AWS SES, etc.)
   if (process.env.NODE_ENV === 'production') {
@@ -27,10 +33,18 @@ const createTransporter = () => {
       return null;
     }
 
+    if (Number.isNaN(smtpPort)) {
+      console.error('📧 Email service: Invalid SMTP_PORT value');
+      return null;
+    }
+
     return nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
       secure: smtpSecure, // true for 465, false for other ports
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
       auth: {
         user: smtpUser,
         pass: smtpPass
