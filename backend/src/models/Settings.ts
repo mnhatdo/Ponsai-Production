@@ -112,9 +112,6 @@ const SettingsSchema = new Schema<ISettings, ISettingsModel>(
   }
 );
 
-// Ensure only one settings document exists
-SettingsSchema.index({ _id: 1 }, { unique: true });
-
 // Static method to get or create settings
 SettingsSchema.statics.getSettings = async function() {
   let settings = await this.findOne();

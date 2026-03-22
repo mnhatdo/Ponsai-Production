@@ -99,7 +99,6 @@ const BlogSchema: Schema = new Schema(
 );
 
 // Create indexes
-BlogSchema.index({ slug: 1 });
 BlogSchema.index({ status: 1, publishedAt: -1 });
 BlogSchema.index({ category: 1 });
 BlogSchema.index({ tags: 1 });

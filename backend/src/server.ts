@@ -85,6 +85,17 @@ app.get('/health', (_req: Request, res: Response) => {
   });
 });
 
+// Root endpoint for platform probes
+app.get('/', (_req: Request, res: Response) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Ponsai Backend is running',
+    health: '/health',
+    ready: '/readyz',
+    api: `${API_PREFIX}/${API_VERSION}`
+  });
+});
+
 // Readiness check endpoint (used by reverse proxy / orchestrator)
 app.get('/readyz', (_req: Request, res: Response) => {
   const databaseConnected = mongoose.connection.readyState === 1;

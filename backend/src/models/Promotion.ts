@@ -122,7 +122,6 @@ const PromotionSchema: Schema = new Schema(
 );
 
 // Indexes
-PromotionSchema.index({ code: 1 });
 PromotionSchema.index({ startDate: 1, endDate: 1 });
 PromotionSchema.index({ active: 1 });
 

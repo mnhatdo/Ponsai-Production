@@ -129,7 +129,6 @@ const OrderSchema: Schema = new Schema(
 );
 
 // Indexes
-OrderSchema.index({ orderNumber: 1 }, { unique: true, sparse: true });
 OrderSchema.index({ user: 1, createdAt: -1 });
 OrderSchema.index({ status: 1 });
 OrderSchema.index({ paymentStatus: 1 });

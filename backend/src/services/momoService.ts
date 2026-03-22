@@ -72,12 +72,12 @@ export class MomoService {
 
     // Validate MOMO credentials on initialization
     if (!this.partnerCode || !this.accessKey || !this.secretKey) {
-      console.error('❌ MOMO Configuration Error:', {
+      console.warn('⚠️ MOMO is disabled due to missing configuration:', {
         hasPartnerCode: !!this.partnerCode,
         hasAccessKey: !!this.accessKey,
         hasSecretKey: !!this.secretKey
       });
-      console.error('Please check your .env file for MOMO credentials');
+      console.warn('Set MOMO_PARTNER_CODE, MOMO_ACCESS_KEY, MOMO_SECRET_KEY to enable MOMO payments');
     } else {
       console.log('✅ MOMO Service initialized:', {
         partnerCode: this.partnerCode,

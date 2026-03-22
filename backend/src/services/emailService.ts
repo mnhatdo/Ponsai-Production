@@ -15,15 +15,25 @@ interface OTPEmailData {
 
 // Create transporter based on environment
 const createTransporter = () => {
+  const smtpHost = process.env.SMTP_HOST;
+  const smtpPort = parseInt(process.env.SMTP_PORT || '587', 10);
+  const smtpSecure = process.env.SMTP_SECURE === 'true';
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS;
+
   // For production, use real SMTP service (Gmail, SendGrid, AWS SES, etc.)
   if (process.env.NODE_ENV === 'production') {
+    if (!smtpHost || !smtpUser || !smtpPass) {
+      return null;
+    }
+
     return nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpSecure, // true for 465, false for other ports
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
+        user: smtpUser,
+        pass: smtpPass
       }
     });
   }
@@ -50,7 +60,7 @@ export const initEmailService = async () => {
   transporter = createTransporter();
   
   if (!transporter) {
-    console.log('📧 Email service: Running in DEV mode (no emails will be sent)');
+    console.warn('📧 Email service: Disabled (missing SMTP configuration)');
     return;
   }
 

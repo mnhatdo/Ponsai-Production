@@ -142,9 +142,6 @@ const DailyMetricSchema: Schema = new Schema(
   }
 );
 
-// Index for efficient range queries (used by ML service)
-DailyMetricSchema.index({ date: 1 });
-
 /**
  * Static method: Get metrics for date range (for ML training)
  */
