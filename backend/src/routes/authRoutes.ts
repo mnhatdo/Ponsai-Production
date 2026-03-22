@@ -13,23 +13,24 @@ import {
   changePassword
 } from '../controllers/authController';
 import { protect } from '../middleware/auth';
+import { authLimiter } from '../middleware/rateLimit';
 
 const router = Router();
 
 // Legacy register (direct registration without OTP)
-router.post('/register', register);
+router.post('/register', authLimiter, register);
 
 // New OTP-based registration flow
-router.post('/register/initiate', initiateRegister);
-router.post('/register/verify', verifyOTPAndRegister);
-router.post('/register/resend-otp', resendOTP);
+router.post('/register/initiate', authLimiter, initiateRegister);
+router.post('/register/verify', authLimiter, verifyOTPAndRegister);
+router.post('/register/resend-otp', authLimiter, resendOTP);
 
 // Google OAuth
 router.get('/google/status', googleAuthStatus);
-router.post('/google', googleAuth);
+router.post('/google', authLimiter, googleAuth);
 
 // Login/Logout
-router.post('/login', login);
+router.post('/login', authLimiter, login);
 router.post('/logout', logout);
 
 // Protected routes

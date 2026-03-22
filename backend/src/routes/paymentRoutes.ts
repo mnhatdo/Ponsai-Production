@@ -13,6 +13,7 @@ import {
   getBankTransferInvoice,
   verifyBankTransfer
 } from '../controllers/paymentController';
+import { paymentLimiter } from '../middleware/rateLimit';
 
 const router = Router();
 
@@ -29,7 +30,7 @@ router.get('/status/:orderId', protect, checkPaymentStatus);
 // MOMO PAYMENT
 // ================================
 // Initiate MOMO payment (requires auth)
-router.post('/momo/initiate', protect, initiateMomoPayment);
+router.post('/momo/initiate', paymentLimiter, protect, initiateMomoPayment);
 
 // MOMO IPN callback (server-to-server, no auth)
 router.post('/momo/ipn', handleMomoIPN);
@@ -41,27 +42,27 @@ router.get('/momo/callback', handleMomoCallback);
 // MANUAL PAYMENT (Separate from MoMo)
 // ================================
 // Initiate manual payment (requires auth)
-router.post('/manual/initiate', protect, initiateManualPayment);
+router.post('/manual/initiate', paymentLimiter, protect, initiateManualPayment);
 
 // ================================
 // CARD PAYMENT
 // ================================
 // Initiate card payment (requires auth)
-router.post('/card/initiate', protect, initiateCardPayment);
+router.post('/card/initiate', paymentLimiter, protect, initiateCardPayment);
 
 // Process card payment (requires auth)
-router.post('/card/process', protect, processCardPayment);
+router.post('/card/process', paymentLimiter, protect, processCardPayment);
 
 // ================================
 // BANK TRANSFER PAYMENT
 // ================================
 // Initiate bank transfer (requires auth)
-router.post('/bank-transfer/initiate', protect, initiateBankTransfer);
+router.post('/bank-transfer/initiate', paymentLimiter, protect, initiateBankTransfer);
 
 // Get bank transfer invoice details (requires auth)
 router.get('/bank-transfer/invoice/:orderId', protect, getBankTransferInvoice);
 
 // Verify bank transfer payment (requires auth)
-router.post('/bank-transfer/verify', protect, verifyBankTransfer);
+router.post('/bank-transfer/verify', paymentLimiter, protect, verifyBankTransfer);
 
 export default router;

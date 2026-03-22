@@ -725,7 +725,7 @@ advanced_webdev/
 ├── setup.js                    # Quick setup script
 ├── setup-ml-system.bat         # Windows ML setup
 ├── setup-ml-system.ps1         # PowerShell ML setup
-├── SETUP.md                    # Setup instructions
+├── QUICK_START.md              # Setup instructions
 └── README.md                   # Main documentation
 ```
 
@@ -735,10 +735,10 @@ advanced_webdev/
 
 ### Prerequisites
 
-- **Node.js:** v20.0.0 or higher
+- **Node.js:** v18.0.0 or higher
 - **Python:** v3.13 or higher
 - **MongoDB:** v6.0 or higher (running locally or MongoDB Atlas)
-- **npm:** v10.0.0 or higher
+- **npm:** v9.0.0 or higher
 - **Git:** For version control
 
 ### Initial Setup
@@ -1240,7 +1240,7 @@ This is an academic project, but suggestions and improvements are welcome!
 
 For detailed implementation guides, see:
 
-- [SETUP.md](SETUP.md) - Complete setup instructions
+- [QUICK_START.md](QUICK_START.md) - Complete setup instructions
 - [docs/ANALYTICS_SYSTEM.md](docs/ANALYTICS_SYSTEM.md) - Analytics architecture
 - [docs/MOMO_INTEGRATION.md](docs/MOMO_INTEGRATION.md) - MoMo payment integration
 - [docs/PAYMENT_SYSTEM.md](docs/PAYMENT_SYSTEM.md) - Payment system overview

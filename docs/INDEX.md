@@ -4,8 +4,8 @@
 
 This index helps you navigate all documentation and find what you need quickly.
 
-**Last Updated:** January 10, 2026  
-**Documentation Status:** ✅ Consolidated & Up-to-date
+**Last Updated:** March 22, 2026  
+**Documentation Status:** ✅ Consolidated, archived stale reports
 
 ---
 
@@ -16,7 +16,10 @@ New to this project? Read these in order:
 1. **[README.md](../README.md)** - Project overview, tech stack, features
 2. **[QUICK_START.md](../QUICK_START.md)** - 5-minute setup guide
 3. **[DEV_ENVIRONMENT.md](../DEV_ENVIRONMENT.md)** - Development workflow
-4. **[START_PROJECT_GUIDE.md](../START_PROJECT_GUIDE.md)** - Complete startup guide
+4. **[FORECAST_QUICKSTART.md](../FORECAST_QUICKSTART.md)** - ML forecast quick start
+
+Archived root docs (historical):
+- **[docs/changelogs/archive](changelogs/archive)** - Snapshot reports and superseded setup guides
 
 ---
 

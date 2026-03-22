@@ -15,7 +15,7 @@
 
 ```bash
 git clone <repository-url>
-cd furni-1.0.0
+cd deploy
 ```
 
 ### 2. Install Dependencies
@@ -77,6 +77,7 @@ npm run dev:frontend
 - **Frontend**: http://localhost:4200
 - **Backend API**: http://localhost:3000/api/v1
 - **Health Check**: http://localhost:3000/health
+- **Readiness Check**: http://localhost:3000/readyz
 
 ---
 
@@ -89,7 +90,7 @@ cd frontend
 npm run build
 ```
 
-Output: `frontend/dist/furni-frontend/`
+Output: `frontend/dist/ponsai-frontend/`
 
 ### Build Backend
 
@@ -134,7 +135,7 @@ sudo npm install -g pm2
 ```bash
 # Clone repository
 git clone <repository-url>
-cd furni-1.0.0
+cd deploy
 
 # Install dependencies
 npm run install:all
@@ -167,7 +168,7 @@ Use **Nginx** to serve Angular build:
 server {
     listen 80;
     server_name yourdomain.com;
-    root /path/to/furni-1.0.0/frontend/dist/furni-frontend;
+    root /path/to/deploy/frontend/dist/ponsai-frontend;
     index index.html;
 
     location / {
@@ -221,7 +222,7 @@ COPY . .
 RUN npm run build
 
 FROM nginx:alpine
-COPY --from=build /app/dist/furni-frontend /usr/share/nginx/html
+COPY --from=build /app/dist/ponsai-frontend /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
@@ -268,30 +269,61 @@ docker-compose up -d
 
 ---
 
-### Option 3: Cloud Platform (Heroku)
+### Option 3: Cloud Platform (Free-tier aware)
 
-#### Backend (Heroku)
+### Recommended Stack for This Project
 
-```bash
-cd backend
+- Frontend: Vercel (free static hosting + global CDN)
+- Backend: Render Web Service (free tier, Node runtime)
+- Database: MongoDB Atlas (M0 free tier)
+- Keep-awake monitor: UptimeRobot ping `/readyz` every 5 minutes
 
-# Login
-heroku login
+#### A. Deploy Backend to Render
 
-# Create app
-heroku create furni-api
+1. Push repository to GitHub.
+2. In Render, create a new Web Service from this repository.
+3. Render can auto-detect from `render.yaml` in repository root.
+4. Configure required environment variables in Render dashboard:
 
-# Add MongoDB
-heroku addons:create mongolab:sandbox
-
-# Set environment variables
-heroku config:set NODE_ENV=production
-heroku config:set JWT_SECRET=your-secret
-heroku config:set CORS_ORIGIN=https://your-frontend-url.com
-
-# Deploy
-git push heroku main
+```env
+MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>.mongodb.net/furni
+JWT_SECRET=<strong-random-secret>
+CORS_ORIGIN=https://<your-vercel-project>.vercel.app
 ```
+
+5. Verify health after deploy:
+  - `GET /health`
+  - `GET /readyz`
+
+#### B. Deploy Frontend to Vercel
+
+1. Import `frontend` directory as Vercel project.
+2. Build command: `npm run build`
+3. Output directory: `dist/ponsai-frontend`
+4. Before production release, update API endpoint in `frontend/src/environments/environment.prod.ts`:
+
+```typescript
+apiUrl: 'https://<your-render-service>.onrender.com/api/v1'
+```
+
+5. Keep `frontend/vercel.json` committed for SPA rewrite and cache headers.
+
+#### C. MongoDB Atlas Setup
+
+1. Create Atlas M0 cluster.
+2. Add Render outbound IP access rule (or temporary `0.0.0.0/0` during setup).
+3. Create DB user with least privilege.
+4. Put Atlas connection string into Render `MONGODB_URI`.
+
+#### D. UptimeRobot (Reduce Sleep Impact)
+
+- Add HTTP monitor to `https://<your-render-service>.onrender.com/readyz`
+- Interval: 5 minutes
+- Expect status code: 200
+
+Note:
+- Free Render services can still cold-start under platform constraints.
+- UptimeRobot reduces frequency of sleep but cannot guarantee absolute always-on.
 
 #### Frontend (Vercel/Netlify)
 
@@ -304,8 +336,14 @@ vercel --prod
 **Netlify:**
 ```bash
 cd frontend
-netlify deploy --prod --dir=dist/furni-frontend
+netlify deploy --prod --dir=dist/ponsai-frontend
 ```
+
+#### Backend (Free-tier caveat)
+
+- Free backend platforms usually have sleep/cold-start behavior.
+- If you require always-on and no cold-start, use Option 1 with a low-cost VPS.
+- For strict zero-cost, accept cold-start trade-offs and monitor response latency.
 
 ---
 
@@ -355,6 +393,7 @@ export const environment = {
 - [ ] SSL certificate installed
 - [ ] CORS settings correct
 - [ ] API endpoints accessible
+- [ ] `GET /health` and `GET /readyz` return expected status
 - [ ] Frontend routing works (refresh on any page)
 - [ ] Static assets loading correctly
 - [ ] Authentication flow working
@@ -375,6 +414,14 @@ pm2 logs furni-api          # View logs
 pm2 restart furni-api       # Restart app
 pm2 stop furni-api          # Stop app
 ```
+
+### CI Quality Gates
+
+- Repository includes CI workflow at `.github/workflows/ci.yml`.
+- Required checks before merge/deploy:
+  - Backend: lint, build, test
+  - Frontend: lint, build, test
+  - Shared: build
 
 ### Database Backup
 
@@ -402,6 +449,7 @@ mongorestore --db furni /backup/20251231/furni
 2. Verify `.env` file exists and has correct values
 3. Check port 3000 isn't in use: `lsof -i :3000`
 4. Review logs: `pm2 logs furni-api`
+5. Check readiness endpoint: `curl http://localhost:3000/readyz`
 
 ### Frontend shows API errors
 
@@ -447,4 +495,19 @@ docker-compose up -d <previous-tag>
 
 ---
 
-**Last Updated**: December 31, 2025
+## Free-tier Feasibility Matrix
+
+| Requirement | Fully Free | Notes |
+|------------|------------|-------|
+| Frontend static hosting | Yes | Vercel/Netlify/Cloudflare Pages free tiers |
+| Backend always-on, no sleep | No (practically) | Most free backend tiers introduce idle sleep/cold-start |
+| No cold-start UX impact | No (with strict zero budget) | Use low-cost VPS if this is non-negotiable |
+| Smooth production UX | Partial | Requires CDN/cache optimization and non-sleeping backend |
+
+Recommendation:
+- If strict zero-cost: choose free-tier backend and accept cold-start trade-offs.
+- If strict no-sleep/cold-start: choose Option 1 with low-cost VPS and free CDN/SSL tooling.
+
+---
+
+**Last Updated**: March 22, 2026

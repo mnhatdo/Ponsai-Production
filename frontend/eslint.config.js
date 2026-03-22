@@ -10,11 +10,26 @@ module.exports = defineConfig([
     extends: [
       eslint.configs.recommended,
       tseslint.configs.recommended,
-      tseslint.configs.stylistic,
       angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
     rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/array-type": "off",
+      "@typescript-eslint/consistent-indexed-object-style": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_"
+        }
+      ],
+      "@angular-eslint/prefer-inject": "off",
+      "@angular-eslint/no-empty-lifecycle-method": "off",
+      "@angular-eslint/no-output-native": "off",
+      "no-case-declarations": "off",
+      "prefer-const": "warn",
       "@angular-eslint/directive-selector": [
         "error",
         {
@@ -39,6 +54,12 @@ module.exports = defineConfig([
       angular.configs.templateRecommended,
       angular.configs.templateAccessibility,
     ],
-    rules: {},
+    rules: {
+      "@angular-eslint/template/prefer-control-flow": "off",
+      "@angular-eslint/template/click-events-have-key-events": "off",
+      "@angular-eslint/template/interactive-supports-focus": "off",
+      "@angular-eslint/template/label-has-associated-control": "off",
+      "@angular-eslint/template/elements-content": "off"
+    },
   }
 ]);

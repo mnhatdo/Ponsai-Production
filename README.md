@@ -14,7 +14,7 @@ git clone https://github.com/mnhatdo/advanced_webdev.git
 cd advanced_webdev
 git checkout nhat
 
-# 2. Run setup wizard (installs everything)
+# 2. Run setup wizard (không ML)
 npm run setup
 
 # 3. Start development servers
@@ -26,7 +26,13 @@ npm run dev
 - Frontend: http://localhost:4200
 - Backend: http://localhost:3000
 
-**For detailed setup:** See [SETUP.md](SETUP.md) | **Full guide:** [QUICK_START.md](QUICK_START.md)
+**Hướng dẫn chi tiết:** [QUICK_START.md](QUICK_START.md) | **ML forecast:** [FORECAST_QUICKSTART.md](FORECAST_QUICKSTART.md)
+
+### Lựa chọn setup theo nhu cầu
+
+- **Không dùng ML service:** `npm run setup` -> `npm run dev`
+- **Có dùng ML service (Windows):** `setup-ml-system.ps1` hoặc `setup-ml-system.bat`
+- **Tài liệu ML chi tiết:** [ml-service/README.md](ml-service/README.md)
 
 ---
 

@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-## 🚀 Getting Started in 5 Minutes
+## 🚀 Bắt đầu trong 5 phút
 
 ### Prerequisites
 
@@ -9,11 +9,11 @@ Before you begin, ensure you have:
 - **MongoDB** 6+ installed and running ([Download](https://www.mongodb.com/try/download/community))
 - **Git** installed ([Download](https://git-scm.com/))
 
-### Step 1: Clone & Install
+### Bước 1: Di chuyển vào dự án và cài dependencies
 
 ```bash
 # Navigate to project directory
-cd d:\Document\Ki8\WebDev\furni-1.0.0
+cd d:\Document\Ki8\WebDev\deploy
 
 # Install all dependencies (root + frontend + backend)
 npm run install:all
@@ -42,6 +42,28 @@ MONGODB_URI=mongodb://localhost:27017/furni
 JWT_SECRET=dev-secret-key-change-in-production
 CORS_ORIGIN=http://localhost:4200
 ```
+
+### Lựa chọn setup theo nhu cầu
+
+**Không dùng ML service (khuyến nghị cho dev web thông thường):**
+
+```bash
+npm run setup
+```
+
+**Có dùng ML service (Windows):**
+
+```powershell
+# PowerShell
+.\setup-ml-system.ps1
+
+# Hoặc Batch
+setup-ml-system.bat
+```
+
+Tài liệu ML:
+- [FORECAST_QUICKSTART.md](FORECAST_QUICKSTART.md)
+- [ml-service/README.md](ml-service/README.md)
 
 ### Step 3: Start MongoDB
 

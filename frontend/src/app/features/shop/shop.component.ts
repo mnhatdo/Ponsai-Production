@@ -61,7 +61,7 @@ import { ProductTranslatePipe } from '@shared/pipes/product-translate.pipe';
         <!-- Products Grid -->
         <div *ngIf="!loading() && !error()" class="row product-grid">
           <!-- Product Card -->
-          <div class="col-12 col-md-4 col-lg-3 mb-5" *ngFor="let product of paginatedProducts()">
+          <div class="col-12 col-md-4 col-lg-3 mb-5" *ngFor="let product of paginatedProducts(); trackBy: trackByProductId">
             <a class="product-item product-card" [routerLink]="['/product', product._id]">
               <div class="product-image-wrapper">
                 <img 
@@ -69,6 +69,7 @@ import { ProductTranslatePipe } from '@shared/pipes/product-translate.pipe';
                   class="product-thumbnail" 
                   [alt]="product.name"
                   loading="lazy"
+                  decoding="async"
                 >
               </div>
               <div class="product-info">
@@ -76,7 +77,7 @@ import { ProductTranslatePipe } from '@shared/pipes/product-translate.pipe';
                 <strong class="product-price">{{ formatPrice(product.price, product.originalCurrency) }}</strong>
               </div>
               <span class="icon-cross" (click)="addToCart(product, $event)">
-                <img src="assets/icons/add_to_cart.png" class="img-fluid" alt="Add to Cart">
+                <img src="assets/icons/add_to_cart.png" class="img-fluid" alt="Add to Cart" loading="lazy" decoding="async">
               </span>
             </a>
           </div>
@@ -510,5 +511,9 @@ export class ShopComponent implements OnInit {
     });
     
     return `${symbol}${formattedPrice}`;
+  }
+
+  trackByProductId(_index: number, product: Product): string {
+    return product._id;
   }
 }

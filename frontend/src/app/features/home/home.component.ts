@@ -35,7 +35,7 @@ interface TestimonialItem {
         <div class="row">
 
           <!-- Featured Products from API -->
-          <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" *ngFor="let product of featuredProducts().slice(0, 3)">
+          <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" *ngFor="let product of featuredProducts().slice(0, 3); trackBy: trackByProductId">
             <a class="product-item product-card" [routerLink]="['/product', product._id]">
               <div class="product-image-wrapper">
                 <img
@@ -43,6 +43,7 @@ interface TestimonialItem {
                   class="product-thumbnail"
                   [alt]="product.name"
                   loading="lazy"
+                  decoding="async"
                 >
               </div>
               <div class="product-info">
@@ -50,7 +51,7 @@ interface TestimonialItem {
                 <strong class="product-price">{{ formatPrice(product.price, product.originalCurrency) }}</strong>
               </div>
               <span class="icon-cross" (click)="addToCart(product, $event)">
-                <img src="assets/icons/add_to_cart.png" class="img-fluid" alt="Add">
+                <img src="assets/icons/add_to_cart.png" class="img-fluid" alt="Add" loading="lazy" decoding="async">
               </span>
             </a>
           </div>
@@ -76,7 +77,7 @@ interface TestimonialItem {
               <div class="col-6 col-md-6">
                 <div class="feature">
                   <div class="icon">
-                    <img src="assets/images/truck.svg" alt="Fast Shipping" class="imf-fluid">
+                    <img src="assets/images/truck.svg" alt="Fast Shipping" class="imf-fluid" loading="lazy" decoding="async">
                   </div>
                   <h3>Shipped with Care</h3>
                   <p>Plants packed securely. Free delivery on orders over $50. Delivery times vary by location.</p>
@@ -86,7 +87,7 @@ interface TestimonialItem {
               <div class="col-6 col-md-6">
                 <div class="feature">
                   <div class="icon">
-                    <img src="assets/images/bag.svg" alt="Easy Shopping" class="imf-fluid">
+                    <img src="assets/images/bag.svg" alt="Easy Shopping" class="imf-fluid" loading="lazy" decoding="async">
                   </div>
                   <h3>Straightforward Selection</h3>
                   <p>Clear photos, honest descriptions, and care notes for every plant. No guesswork.</p>
@@ -96,7 +97,7 @@ interface TestimonialItem {
               <div class="col-6 col-md-6">
                 <div class="feature">
                   <div class="icon">
-                    <img src="assets/images/support.svg" alt="Support" class="imf-fluid">
+                    <img src="assets/images/support.svg" alt="Support" class="imf-fluid" loading="lazy" decoding="async">
                   </div>
                   <h3>Ongoing Guidance</h3>
                   <p>Care questions? Reach out anytime. We respond within 24 hours with practical advice.</p>
@@ -106,7 +107,7 @@ interface TestimonialItem {
               <div class="col-6 col-md-6">
                 <div class="feature">
                   <div class="icon">
-                    <img src="assets/images/return.svg" alt="Returns" class="imf-fluid">
+                    <img src="assets/images/return.svg" alt="Returns" class="imf-fluid" loading="lazy" decoding="async">
                   </div>
                   <h3>Simple Returns</h3>
                   <p>Not quite right? Return within 14 days, no complicated process. Plants deserve the right home.</p>
@@ -118,7 +119,7 @@ interface TestimonialItem {
 
           <div class="col-lg-5">
             <div class="img-wrap">
-              <img src="assets/images/why-choose-us-img.jpg" alt="Why Choose Us" class="img-fluid">
+              <img src="assets/images/why-choose-us-img.jpg" alt="Why Choose Us" class="img-fluid" loading="lazy" decoding="async">
             </div>
           </div>
 
@@ -141,7 +142,7 @@ interface TestimonialItem {
         <div class="fit-life-grid">
           <div class="fit-life-col fit-life-col-left">
             <div class="fit-life-card fit-life-image-card fit-life-left-top">
-              <img src="assets/images/img-grid-1.jpg" alt="Plant detail">
+              <img src="assets/images/img-grid-1.jpg" alt="Plant detail" loading="lazy" decoding="async">
             </div>
 
             <div class="fit-life-card fit-life-text-card">
@@ -151,7 +152,7 @@ interface TestimonialItem {
 
           <div class="fit-life-col fit-life-col-center">
             <div class="fit-life-card fit-life-image-card fit-life-center-tall">
-              <img src="assets/images/img-grid-2.jpg" alt="Creative plant lifestyle">
+              <img src="assets/images/img-grid-2.jpg" alt="Creative plant lifestyle" loading="lazy" decoding="async">
             </div>
           </div>
 
@@ -168,7 +169,7 @@ interface TestimonialItem {
             </div>
 
             <div class="fit-life-card fit-life-image-card fit-life-right-bottom">
-              <img src="assets/images/img-grid-3.jpg" alt="Happy plant owner">
+              <img src="assets/images/img-grid-3.jpg" alt="Happy plant owner" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -188,7 +189,7 @@ interface TestimonialItem {
           <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="product-item-sm d-flex">
               <div class="thumbnail">
-                <img src="assets/images/product-1.png" alt="Nordic Chair" class="img-fluid">
+                <img src="assets/images/product-1.png" alt="Nordic Chair" class="img-fluid" loading="lazy" decoding="async">
               </div>
               <div class="pt-3">
                 <h3>Essential Tools</h3>
@@ -201,7 +202,7 @@ interface TestimonialItem {
           <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="product-item-sm d-flex">
               <div class="thumbnail">
-                <img src="assets/images/product-2.png" alt="Kruzo Aero Chair" class="img-fluid">
+                <img src="assets/images/product-2.png" alt="Kruzo Aero Chair" class="img-fluid" loading="lazy" decoding="async">
               </div>
               <div class="pt-3">
                 <h3>Handmade Pots</h3>
@@ -214,7 +215,7 @@ interface TestimonialItem {
           <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="product-item-sm d-flex">
               <div class="thumbnail">
-                <img src="assets/images/product-3.png" alt="Ergonomic Chair" class="img-fluid">
+                <img src="assets/images/product-3.png" alt="Ergonomic Chair" class="img-fluid" loading="lazy" decoding="async">
               </div>
               <div class="pt-3">
                 <h3>Growing Media</h3>
@@ -264,7 +265,7 @@ interface TestimonialItem {
 
                         <div class="author-info">
                           <div class="author-pic">
-                            <img [src]="activeTestimonial().avatar" [alt]="activeTestimonial().name" class="img-fluid">
+                            <img [src]="activeTestimonial().avatar" [alt]="activeTestimonial().name" class="img-fluid" loading="lazy" decoding="async">
                           </div>
                           <h3 class="font-weight-bold">{{ activeTestimonial().name }}</h3>
                           <span class="position d-block mb-3">{{ activeTestimonial().role }}</span>
@@ -276,7 +277,7 @@ interface TestimonialItem {
 
                         <div class="author-info">
                           <div class="author-pic">
-                            <img src="assets/images/person-1.png" alt="Alex Chen" class="img-fluid">
+                            <img src="assets/images/person-1.png" alt="Alex Chen" class="img-fluid" loading="lazy" decoding="async">
                           </div>
                           <h3 class="font-weight-bold">Alex Chen</h3>
                           <span class="position d-block mb-3">Beginner grower, Seattle</span>
@@ -318,7 +319,7 @@ interface TestimonialItem {
 
           <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
             <div class="post-entry">
-              <a href="#" class="post-thumbnail"><img src="assets/images/post-1.jpg" alt="Blog Post" class="img-fluid"></a>
+              <a href="#" class="post-thumbnail"><img src="assets/images/post-1.jpg" alt="Blog Post" class="img-fluid" loading="lazy" decoding="async"></a>
               <div class="post-content-entry">
                 <h3><a href="#">Winter Care: What Changes, What Doesn’t</a></h3>
                 <div class="meta">
@@ -330,7 +331,7 @@ interface TestimonialItem {
 
           <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
             <div class="post-entry">
-              <a href="#" class="post-thumbnail"><img src="assets/images/post-2.jpg" alt="Blog Post" class="img-fluid"></a>
+              <a href="#" class="post-thumbnail"><img src="assets/images/post-2.jpg" alt="Blog Post" class="img-fluid" loading="lazy" decoding="async"></a>
               <div class="post-content-entry">
                 <h3><a href="#">Choosing Your First Bonsai Species</a></h3>
                 <div class="meta">
@@ -342,7 +343,7 @@ interface TestimonialItem {
 
           <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
             <div class="post-entry">
-              <a href="#" class="post-thumbnail"><img src="assets/images/post-3.jpg" alt="Blog Post" class="img-fluid"></a>
+              <a href="#" class="post-thumbnail"><img src="assets/images/post-3.jpg" alt="Blog Post" class="img-fluid" loading="lazy" decoding="async"></a>
               <div class="post-content-entry">
                 <h3><a href="#">Repotting: When and How</a></h3>
                 <div class="meta">
@@ -782,6 +783,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     return `${symbol}${formattedPrice}`;
+  }
+
+  trackByProductId(_index: number, product: Product): string {
+    return product._id;
   }
 
   prevTestimonial(): void {
