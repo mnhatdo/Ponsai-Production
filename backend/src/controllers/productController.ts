@@ -3,6 +3,87 @@ import Product from '../models/Product';
 // Import Category model to ensure schema is registered before populate
 import Category from '../models/Category';
 import { AppError } from '../middleware/errorHandler';
+import fs from 'fs';
+import path from 'path';
+
+type FallbackProduct = {
+  _id: string;
+  name: string;
+  slug: string;
+  sku: string;
+  description: string;
+  shortDescription: string;
+  price: number;
+  originalPrice: number;
+  originalCurrency: string;
+  category: string;
+  productType: string;
+  images: string[];
+  primaryImage: string;
+  inStock: boolean;
+  stockQuantity: number;
+  featured: boolean;
+  tags: string[];
+  externalId: string;
+  externalUrl: string;
+  brandId: string;
+  rating: number;
+  reviews: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+let fallbackProductsCache: FallbackProduct[] | null = null;
+
+const getFallbackProducts = (): FallbackProduct[] => {
+  if (fallbackProductsCache) {
+    return fallbackProductsCache;
+  }
+
+  try {
+    const datasetPath = path.join(__dirname, '../../data/seeds/complete_dataset.json');
+    const raw = fs.readFileSync(datasetPath, 'utf-8');
+    const parsed = JSON.parse(raw) as { products?: any[] };
+    const source = Array.isArray(parsed.products) ? parsed.products : [];
+
+    fallbackProductsCache = source.slice(0, 120).map((p, idx) => {
+      const images: string[] = Array.isArray(p.images)
+        ? p.images.map((img: any) => img?.url).filter(Boolean)
+        : [];
+
+      return {
+        _id: `fallback-${p.id || idx}`,
+        name: p.title || 'Bonsai Product',
+        slug: p.slug || `product-${idx}`,
+        sku: p.sku || `SKU-${idx}`,
+        description: p.description || p.short_description || 'Premium bonsai product',
+        shortDescription: p.short_description || '',
+        price: Number(p.price) || 0,
+        originalPrice: Number(p.price) || 0,
+        originalCurrency: p.currency || 'USD',
+        category: p.product_type || 'bonsai',
+        productType: p.product_type || 'bonsai',
+        images,
+        primaryImage: images[0] || '',
+        inStock: p.in_stock !== false,
+        stockQuantity: p.in_stock === false ? 0 : 10,
+        featured: idx < 12,
+        tags: Array.isArray(p.tags) ? p.tags : [],
+        externalId: p.id || '',
+        externalUrl: p.url || '',
+        brandId: p.brand_id || '',
+        rating: 0,
+        reviews: 0,
+        createdAt: p.created_at || new Date().toISOString(),
+        updatedAt: p.updated_at || new Date().toISOString()
+      };
+    });
+  } catch (error) {
+    fallbackProductsCache = [];
+  }
+
+  return fallbackProductsCache;
+};
 
 // @desc    Get all products
 // @route   GET /api/v1/products
@@ -54,6 +135,22 @@ export const getProducts = async (
         .lean()
         .maxTimeMS(5000); // 5 second timeout guard
 
+      if (products.length === 0) {
+        const fallback = getFallbackProducts()
+          .filter((p) => p.featured)
+          .slice(0, limit);
+
+        res.status(200).json({
+          success: true,
+          count: fallback.length,
+          total: fallback.length,
+          page: 1,
+          pages: 1,
+          data: fallback
+        });
+        return;
+      }
+
       res.status(200).json({
         success: true,
         count: products.length,
@@ -84,6 +181,23 @@ export const getProducts = async (
 
     // Filter out products where category is null (inactive category)
     const filteredProducts = products.filter(p => p.category !== null);
+
+    if (total === 0) {
+      const fallback = getFallbackProducts();
+      const fallbackTotal = fallback.length;
+      const fallbackPages = Math.max(1, Math.ceil(fallbackTotal / limit));
+      const fallbackSlice = fallback.slice(skip, skip + limit);
+
+      res.status(200).json({
+        success: true,
+        count: fallbackSlice.length,
+        total: fallbackTotal,
+        page,
+        pages: fallbackPages,
+        data: fallbackSlice
+      });
+      return;
+    }
 
     res.status(200).json({
       success: true,
