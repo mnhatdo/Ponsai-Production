@@ -1,26 +1,16 @@
-import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ProductService } from '@core/services/product.service';
 import { CartService } from '@core/services/cart.service';
 import { Product } from '@models/index';
 import { BonsaiHeroComponent } from '@features/home/components/bonsai-hero.component';
-import { HomeLoaderComponent } from '@features/home/components/home-loader.component';
-
-interface TestimonialItem {
-  quote: string;
-  name: string;
-  role: string;
-  avatar?: string;
-}
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, BonsaiHeroComponent, HomeLoaderComponent],
+  imports: [CommonModule, RouterModule, BonsaiHeroComponent],
   template: `
-    <app-home-loader *ngIf="showPageLoader()" (done)="onLoaderDone()"></app-home-loader>
-
     <!-- Bonsai 3D Hero Section -->
     @defer (on immediate) {
       <app-bonsai-hero></app-bonsai-hero>
@@ -229,75 +219,6 @@ interface TestimonialItem {
       </div>
     </div>
     <!-- End Popular Product -->
-    } @placeholder {
-      <div style="min-height: 200px;"></div>
-    }
-
-    @defer (on viewport) {
-    <!-- Start Testimonial Slider -->
-    <div class="testimonial-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7 mx-auto text-center">
-            <h2 class="section-title">Testimonials</h2>
-          </div>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-lg-12">
-            <div class="testimonial-slider-wrap text-center">
-
-              <div id="testimonial-nav">
-                <button type="button" class="prev testimonial-nav-btn" aria-label="Previous testimonial" (click)="prevTestimonial()"><span class="fa fa-chevron-left"></span></button>
-                <button type="button" class="next testimonial-nav-btn" aria-label="Next testimonial" (click)="nextTestimonial()"><span class="fa fa-chevron-right"></span></button>
-              </div>
-
-              <div class="testimonial-slider">
-                
-                <div class="item">
-                  <div class="row justify-content-center">
-                    <div class="col-lg-8 mx-auto">
-
-                      <div class="testimonial-block text-center">
-                        <blockquote class="mb-5">
-                          <p>&ldquo;{{ activeTestimonial().quote }}&rdquo;</p>
-                        </blockquote>
-
-                        <div class="author-info">
-                          <div class="author-pic">
-                            <img [src]="activeTestimonial().avatar" [alt]="activeTestimonial().name" class="img-fluid" loading="lazy" decoding="async">
-                          </div>
-                          <h3 class="font-weight-bold">{{ activeTestimonial().name }}</h3>
-                          <span class="position d-block mb-3">{{ activeTestimonial().role }}</span>
-                        </div>
-                        @if (false) {
-                        <blockquote class="mb-5">
-                          <p>&ldquo;I’ve killed a lot of plants. PONSAI didn’t promise miracles—just honest care info and tools that actually work. Six months in, my first bonsai is still alive. That’s a win.&rdquo;</p>
-                        </blockquote>
-
-                        <div class="author-info">
-                          <div class="author-pic">
-                            <img src="assets/images/person-1.png" alt="Alex Chen" class="img-fluid" loading="lazy" decoding="async">
-                          </div>
-                          <h3 class="font-weight-bold">Alex Chen</h3>
-                          <span class="position d-block mb-3">Beginner grower, Seattle</span>
-                        </div>
-                        }
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <!-- END item -->
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Testimonial Slider -->
     } @placeholder {
       <div style="min-height: 200px;"></div>
     }
@@ -613,122 +534,18 @@ interface TestimonialItem {
         aspect-ratio: 16 / 11;
       }
     }
-
-    .testimonial-nav-btn {
-      border: none;
-      background: rgba(207, 214, 223, 0.55);
-      width: 72px;
-      height: 72px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #1f2937;
-      transition: transform 0.2s ease, background-color 0.2s ease;
-      position: absolute;
-      top: 50%;
-      z-index: 100;
-    }
-
-    .testimonial-nav-btn:hover {
-      background: rgba(207, 214, 223, 0.78);
-    }
-
-    .testimonial-nav-btn:focus-visible {
-      outline: 2px solid #111827;
-      outline-offset: 3px;
-    }
-
-    .testimonial-nav-btn.prev {
-      left: -10px;
-      transform: translateY(-50%);
-    }
-
-    .testimonial-nav-btn.next {
-      right: 0;
-      transform: translateY(-50%);
-    }
-
-    .testimonial-nav-btn.prev:hover,
-    .testimonial-nav-btn.next:hover {
-      transform: translateY(calc(-50% - 1px));
-    }
-
-    @media (max-width: 767.98px) {
-      .testimonial-nav-btn {
-        width: 56px;
-        height: 56px;
-      }
-
-      .testimonial-nav-btn.prev {
-        left: 0;
-      }
-
-      .testimonial-nav-btn.next {
-        right: 0;
-      }
-    }
-
   `]
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   private productService = inject(ProductService);
   private cartService = inject(CartService);
 
-  showPageLoader = signal<boolean>(true);
   featuredProducts = signal<Product[]>([]);
   isLoading = signal<boolean>(true);
   hasError = signal<boolean>(false);
-  private loaderFailSafeTimer: number | null = null;
-  private testimonialAutoPlayTimer: number | null = null;
-
-  readonly testimonials: TestimonialItem[] = [
-    {
-      quote: 'I have killed a lot of plants. PONSAI did not promise miracles, just honest care info and tools that actually work. Six months in, my first bonsai is still alive. That is a win.',
-      name: 'Alex Chen',
-      role: 'Beginner grower, Seattle',
-      avatar: 'assets/images/person-1.png'
-    },
-    {
-      quote: 'The pruning set feels premium, and the care guides are specific enough that I stopped second-guessing every cut. My ficus finally looks intentional.',
-      name: 'Mia Thompson',
-      role: 'Interior stylist, Portland',
-      avatar: 'assets/images/person_2.jpg'
-    },
-    {
-      quote: 'What I like most is the practicality. No hype, no vague tips, just the right tools and clear steps. It made bonsai feel approachable from day one.',
-      name: 'Daniel Park',
-      role: 'Plant hobbyist, Vancouver',
-      avatar: 'assets/images/person_3.jpg'
-    }
-  ];
-
-  activeTestimonialIndex = signal(0);
-  activeTestimonial = signal(this.testimonials[0]);
 
   ngOnInit(): void {
     this.loadFeaturedProducts();
-    this.loaderFailSafeTimer = window.setTimeout(() => {
-      this.showPageLoader.set(false);
-    }, 12000);
-    this.startTestimonialAutoplay();
-  }
-
-  ngOnDestroy(): void {
-    if (this.loaderFailSafeTimer !== null) {
-      window.clearTimeout(this.loaderFailSafeTimer);
-    }
-    if (this.testimonialAutoPlayTimer !== null) {
-      window.clearInterval(this.testimonialAutoPlayTimer);
-    }
-  }
-
-  onLoaderDone(): void {
-    this.showPageLoader.set(false);
-    if (this.loaderFailSafeTimer !== null) {
-      window.clearTimeout(this.loaderFailSafeTimer);
-      this.loaderFailSafeTimer = null;
-    }
   }
 
   loadFeaturedProducts(): void {
@@ -787,36 +604,5 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   trackByProductId(_index: number, product: Product): string {
     return product._id;
-  }
-
-  prevTestimonial(): void {
-    const nextIndex = (this.activeTestimonialIndex() - 1 + this.testimonials.length) % this.testimonials.length;
-    this.setActiveTestimonial(nextIndex);
-    this.restartTestimonialAutoplay();
-  }
-
-  nextTestimonial(): void {
-    const nextIndex = (this.activeTestimonialIndex() + 1) % this.testimonials.length;
-    this.setActiveTestimonial(nextIndex);
-    this.restartTestimonialAutoplay();
-  }
-
-  private setActiveTestimonial(index: number): void {
-    this.activeTestimonialIndex.set(index);
-    this.activeTestimonial.set(this.testimonials[index]);
-  }
-
-  private startTestimonialAutoplay(): void {
-    this.testimonialAutoPlayTimer = window.setInterval(() => {
-      const nextIndex = (this.activeTestimonialIndex() + 1) % this.testimonials.length;
-      this.setActiveTestimonial(nextIndex);
-    }, 4500);
-  }
-
-  private restartTestimonialAutoplay(): void {
-    if (this.testimonialAutoPlayTimer !== null) {
-      window.clearInterval(this.testimonialAutoPlayTimer);
-    }
-    this.startTestimonialAutoplay();
   }
 }

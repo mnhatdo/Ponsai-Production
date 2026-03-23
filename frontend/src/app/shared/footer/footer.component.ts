@@ -11,16 +11,6 @@ import { TranslateModule } from '@ngx-translate/core';
     <footer class="footer-20192">
       <div class="site-section">
         <div class="container">
-          <div class="cta d-block d-md-flex align-items-center px-4 px-lg-5">
-            <div>
-              <h2 class="mb-0">{{ 'footer.newsletter' | translate }}</h2>
-              <h3>{{ 'footer.description' | translate }}</h3>
-            </div>
-            <div class="ms-md-auto mt-3 mt-md-0">
-              <a routerLink="/contact" class="btn btn-dark rounded-0 py-3 px-4 px-lg-5">{{ 'footer.contactUs' | translate }}</a>
-            </div>
-          </div>
-
           <div class="row g-4 footer-content">
             <div class="col-12 col-sm-6 col-lg-3">
               <a routerLink="/" class="footer-logo">
@@ -99,7 +89,7 @@ import { TranslateModule } from '@ngx-translate/core';
     }
 
     .footer-20192 .footer-content {
-      margin-top: -5.25rem;
+      margin-top: 0;
     }
 
     .footer-20192 h3 {
@@ -185,76 +175,15 @@ import { TranslateModule } from '@ngx-translate/core';
       margin-top: 0.75rem;
     }
 
-    .footer-20192 .cta {
-      box-shadow: -20px -20px 0 0 rgba(13, 31, 41, 0.25);
-      padding: 24px;
-      background-color: var(--yale-blue);
-      max-width: 1120px;
-      margin: 0 auto;
-      top: -162px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .footer-20192 .cta h2,
-    .footer-20192 .cta h3 {
-      line-height: 1.4;
-      color: #fff;
-      margin-bottom: 0;
-    }
-
-    .footer-20192 .cta h2 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 0.2rem;
-    }
-
-    .footer-20192 .cta h3 {
-      font-size: 1.05rem;
-      opacity: 0.9;
-      font-weight: 500;
-    }
-
-    .footer-20192 .cta .btn.btn-dark {
-      background-color: #111;
-      border-color: #111;
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .footer-20192 .cta .btn.btn-dark:hover {
-      background-color: #000;
-      border-color: #000;
-      transform: translateY(-1px);
-    }
-
     @media (max-width: 991.98px) {
       .footer-20192 {
         margin-top: 5rem;
-      }
-
-      .footer-20192 .cta {
-        top: -96px;
-      }
-
-      .footer-20192 .footer-content {
-        margin-top: -3.5rem;
       }
     }
 
     @media (max-width: 767.98px) {
       .footer-20192 {
         padding-top: 5.5rem;
-      }
-
-      .footer-20192 .cta {
-        top: -72px;
-      }
-
-      .footer-20192 .footer-content {
-        margin-top: -1.5rem;
       }
 
       .footer-brand-logo {
