@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Furni application includes a comprehensive **bonsai product dataset** containing 411+ real products from ZeroBonsai.com. This document explains how to manage, import, and use this data.
+The Ponsai application includes a comprehensive **bonsai product dataset** containing 411+ real products from ZeroBonsai.com. This document explains how to manage, import, and use this data.
 
 ---
 
@@ -54,7 +54,7 @@ npm run seed:bonsai
    - Tools
    - Accessories
    - Books & Guides
-3. **Transforms** bonsai data to Furni schema:
+3. **Transforms** bonsai data to Ponsai schema:
    - Converts GBP to USD (1 GBP ≈ 1.27 USD)
    - Maps product types to categories
    - Extracts image URLs from nested structure
@@ -345,13 +345,13 @@ npm run seed:bonsai
 Export current database:
 
 ```bash
-mongodump --db furni --out ./backups/$(date +%Y%m%d)
+mongodump --db ponsai --out ./backups/$(date +%Y%m%d)
 ```
 
 ### Restore Backup
 
 ```bash
-mongorestore --db furni ./backups/20251231
+mongorestore --db ponsai ./backups/20251231
 ```
 
 ---
@@ -406,3 +406,5 @@ Or skip duplicates by checking `externalId` before insert.
 ---
 
 *Last Updated: December 31, 2025*
+
+

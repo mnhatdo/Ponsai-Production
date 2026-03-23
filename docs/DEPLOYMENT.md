@@ -36,7 +36,7 @@ NODE_ENV=development
 PORT=3000
 HOST=localhost
 
-MONGODB_URI=mongodb://localhost:27017/furni
+MONGODB_URI=mongodb://localhost:27017/ponsai
 JWT_SECRET=your-super-secret-jwt-key-change-in-production
 JWT_EXPIRE=7d
 
@@ -153,7 +153,7 @@ nano backend/.env  # Edit with production values
 ```bash
 # Start backend
 cd backend
-pm2 start dist/server.js --name furni-api
+pm2 start dist/server.js --name ponsai-api
 
 # Save PM2 configuration
 pm2 save
@@ -240,7 +240,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - MONGODB_URI=mongodb://mongo:27017/furni
+      - MONGODB_URI=mongodb://mongo:27017/ponsai
     depends_on:
       - mongo
 
@@ -286,7 +286,7 @@ docker-compose up -d
 4. Configure required environment variables in Render dashboard:
 
 ```env
-MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>.mongodb.net/furni
+MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>.mongodb.net/ponsai
 JWT_SECRET=<strong-random-secret>
 CORS_ORIGIN=https://<your-vercel-project>.vercel.app
 ```
@@ -355,7 +355,7 @@ netlify deploy --prod --dir=dist/ponsai-frontend
 4. Update `backend/.env`:
 
 ```env
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/furni?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/ponsai?retryWrites=true&w=majority
 ```
 
 ---
@@ -368,7 +368,7 @@ MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/furni?retryW
 |----------|-------------|---------|
 | `NODE_ENV` | Environment | `production` |
 | `PORT` | Server port | `3000` |
-| `MONGODB_URI` | MongoDB connection | `mongodb://localhost:27017/furni` |
+| `MONGODB_URI` | MongoDB connection | `mongodb://localhost:27017/ponsai` |
 | `JWT_SECRET` | JWT signing key | `random-secret-key` |
 | `JWT_EXPIRE` | Token expiry | `7d` |
 | `CORS_ORIGIN` | Allowed origin | `https://yourdomain.com` |
@@ -410,9 +410,9 @@ export const environment = {
 
 ```bash
 pm2 monit                    # Real-time monitoring
-pm2 logs furni-api          # View logs
-pm2 restart furni-api       # Restart app
-pm2 stop furni-api          # Stop app
+pm2 logs ponsai-api          # View logs
+pm2 restart ponsai-api       # Restart app
+pm2 stop ponsai-api          # Stop app
 ```
 
 ### CI Quality Gates
@@ -427,10 +427,10 @@ pm2 stop furni-api          # Stop app
 
 ```bash
 # MongoDB dump
-mongodump --db furni --out /backup/$(date +%Y%m%d)
+mongodump --db ponsai --out /backup/$(date +%Y%m%d)
 
 # Restore
-mongorestore --db furni /backup/20251231/furni
+mongorestore --db ponsai /backup/20251231/ponsai
 ```
 
 ### Logs
@@ -448,7 +448,7 @@ mongorestore --db furni /backup/20251231/furni
 1. Check MongoDB is running: `sudo systemctl status mongod`
 2. Verify `.env` file exists and has correct values
 3. Check port 3000 isn't in use: `lsof -i :3000`
-4. Review logs: `pm2 logs furni-api`
+4. Review logs: `pm2 logs ponsai-api`
 5. Check readiness endpoint: `curl http://localhost:3000/readyz`
 
 ### Render error: `Cannot find module '/opt/render/project/src/index.js'`
@@ -492,7 +492,7 @@ If platform still uses another version, set runtime manually:
 
 ```bash
 # Stop current version
-pm2 stop furni-api
+pm2 stop ponsai-api
 
 # Restore previous code
 git checkout <previous-commit>
@@ -501,7 +501,7 @@ git checkout <previous-commit>
 npm run build
 
 # Restart
-pm2 restart furni-api
+pm2 restart ponsai-api
 ```
 
 ### Docker
@@ -530,3 +530,5 @@ Recommendation:
 ---
 
 **Last Updated**: March 22, 2026
+
+

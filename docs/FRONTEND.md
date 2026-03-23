@@ -80,7 +80,7 @@ cartService.clearCart();
 **Cart Persistence:**
 - Cart data is automatically saved to `localStorage`
 - Cart persists across page refreshes
-- Storage key: `furni_cart`
+- Storage key: `ponsai_cart`
 
 ---
 
@@ -423,3 +423,4 @@ cartItemCount = computed(() => this.cartService.getItemCount());
 ---
 
 *Last Updated: December 31, 2025*
+

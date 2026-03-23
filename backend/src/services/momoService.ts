@@ -134,8 +134,8 @@ export class MomoService {
 
     const requestBody = {
       partnerCode: this.partnerCode,
-      partnerName: 'Furni Shop',
-      storeId: 'FurniShop',
+      partnerName: 'Ponsai Shop',
+      storeId: 'PonsaiShop',
       requestId,
       amount: paymentData.amount,
       orderId: momoOrderId, // Use MOMO prefixed orderId
@@ -301,3 +301,4 @@ export class MomoService {
 // Export singleton instance
 const momoServiceInstance = new MomoService();
 export default momoServiceInstance;
+

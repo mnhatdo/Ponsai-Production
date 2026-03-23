@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 (async () => {
-  const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/furni';
+  const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai';
   const stamp = new Date().toISOString().replace(/[:.]/g, '-');
   const outDir = path.resolve(__dirname, '..', 'backups', `db-unify-${stamp}`, 'json-dump');
   fs.mkdirSync(outDir, { recursive: true });
@@ -37,3 +37,4 @@ require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
   } catch (_) {}
   process.exit(1);
 });
+

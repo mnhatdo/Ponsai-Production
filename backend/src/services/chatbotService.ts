@@ -20,8 +20,8 @@ interface ChatResponse {
   conversationId?: string;
 }
 
-// System prompt with comprehensive knowledge about Furni e-commerce
-const SYSTEM_PROMPT = `You are an AI customer support assistant for Furni (Ponsai) - a Vietnamese e-commerce platform specializing in bonsai trees, furniture, and home decor.
+// System prompt with comprehensive knowledge about Ponsai e-commerce
+const SYSTEM_PROMPT = `You are an AI customer support assistant for Ponsai JSC - a Vietnamese e-commerce platform specializing in bonsai trees, furniture, and home decor.
 
 KEY INFORMATION:
 - Business: E-commerce platform for Vietnamese bonsai, furniture, and accessories
@@ -57,7 +57,7 @@ POLICIES:
 - Free shipping for Thu Duc district only
 
 CONTACT:
-- Email: support@furni.vn
+- Email: support@ponsai.vn
 - Website: http://localhost:4200
 - API: http://localhost:3000/api/v1
 
@@ -89,7 +89,7 @@ export const generateChatResponse = async (
       console.error('Groq API key not configured');
       return {
         success: false,
-        message: 'Chatbot service is currently unavailable. Please contact support@furni.vn'
+        message: 'Chatbot service is currently unavailable. Please contact support@ponsai.vn'
       };
     }
 
@@ -151,7 +151,7 @@ export const generateChatResponse = async (
     } else {
       return {
         success: false,
-        message: 'Sorry, I encountered an error. Please try again or contact support@furni.vn'
+        message: 'Sorry, I encountered an error. Please try again or contact support@ponsai.vn'
       };
     }
   }
@@ -192,3 +192,5 @@ export default {
   isChatbotAvailable,
   getQuickReplies
 };
+
+

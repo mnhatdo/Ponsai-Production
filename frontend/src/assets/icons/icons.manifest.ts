@@ -1,7 +1,7 @@
 /**
  * Ponsai Icon Set Manifest
  * 
- * Black icons collection for Furni e-commerce project
+ * Black icons collection for Ponsai e-commerce project
  * Location: assets/icons/
  * Format: PNG (transparent background)
  * 
@@ -53,3 +53,4 @@ export const ICON_CATEGORIES = {
   filter: ['FILTER', 'SORT', 'MAGNIFYING_GLASS'],
   promotions: ['SALE_TAG'],
 };
+

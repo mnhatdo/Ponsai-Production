@@ -31,7 +31,7 @@ The shipping fee calculation feature uses Google Maps Distance Matrix API to cal
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com)
 2. Click **Create Project** or select existing project
-3. Name project (e.g., "Furni Shipping Calculator")
+3. Name project (e.g., "Ponsai Shipping Calculator")
 4. Click **Create**
 
 ### Step 2: Enable Distance Matrix API
@@ -73,7 +73,7 @@ The shipping fee calculation feature uses Google Maps Distance Matrix API to cal
 export const environment = {
   apiUrl: '/api/v1',
   apiTimeout: 30000,
-  appName: 'Furni',
+  appName: 'Ponsai',
   version: '1.0.0',
   googleMapsApiKey: 'YOUR_ACTUAL_API_KEY_HERE' // ← Replace this
 };
@@ -86,7 +86,7 @@ export const environment = {
   production: true,
   apiUrl: 'https://api.yourdomain.com/api/v1',
   apiTimeout: 30000,
-  appName: 'Furni',
+  appName: 'Ponsai',
   version: '1.0.0',
   googleMapsApiKey: 'YOUR_ACTUAL_API_KEY_HERE' // ← Replace this
 };
@@ -279,3 +279,4 @@ For issues with Google Maps API:
 - [Distance Matrix API Documentation](https://developers.google.com/maps/documentation/distance-matrix)
 - [Google Maps Platform Support](https://developers.google.com/maps/support)
 - [API Key Best Practices](https://developers.google.com/maps/api-security-best-practices)
+

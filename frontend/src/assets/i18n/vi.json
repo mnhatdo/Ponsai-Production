@@ -627,7 +627,7 @@
   "auth.backToRegistration": "Quay lại đăng ký",
   "auth.devOtp": "Mã OTP dev",
   "auth.accountCreatedTitle": "Tạo tài khoản thành công!",
-  "auth.accountCreatedDesc": "Chào mừng bạn đến với Furni! Tài khoản của bạn đã được tạo thành công.",
+  "auth.accountCreatedDesc": "Chào mừng bạn đến với Ponsai! Tài khoản của bạn đã được tạo thành công.",
   "auth.startShopping": "Bắt đầu mua sắm",
   "auth.passwordStrength.weak": "Yếu",
   "auth.passwordStrength.fair": "Trung bình",
@@ -857,3 +857,4 @@
   "button.create": "Tạo mới",
   "button.update": "Cập nhật"
 }
+

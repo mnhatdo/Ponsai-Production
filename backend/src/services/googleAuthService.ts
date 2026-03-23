@@ -1,10 +1,7 @@
 import { OAuth2Client, TokenPayload } from 'google-auth-library';
 
 // Initialize Google OAuth2 Client
-const googleClient = new OAuth2Client(
-  process.env.GOOGLE_CLIENT_ID,
-  process.env.GOOGLE_CLIENT_SECRET
-);
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 export interface GoogleUserInfo {
   googleId: string;
@@ -55,7 +52,7 @@ export const verifyGoogleToken = async (idToken: string): Promise<GoogleUserInfo
  * Check if Google OAuth is configured
  */
 export const isGoogleOAuthConfigured = (): boolean => {
-  return !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
+  return !!process.env.GOOGLE_CLIENT_ID;
 };
 
 export default {

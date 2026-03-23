@@ -100,7 +100,7 @@ A: Currently, we only ship within Vietnam. International shipping coming in the 
 
 **Questions about your shipping cost?**
 - Live chat on website
-- Email: shipping@furni.vn
+- Email: shipping@ponsai.vn
 - Phone: +84 (24) xxxx-xxxx
 - Response time: Within 2 hours during business hours
 

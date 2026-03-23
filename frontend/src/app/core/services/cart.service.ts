@@ -32,7 +32,7 @@ export class CartService {
   private cartItems = signal<CartItem[]>([]);
   private isLoading = signal(false);
   private isSyncing = signal(false);
-  private baseStorageKey = 'furni_cart';
+  private baseStorageKey = 'ponsai_cart';
   private currentUserId: string | null = null;
 
   // Computed signals
@@ -345,4 +345,5 @@ export class CartService {
     }
   }
 }
+
 

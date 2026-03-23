@@ -38,7 +38,7 @@ Edit `backend/.env` with your settings (or use defaults):
 ```env
 NODE_ENV=development
 PORT=3000
-MONGODB_URI=mongodb://localhost:27017/furni
+MONGODB_URI=mongodb://localhost:27017/ponsai
 JWT_SECRET=dev-secret-key-change-in-production
 CORS_ORIGIN=http://localhost:4200
 ```
@@ -128,14 +128,14 @@ Open your browser and visit:
 - **Backend Health**: http://localhost:3000/health
 - **API Docs**: See [docs/API.md](docs/API.md)
 
-You should see the Furni homepage! 🎉
+You should see the Ponsai homepage! 🎉
 
 ---
 
 ## 📁 Project Structure Overview
 
 ```
-furni-1.0.0/
+ponsai-2.0.0/
 │
 ├── 📦 frontend/                 # Angular Application
 │   ├── src/
@@ -332,8 +332,8 @@ npm install
 # Connect to MongoDB
 mongosh
 
-# Switch to furni database
-use furni
+# Switch to ponsai database
+use ponsai
 
 # Drop database
 db.dropDatabase()
@@ -433,3 +433,5 @@ Before starting development:
 **Happy Coding! 🚀**
 
 *Last Updated: December 31, 2025*
+
+

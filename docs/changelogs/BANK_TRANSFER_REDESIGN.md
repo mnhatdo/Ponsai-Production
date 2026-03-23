@@ -69,7 +69,7 @@ async generatePaymentInvoice(orderId, userId): IBankTransferInvoice {
     dueDate,
     bankDetails: {
       bankName: 'NatWest Bank',
-      accountName: 'Furni Ltd',
+      accountName: 'Ponsai JSC',
       iban: 'GB29NWBK60161331926819',
       swift: 'NWBKGB2L',
       sortCode: '60-16-13',
@@ -136,7 +136,7 @@ async confirmBankTransfer(orderId, adminUserId, adminUserName, bankReference?) {
     "dueDate": "2024-01-18T10:30:00Z",
     "bankDetails": {
       "bankName": "NatWest Bank",
-      "accountName": "Furni Ltd",
+      "accountName": "Ponsai JSC",
       "iban": "GB29NWBK60161331926819",
       "swift": "NWBKGB2L",
       "sortCode": "60-16-13",
@@ -507,3 +507,4 @@ This is a **simulated** international bank transfer for development purposes:
 
 *Last Updated: 2024-01-15*  
 *Status: Backend Complete ✅ | Frontend Pending ⏳*
+

@@ -114,6 +114,7 @@ Contributions are welcome! Please read our contributing guidelines before submit
 
 ---
 
-**Original Template**: Furni by [Untree.co](https://untree.co/)  
+**Original Template**: Ponsai by [Untree.co](https://untree.co/)  
 **Developed by**: Ki8 Development Team  
 **Last Updated**: January 8, 2026
+

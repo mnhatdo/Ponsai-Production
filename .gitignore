@@ -175,6 +175,9 @@ _archive/
 .local/
 *.local
 
+# Local Google OAuth client secrets (keep local only)
+client_secret_*.apps.googleusercontent.com
+
 # Lock files (optional - uncomment to ignore)
 # package-lock.json
 # yarn.lock

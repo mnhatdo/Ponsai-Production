@@ -140,7 +140,7 @@ const samplePromotions = [
 async function createPromotions() {
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/furni');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai');
     console.log('✅ Connected to database');
 
     // Try to find an admin user to use as createdBy
@@ -179,3 +179,4 @@ async function createPromotions() {
 
 // Run the script
 createPromotions();
+

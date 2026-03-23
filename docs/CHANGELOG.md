@@ -2,7 +2,7 @@
 
 **Last Updated:** January 8, 2026
 
-This document consolidates all major fixes, improvements, and changes made to the Furni/BonSight project. Historical changelog files have been archived in `docs/changelogs/` for detailed reference.
+This document consolidates all major fixes, improvements, and changes made to the Ponsai project. Historical changelog files have been archived in `docs/changelogs/` for detailed reference.
 
 ---
 
@@ -358,7 +358,7 @@ async generatePaymentInvoice(orderId, userId): IBankTransferInvoice {
     invoiceNumber,
     reference,
     bankDetails: {
-      accountName: 'BonSight Ltd',
+      accountName: 'Ponsai JSC',
       iban: 'GB29 NWBK 6016 1331 9268 19',
       swiftCode: 'NWBKGB2L',
       bankName: 'NatWest Bank',
@@ -464,3 +464,5 @@ Based on recent fixes, consider:
 ---
 
 *This document consolidates information from multiple changelog files that were previously scattered at the project root. All original files have been archived to `docs/changelogs/` for historical reference.*
+
+

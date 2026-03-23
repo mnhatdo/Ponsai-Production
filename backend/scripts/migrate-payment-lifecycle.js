@@ -16,7 +16,7 @@ require('dotenv').config();
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/furni');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai');
     console.log('✅ Connected to MongoDB');
   } catch (error) {
     console.error('❌ MongoDB connection error:', error);
@@ -166,3 +166,4 @@ const main = async () => {
 
 // Run migration
 main();
+

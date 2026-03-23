@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the consistent color palette implementation across the entire PONSAI/Furni website project.
+This document describes the consistent color palette implementation across the entire Ponsai website project.
 
 ## Brand Color Palette
 
@@ -256,3 +256,4 @@ All hardcoded color values have been replaced with variables from the color pale
 
 **Last Updated**: January 8, 2026  
 **Version**: 1.0.0
+

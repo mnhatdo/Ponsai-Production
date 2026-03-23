@@ -3,7 +3,7 @@ require('dotenv').config();
 
 async function checkUsers() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/furni');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai');
     console.log('✅ Connected to MongoDB\n');
     
     const usersCollection = mongoose.connection.db.collection('users');
@@ -46,3 +46,4 @@ async function checkUsers() {
 }
 
 checkUsers();
+

@@ -26,7 +26,7 @@ import { TranslationService } from '@core/services/translation.service';
   styles: []
 })
 export class AppComponent {
-  title = 'Furni';
+  title = 'Ponsai';
   isAdminRoute = false;
   private translationService = inject(TranslationService); // Initialize translation service
 
@@ -38,3 +38,4 @@ export class AppComponent {
       });
   }
 }
+

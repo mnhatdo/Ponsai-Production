@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Furni full-stack application features a **smart unified development environment** that automatically manages dependencies and runs both frontend and backend servers concurrently with minimal manual intervention.
+The Ponsai full-stack application features a **smart unified development environment** that automatically manages dependencies and runs both frontend and backend servers concurrently with minimal manual intervention.
 
 ---
 
@@ -128,8 +128,8 @@ NODE_ENV=development
 PORT=3000
 
 # Database
-MONGODB_URI=mongodb://localhost:27017/furni
-MONGODB_URI_TEST=mongodb://localhost:27017/furni_test
+MONGODB_URI=mongodb://localhost:27017/ponsai
+MONGODB_URI_TEST=mongodb://localhost:27017/ponsai_test
 
 # JWT
 JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
@@ -210,7 +210,7 @@ Update `angular.json`:
 ```json
 {
   "projects": {
-    "furni-frontend": {
+    "ponsai-frontend": {
       "architect": {
         "build": {
           "options": {
@@ -451,7 +451,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
-      - MONGODB_URI=mongodb://mongodb:27017/furni
+      - MONGODB_URI=mongodb://mongodb:27017/ponsai
     depends_on:
       - mongodb
     volumes:
@@ -547,3 +547,5 @@ The unified development environment provides:
 **Primary command to remember:** `npm run dev` or `npm start`
 
 Everything else is handled automatically! 🎉
+
+

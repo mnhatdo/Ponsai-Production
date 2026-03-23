@@ -24,7 +24,7 @@ const Promotion = mongoose.model('Promotion', promotionSchema);
 
 async function checkPromotions() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/furni');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai');
     console.log('✅ Connected to MongoDB\n');
 
     const promos = await Promotion.find({}).lean();
@@ -49,3 +49,4 @@ async function checkPromotions() {
 }
 
 checkPromotions();
+

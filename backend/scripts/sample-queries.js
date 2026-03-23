@@ -17,7 +17,7 @@ require('../dist/models/Session');
 require('../dist/models/PageVisit');
 require('../dist/models/DailyMetric');
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/furni';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai';
 
 async function sampleQueries() {
   try {
@@ -169,3 +169,4 @@ async function sampleQueries() {
 }
 
 sampleQueries();
+

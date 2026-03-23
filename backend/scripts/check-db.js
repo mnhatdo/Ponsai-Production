@@ -3,7 +3,7 @@ require('dotenv').config();
 
 async function checkCollections() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/furni');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai');
     
     const colls = await mongoose.connection.db.listCollections().toArray();
     console.log('All collections:', colls.map(c => c.name).join(', '));
@@ -25,3 +25,4 @@ async function checkCollections() {
 }
 
 checkCollections();
+

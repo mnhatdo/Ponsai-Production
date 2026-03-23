@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 export const connectDatabase = async (): Promise<void> => {
   try {
-    const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/furni';
+    const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai';
     
     const options = {
       autoIndex: true,
@@ -39,3 +39,4 @@ export const disconnectDatabase = async (): Promise<void> => {
     throw error;
   }
 };
+

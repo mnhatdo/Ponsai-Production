@@ -11,7 +11,7 @@ import path from 'path';
 // Load environment variables
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/furni';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai';
 
 // Admin account configuration
 const ADMIN_ACCOUNT = {
@@ -91,3 +91,4 @@ async function seedAdmin() {
 }
 
 seedAdmin();
+

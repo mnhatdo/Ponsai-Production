@@ -1,6 +1,6 @@
-# Contributing to Furni
+# Contributing to Ponsai
 
-Thank you for your interest in contributing to the Furni e-commerce platform! This document provides guidelines and best practices for contributing to the project.
+Thank you for your interest in contributing to the Ponsai e-commerce platform! This document provides guidelines and best practices for contributing to the project.
 
 ---
 
@@ -42,11 +42,11 @@ Thank you for your interest in contributing to the Furni e-commerce platform! Th
 # 1. Fork the repository on GitHub
 
 # 2. Clone your fork
-git clone https://github.com/YOUR_USERNAME/furni.git
-cd furni-1.0.0
+git clone https://github.com/YOUR_USERNAME/ponsai.git
+cd ponsai-2.0.0
 
 # 3. Add upstream remote
-git remote add upstream https://github.com/ORIGINAL_OWNER/furni.git
+git remote add upstream https://github.com/ORIGINAL_OWNER/ponsai.git
 
 # 4. Install dependencies
 npm run install:all
@@ -495,4 +495,6 @@ By contributing, you agree that your contributions will be licensed under the MI
 
 ---
 
-Thank you for contributing to Furni! 🎉
+Thank you for contributing to Ponsai! 🎉
+
+

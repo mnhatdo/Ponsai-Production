@@ -22,7 +22,7 @@ dotenv.config({ path: path.join(__dirname, '..', '.env') });
 const dailyMetricsService = require('../dist/services/dailyMetricsService').default;
 
 // Database connection string
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/furni';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai';
 
 async function aggregateMetrics(days = 30) {
   try {
@@ -82,3 +82,4 @@ const days = process.argv[2] ? parseInt(process.argv[2]) : 30;
 
 // Run aggregation
 aggregateMetrics(days);
+

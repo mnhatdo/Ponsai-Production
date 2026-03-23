@@ -627,7 +627,7 @@
   "auth.backToRegistration": "Back to registration",
   "auth.devOtp": "Dev OTP",
   "auth.accountCreatedTitle": "Account Created!",
-  "auth.accountCreatedDesc": "Welcome to Furni! Your account has been successfully created.",
+  "auth.accountCreatedDesc": "Welcome to Ponsai! Your account has been successfully created.",
   "auth.startShopping": "Start Shopping",
   "auth.passwordStrength.weak": "Weak",
   "auth.passwordStrength.fair": "Fair",
@@ -857,3 +857,4 @@
   "button.create": "Create",
   "button.update": "Update"
 }
+

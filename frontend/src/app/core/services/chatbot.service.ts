@@ -123,7 +123,7 @@ export class ChatbotService {
         
         const errorMessage: ChatMessage = {
           role: 'assistant',
-          content: 'Sorry, I am unable to respond right now. Please contact support@furni.vn',
+          content: 'Sorry, I am unable to respond right now. Please contact support@ponsai.vn',
           timestamp: new Date()
         };
         this.messages.update(msgs => [...msgs, errorMessage]);
@@ -169,3 +169,4 @@ export class ChatbotService {
     return this.sendMessage(reply);
   }
 }
+

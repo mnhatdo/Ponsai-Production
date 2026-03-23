@@ -72,7 +72,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
               console.warn('Token invalid, clearing session');
             }
             // Clear session but don't redirect - let the app continue as guest
-            localStorage.removeItem('furni_token');
+            localStorage.removeItem('ponsai_token');
           } else if (isPublicRoute) {
             // Public routes should never get 401 - this is unexpected
             if (DEBUG_MODE) {
@@ -84,7 +84,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
               console.warn('Session expired on protected route:', req.url);
             }
             // Clear session and redirect to login with returnUrl
-            localStorage.removeItem('furni_token');
+            localStorage.removeItem('ponsai_token');
             const currentUrl = router.url;
             router.navigate(['/auth/login'], {
               queryParams: { returnUrl: currentUrl }
@@ -144,3 +144,4 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     })
   );
 };
+

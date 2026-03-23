@@ -69,7 +69,7 @@ interface BonsaiDataset {
  */
 const connectDB = async (): Promise<void> => {
   try {
-    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/furni';
+    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai';
     await mongoose.connect(mongoURI);
     console.log('✅ MongoDB connected successfully');
   } catch (error) {
@@ -129,7 +129,7 @@ const getCategory = (
 };
 
 /**
- * Transform bonsai product to Furni product format
+ * Transform bonsai product to Ponsai product format
  */
 const transformProduct = (
   bonsaiProduct: BonsaiProduct,
@@ -263,3 +263,4 @@ if (require.main === module) {
 }
 
 export { seedProducts, transformProduct };
+

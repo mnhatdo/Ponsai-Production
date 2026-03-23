@@ -1,8 +1,8 @@
-# Furni Full-Stack Architecture
+# Ponsai Full-Stack Architecture
 
 ## Overview
 
-This document describes the architectural decisions, patterns, and structure of the Furni e-commerce application—a modern full-stack solution built with Angular, Node.js/Express, and MongoDB.
+This document describes the architectural decisions, patterns, and structure of the Ponsai e-commerce application—a modern full-stack solution built with Angular, Node.js/Express, and MongoDB.
 
 ## Table of Contents
 
@@ -135,7 +135,7 @@ Backend (Express)
 ### Root Directory
 
 ```
-furni-1.0.0/
+ponsai-2.0.0/
 ├── frontend/              # Angular application
 ├── backend/               # Node.js/Express API
 ├── shared/                # Shared TypeScript types & utils
@@ -636,3 +636,5 @@ The architecture is **pragmatic** rather than dogmatic—it uses proven patterns
 **Document Version**: 1.0  
 **Last Updated**: December 31, 2025  
 **Maintained By**: Ki8 Development Team
+
+

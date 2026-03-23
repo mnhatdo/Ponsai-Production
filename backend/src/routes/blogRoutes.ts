@@ -72,7 +72,7 @@ async function fetchRSSItems(): Promise<RSSItem[]> {
   const response = await axios.get(RSS_FEED_URL, {
     timeout: 10000,
     headers: {
-      'User-Agent': 'Mozilla/5.0 (compatible; FurniBlog/1.0)'
+      'User-Agent': 'Mozilla/5.0 (compatible; PonsaiBlog/1.0)'
     }
   });
 
@@ -213,3 +213,4 @@ router.get('/:id', async (req: Request, res: Response): Promise<void> => {
 });
 
 export default router;
+

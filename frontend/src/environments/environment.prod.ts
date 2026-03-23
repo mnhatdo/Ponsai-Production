@@ -3,6 +3,7 @@ export const environment = {
   // Replace this with your real Render service URL before production release.
   apiUrl: 'https://ponsai.onrender.com/api/v1',
   apiTimeout: 30000,
-  appName: 'Furni',
+  appName: 'Ponsai',
   version: '2.0.0'
 };
+

@@ -1,17 +1,17 @@
 ================================================================================
-                    FURNI E-COMMERCE - AI CUSTOMER SUPPORT
+                    PONSAI E-COMMERCE - AI CUSTOMER SUPPORT
                          TRAINING DATA FOR CHATBOT
 ================================================================================
 Version: 1.0
 Last Updated: March 12, 2026
-Website: Furni - Vietnamese Furniture & Bonsai E-commerce
+Website: Ponsai - Vietnamese Furniture & Bonsai E-commerce
 Language: Vietnamese & English
 
 ================================================================================
                             BUSINESS OVERVIEW
 ================================================================================
 
-Company Name: Furni (Ponsai)
+Company Name: Ponsai JSC
 Business Type: E-commerce platform
 Main Products: 
 - Vietnamese bonsai trees and plants
@@ -97,11 +97,11 @@ A: If you don't receive the OTP:
 2. Wait 1-2 minutes (sometimes delayed)
 3. Click "Resend OTP" button
 4. In development mode, the OTP is shown in console for testing
-5. Contact support if still not receiving: support@furni.vn
+5. Contact support if still not receiving: support@ponsai.vn
 
 Q: Tôi quên mật khẩu, làm sao lấy lại?
 A: Hiện tại chức năng "Forgot Password" đang được phát triển. 
-Vui lòng liên hệ support@furni.vn với thông tin:
+Vui lòng liên hệ support@ponsai.vn với thông tin:
 - Email đăng ký
 - Tên tài khoản
 - Số điện thoại đã đăng ký
@@ -220,7 +220,7 @@ A: The payment reference (e.g., "GBPORD-12345678") is CRUCIAL:
 Q: Thông tin ngân hàng để chuyển khoản?
 A: Bank details for transfer:
 - Bank Name: NatWest Bank (UK)
-- Account Name: Furni Ltd
+- Account Name: Ponsai JSC
 - IBAN: GB29NWBK60161331926819
 - SWIFT/BIC: NWBKGB2L
 - Sort Code: 60-16-13
@@ -316,7 +316,7 @@ A: Phụ thuộc vào trạng thái:
 - Processing: Có thể thay đổi nhưng khó khăn
 - Shipped: KHÔNG THỂ thay đổi
 
-Liên hệ support@furni.vn hoặc chat support càng sớm càng tốt.
+Liên hệ support@ponsai.vn hoặc chat support càng sớm càng tốt.
 
 Q: Can I ship to a different country?
 A: Yes! We ship to 40+ countries including:
@@ -397,7 +397,7 @@ KHÔNG ĐỔI TRẢ:
 
 Q: How do I request a return?
 A: Return process:
-1. Contact support within 7 days: support@furni.vn
+1. Contact support within 7 days: support@ponsai.vn
 2. Provide order number and reason
 3. Send photos of defective/damaged item
 4. Wait for return approval
@@ -429,7 +429,7 @@ A: Thử các bước sau:
 3. Thử trình duyệt khác (Chrome, Firefox, Safari)
 4. Kiểm tra kết nối internet
 5. Thử lại sau vài phút
-6. Nếu vẫn lỗi: Chụp ảnh màn hình và gửi support@furni.vn
+6. Nếu vẫn lỗi: Chụp ảnh màn hình và gửi support@ponsai.vn
 
 Q: I can't login to my account
 A: Troubleshooting login issues:
@@ -446,7 +446,7 @@ A: Kiểm tra:
 1. Hộp thư spam/junk
 2. Đúng địa chỉ email khi đặt hàng?
 3. Email có thể bị delay 5-10 phút
-4. Thêm support@furni.vn vào danh bạ để tránh spam
+4. Thêm support@ponsai.vn vào danh bạ để tránh spam
 5. Kiểm tra "My Orders" để xác nhận đơn hàng đã tạo
 
 Q: The website is in the wrong language
@@ -472,7 +472,7 @@ A: Try these solutions:
 Q: Làm sao để liên hệ với bộ phận hỗ trợ?
 A: Nhiều cách để liên hệ:
 
-EMAIL: support@furni.vn
+EMAIL: support@ponsai.vn
 - Phản hồi trong 24 giờ (ngày làm việc)
 - Gửi kèm ảnh/video nếu cần
 
@@ -486,9 +486,9 @@ LIVE CHAT: Trên website
 - Chat trực tiếp với support team
 
 SOCIAL MEDIA:
-- Facebook: fb.com/furni.vietnam
-- Instagram: @furni.vietnam
-- Zalo OA: Furni Official
+- Facebook: fb.com/ponsai.vn
+- Instagram: @ponsai.vn
+- Zalo OA: Ponsai Official
 
 Q: What information should I include when contacting support?
 A: To help us help you faster, include:
@@ -602,7 +602,7 @@ FABRIC/UPHOLSTERY:
 ================================================================================
 
 Q: Trang web có uy tín không?
-A: Furni là nền tảng thương mại điện tử uy tín:
+A: Ponsai là nền tảng thương mại điện tử uy tín:
 - Hoạt động từ 2020
 - Hơn 10,000+ khách hàng hài lòng
 - Đánh giá 4.8/5 sao từ người dùng
@@ -642,7 +642,7 @@ To cancel:
 
 Q: Tôi muốn mua số lượng lớn, có giảm giá không?
 A: Có! Cho đơn hàng số lượng lớn:
-- Liên hệ: wholesale@furni.vn
+- Liên hệ: wholesale@ponsai.vn
 - Cung cấp: Loại sản phẩm, số lượng
 - Nhận báo giá đặc biệt trong 24h
 - Giảm giá 5-20% tùy số lượng
@@ -711,8 +711,8 @@ SOLUTION:
 ================================================================================
 
 GREETING:
-"Xin chào! Tôi là trợ lý ảo của Furni. Tôi có thể giúp gì cho bạn hôm nay? 🌱"
-"Hello! I'm Furni's virtual assistant. How can I help you today? 🌱"
+"Xin chào! Tôi là trợ lý ảo của Ponsai. Tôi có thể giúp gì cho bạn hôm nay? 🌱"
+"Hello! I'm Ponsai's virtual assistant. How can I help you today? 🌱"
 
 THANK YOU:
 "Cảm ơn bạn đã liên hệ! Nếu cần thêm hỗ trợ, đừng ngần ngại nhé! 😊"
@@ -723,8 +723,8 @@ GOODBYE:
 "Have a great day! See you soon! 🌟"
 
 UNABLE TO HELP:
-"Xin lỗi, tôi chưa hiểu rõ câu hỏi của bạn. Bạn có thể diễn đạt lại hoặc liên hệ support@furni.vn để được hỗ trợ trực tiếp nhé!"
-"Sorry, I don't quite understand your question. Could you rephrase or contact support@furni.vn for direct assistance?"
+"Xin lỗi, tôi chưa hiểu rõ câu hỏi của bạn. Bạn có thể diễn đạt lại hoặc liên hệ support@ponsai.vn để được hỗ trợ trực tiếp nhé!"
+"Sorry, I don't quite understand your question. Could you rephrase or contact support@ponsai.vn for direct assistance?"
 
 NEED HUMAN:
 "Tôi sẽ chuyển bạn đến nhân viên hỗ trợ. Vui lòng chờ trong giây lát..."
@@ -793,7 +793,7 @@ AI: "Xin lỗi vì sự bất tiện! Bạn thử các cách này nhé:
 3. Thử trình duyệt khác (Chrome, Firefox)
 4. Tắt AdBlock tạm thời
 
-Nếu vẫn lỗi, chụp màn hình gửi support@furni.vn. 
+Nếu vẫn lỗi, chụp màn hình gửi support@ponsai.vn. 
 Chúng tôi sẽ khắc phục ngay! 🔧"
 
 ================================================================================
@@ -845,4 +845,6 @@ Note: Some information may need to be updated as the business evolves.
 Regular updates to this training data are recommended.
 
 Last Updated: March 12, 2026
-Contact: support@furni.vn
+Contact: support@ponsai.vn
+
+

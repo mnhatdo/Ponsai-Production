@@ -45,7 +45,7 @@ import { ChatbotService, ChatMessage } from '@core/services/chatbot.service';
         <!-- Welcome Message -->
         <div class="message bot-message" *ngIf="messages().length === 0">
           <div class="message-bubble">
-            <p>Xin chào! Tôi là trợ lý ảo của Furni.</p>
+            <p>Xin chào! Tôi là trợ lý ảo của Ponsai.</p>
             <p>Tôi có thể giúp bạn về:</p>
             <ul>
               <li>Thông tin sản phẩm</li>

@@ -1,5 +1,5 @@
 /**
- * Shared type definitions for Furni application
+ * Shared type definitions for Ponsai application
  * These types are used across both frontend and backend
  */
 
@@ -164,3 +164,4 @@ export interface IBlogPost {
   createdAt?: Date | string;
   updatedAt?: Date | string;
 }
+

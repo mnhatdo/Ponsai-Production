@@ -355,4 +355,5 @@ When writing new documentation:
 
 **Happy Reading! 📚**
 
-*Your comprehensive guide to the Furni full-stack application*
+*Your comprehensive guide to the Ponsai full-stack application*
+

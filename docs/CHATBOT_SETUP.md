@@ -1,4 +1,4 @@
-# AI Chatbot - Furni Customer Support
+# AI Chatbot - Ponsai Customer Support
 
 ## Overview
 
@@ -262,7 +262,7 @@ To rotate key:
 ## Support
 
 For issues or questions:
-- Email: support@furni.vn
+- Email: support@ponsai.vn
 - GitHub Issues: (your repo)
 - Groq Docs: https://console.groq.com/docs
 
@@ -273,3 +273,5 @@ MIT License - Use freely in your projects
 ---
 
 **Built with ❤️ using Groq AI**
+
+

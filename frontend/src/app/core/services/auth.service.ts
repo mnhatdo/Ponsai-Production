@@ -71,8 +71,9 @@ export class AuthService {
   public googleClientId = computed(() => this._googleClientId());
   public isInitialized = computed(() => this._isInitialized());
 
-  private tokenKey = 'furni_token';
-  private googleInitialized = false;
+  private tokenKey = 'ponsai_token';
+  private googleIdentityInitialized = false;
+  private activeGoogleCallback: ((response: any) => void) | null = null;
 
   constructor() {
     this.initAuth();
@@ -151,32 +152,35 @@ export class AuthService {
   // Initialize Google Sign-In
   initializeGoogleSignIn(buttonElement: HTMLElement, callback: (response: any) => void): void {
     const clientId = this._googleClientId();
-    console.log('[AuthService] initializeGoogleSignIn called with clientId:', clientId);
-    
-    if (!clientId || this.googleInitialized) {
-      console.log('[AuthService] Skip initialization:', { 
-        hasClientId: !!clientId, 
-        alreadyInitialized: this.googleInitialized 
-      });
+
+    if (!clientId || !buttonElement) {
       return;
     }
 
-    // Wait for Google script to load
-    console.log('[AuthService] Waiting for Google script to load...');
-    const checkGoogle = setInterval(() => {
-      if (typeof google !== 'undefined' && google.accounts) {
-        clearInterval(checkGoogle);
-        console.log('[AuthService] Google script loaded');
-        
-        google.accounts.id.initialize({
-          client_id: clientId,
-          callback: (response: any) => {
-            console.log('[AuthService] Google callback triggered:', response);
-            this.ngZone.run(() => callback(response));
-          }
-        });
+    // Keep the latest component callback so the active screen handles credentials.
+    this.activeGoogleCallback = (response: any) => {
+      this.ngZone.run(() => callback(response));
+    };
 
-        console.log('[AuthService] Rendering Google button...');
+    // Wait for Google Identity script to load, then initialize once and render per element.
+    const checkGoogle = setInterval(() => {
+      if (typeof google !== 'undefined' && google.accounts?.id) {
+        clearInterval(checkGoogle);
+
+        if (!this.googleIdentityInitialized) {
+          google.accounts.id.initialize({
+            client_id: clientId,
+            callback: (response: any) => {
+              if (this.activeGoogleCallback) {
+                this.activeGoogleCallback(response);
+              }
+            }
+          });
+          this.googleIdentityInitialized = true;
+        }
+
+        // Re-render for the current container to support navigation between Login/Register.
+        buttonElement.innerHTML = '';
         google.accounts.id.renderButton(buttonElement, {
           type: 'standard',
           theme: 'outline',
@@ -185,17 +189,13 @@ export class AuthService {
           shape: 'rectangular',
           width: '100%'
         });
-
-        this.googleInitialized = true;
-        console.log('[AuthService] Google button rendered successfully');
       }
     }, 100);
 
-    // Timeout after 5 seconds
+    // Timeout after 12 seconds to avoid infinite polling when GIS script is blocked.
     setTimeout(() => {
       clearInterval(checkGoogle);
-      console.warn('[AuthService] Google script load timeout');
-    }, 5000);
+    }, 12000);
   }
 
   // Google Sign-In
@@ -373,3 +373,4 @@ export class AuthService {
     this._error.set(null);
   }
 }
+

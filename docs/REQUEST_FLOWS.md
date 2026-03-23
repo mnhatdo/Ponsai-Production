@@ -1,6 +1,6 @@
 # 🔄 Request Flow Diagrams
 
-Visual representations of how data flows through the Furni application.
+Visual representations of how data flows through the Ponsai application.
 
 ---
 
@@ -278,7 +278,7 @@ User clicks "Add to Cart" on product
 │  Save to localStorage   │
 │  ─────────────────────  │
 │  localStorage.setItem(  │
-│    'furni_cart',        │
+│    'ponsai_cart',        │
 │    JSON.stringify(cart) │
 │  )                      │
 └─────────────────────────┘
@@ -722,3 +722,5 @@ Response or Error
 **Use these diagrams to understand the flow of data through your application!**
 
 *Last Updated: December 31, 2025*
+
+

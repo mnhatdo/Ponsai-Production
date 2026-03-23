@@ -6,7 +6,7 @@ const User = mongoose.model('User', UserSchema, 'users');
 
 async function listAllUsers() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/furni');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ponsai');
     
     console.log('\n=== ALL USERS IN DATABASE ===\n');
     
@@ -36,3 +36,4 @@ async function listAllUsers() {
 }
 
 listAllUsers();
+

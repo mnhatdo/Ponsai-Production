@@ -37,7 +37,7 @@ export const sendMessage = async (
       return res.status(503).json({
         success: false,
         error: 'Chatbot service is currently unavailable',
-        message: 'Please contact support@furni.vn for assistance'
+        message: 'Please contact support@ponsai.vn for assistance'
       });
     }
 
@@ -131,3 +131,4 @@ export default {
   getChatbotStatus,
   getQuickRepliesList
 };
+
