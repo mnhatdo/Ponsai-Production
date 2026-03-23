@@ -4,20 +4,12 @@ import { RouterModule } from '@angular/router';
 import { ProductService } from '@core/services/product.service';
 import { CartService } from '@core/services/cart.service';
 import { Product } from '@models/index';
-import { BonsaiHeroComponent } from '@features/home/components/bonsai-hero.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, BonsaiHeroComponent],
+  imports: [CommonModule, RouterModule],
   template: `
-    <!-- Bonsai 3D Hero Section -->
-    @defer (on immediate) {
-      <app-bonsai-hero></app-bonsai-hero>
-    } @placeholder {
-      <div style="min-height: 100vh; background: #f8f8f8;"></div>
-    }
-
     @defer (on viewport) {
     <!-- Start Product Section -->
     <div class="product-section">
