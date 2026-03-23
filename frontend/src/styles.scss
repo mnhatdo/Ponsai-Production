@@ -18,19 +18,15 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: #2f2f2f;
-  background-image: url('https://cdn.prod.website-files.com/669e3c6c96dec93d4206e7d4/66bc78f7a0270086e8d477b8_texture.png');
-  background-color: #f3f1eb;
-  background-repeat: repeat;
-  background-size: 420px auto;
-  background-position: top left;
-  background-attachment: scroll;
+  background-image: none;
+  background-color: #ffffff;
   min-height: 100vh;
 }
 
 app-root {
   display: block;
   min-height: 100vh;
-  background: transparent;
+  background: #ffffff;
 }
 
 :root {
@@ -53,6 +49,12 @@ app-root {
   width: 100%;
 }
 
+/* Hide page hero blocks globally per UX requirement */
+.hero,
+.hero.hero-small {
+  display: none !important;
+}
+
 @media (max-width: 991.98px) {
   :root {
     --hero-menu-offset: 4.5rem;
@@ -60,7 +62,7 @@ app-root {
   }
 }
 
-/* Show global texture through main site sections */
+/* Unify page backgrounds to white and remove previous texture/pattern look */
 .untree_co-section,
 .product-section,
 .why-choose-section,
@@ -73,7 +75,7 @@ app-root {
 .auth-section,
 .profile-section,
 .order-detail-section {
-  background-color: transparent !important;
+  background-color: #ffffff !important;
 }
 
 /* Container */

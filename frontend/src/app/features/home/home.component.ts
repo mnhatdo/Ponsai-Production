@@ -1,9 +1,25 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { ProductService } from '@core/services/product.service';
 import { CartService } from '@core/services/cart.service';
+import { environment } from '@environments/environment';
 import { Product } from '@models/index';
+
+interface BlogPost {
+  id: string;
+  title: string;
+  link: string;
+  pubDate: string;
+  author: string;
+  image: string;
+}
+
+interface BlogResponse {
+  success: boolean;
+  data: BlogPost[];
+}
 
 @Component({
   selector: 'app-home',
@@ -229,42 +245,51 @@ import { Product } from '@models/index';
         </div>
 
         <div class="row recent-blog-grid">
-
-          <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-            <div class="post-entry">
-              <a href="#" class="post-thumbnail"><img src="assets/images/post-1.jpg" alt="Blog Post" class="img-fluid" loading="lazy" decoding="async"></a>
-              <div class="post-content-entry">
-                <h3><a href="#">Winter Care: What Changes, What Doesn’t</a></h3>
-                <div class="meta">
-                  <span>by <a href="#">PONSAI Team</a></span> <span>on <a href="#">Jan 5, 2026</a></span>
-                </div>
+          @if (isLoadingBlogs()) {
+            <div class="col-12 text-center py-4">
+              <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Loading blog posts...</span>
               </div>
             </div>
-          </div>
-
-          <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-            <div class="post-entry">
-              <a href="#" class="post-thumbnail"><img src="assets/images/post-2.jpg" alt="Blog Post" class="img-fluid" loading="lazy" decoding="async"></a>
-              <div class="post-content-entry">
-                <h3><a href="#">Choosing Your First Bonsai Species</a></h3>
-                <div class="meta">
-                  <span>by <a href="#">Sarah Kim</a></span> <span>on <a href="#">Dec 28, 2025</a></span>
-                </div>
+          } @else {
+            @for (post of recentPosts(); track trackByBlogId($index, post)) {
+              <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0 d-flex">
+                <article class="post-entry">
+                  <a [href]="post.link" target="_blank" rel="noopener" class="post-thumbnail">
+                    <img
+                      [src]="post.image || 'assets/images/post-1.jpg'"
+                      [alt]="post.title"
+                      class="img-fluid"
+                      loading="lazy"
+                      decoding="async"
+                      (error)="onBlogImageError($event)"
+                    >
+                  </a>
+                  <div class="post-content-entry">
+                    <h3>
+                      <a [href]="post.link" target="_blank" rel="noopener">{{ post.title }}</a>
+                    </h3>
+                    <div class="meta">
+                      <span>by <a [href]="post.link" target="_blank" rel="noopener">{{ post.author || 'PONSAI Team' }}</a></span>
+                      <span>on <a [href]="post.link" target="_blank" rel="noopener">{{ formatBlogDate(post.pubDate) }}</a></span>
+                    </div>
+                  </div>
+                </article>
               </div>
-            </div>
-          </div>
+            }
 
-          <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-            <div class="post-entry">
-              <a href="#" class="post-thumbnail"><img src="assets/images/post-3.jpg" alt="Blog Post" class="img-fluid" loading="lazy" decoding="async"></a>
-              <div class="post-content-entry">
-                <h3><a href="#">Repotting: When and How</a></h3>
-                <div class="meta">
-                  <span>by <a href="#">Li Zhang</a></span> <span>on <a href="#">Dec 15, 2025</a></span>
-                </div>
+            @if (!recentPosts().length && !blogLoadError()) {
+              <div class="col-12 text-center py-4 text-muted">
+                Blog posts are being updated. Please check back shortly.
               </div>
-            </div>
-          </div>
+            }
+
+            @if (blogLoadError()) {
+              <div class="col-12 text-center py-4 text-muted">
+                Unable to load blog posts at the moment.
+              </div>
+            }
+          }
 
         </div>
       </div>
@@ -476,10 +501,6 @@ import { Product } from '@models/index';
       }
     }
 
-    .recent-blog-grid > [class*='col-'] {
-      display: flex;
-    }
-
     .recent-blog-grid .post-entry {
       display: flex;
       flex-direction: column;
@@ -489,20 +510,21 @@ import { Product } from '@models/index';
 
     .recent-blog-grid .post-thumbnail {
       display: block;
-      width: 100%;
-      aspect-ratio: 4 / 3;
+      margin-bottom: 20px;
       overflow: hidden;
-      border-radius: 18px;
-      background: #edf1f4;
-      margin-bottom: 1.25rem;
+      border-radius: 8px;
     }
 
     .recent-blog-grid .post-thumbnail img {
       width: 100%;
-      height: 100%;
+      height: 220px;
       object-fit: cover;
-      object-position: center;
-      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .recent-blog-grid .post-entry:hover .post-thumbnail img {
+      transform: scale(1.05);
+      opacity: 0.9;
     }
 
     .recent-blog-grid .post-content-entry {
@@ -512,32 +534,74 @@ import { Product } from '@models/index';
     }
 
     .recent-blog-grid .post-content-entry h3 {
-      margin-bottom: 0.8rem;
-      min-height: calc(1.4em * 2);
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
       line-height: 1.4;
+      min-height: calc(1.4em * 2);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .recent-blog-grid .post-content-entry h3 a {
+      color: #2f2f2f;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .recent-blog-grid .post-content-entry h3 a:hover {
+      color: #153243;
     }
 
     .recent-blog-grid .meta {
+      font-size: 14px;
+      color: #6c757d;
       margin-top: auto;
+    }
+
+    .recent-blog-grid .meta a {
+      color: #153243;
+      text-decoration: none;
+    }
+
+    .recent-blog-grid .meta a:hover {
+      text-decoration: underline;
+    }
+
+    .recent-blog-grid .meta span {
+      margin-right: 10px;
     }
 
     @media (max-width: 767.98px) {
       .recent-blog-grid .post-thumbnail {
-        aspect-ratio: 16 / 11;
+        margin-bottom: 16px;
+      }
+
+      .recent-blog-grid .post-thumbnail img {
+        height: 200px;
       }
     }
   `]
 })
 export class HomeComponent implements OnInit {
+  private http = inject(HttpClient);
   private productService = inject(ProductService);
   private cartService = inject(CartService);
+  private apiUrl = `${environment.apiUrl}/blog`;
 
   featuredProducts = signal<Product[]>([]);
   isLoading = signal<boolean>(true);
   hasError = signal<boolean>(false);
+  recentPosts = signal<BlogPost[]>([]);
+  isLoadingBlogs = signal<boolean>(true);
+  blogLoadError = signal<boolean>(false);
 
   ngOnInit(): void {
     this.loadFeaturedProducts();
+    this.loadRecentBlogPosts();
   }
 
   loadFeaturedProducts(): void {
@@ -596,5 +660,52 @@ export class HomeComponent implements OnInit {
 
   trackByProductId(_index: number, product: Product): string {
     return product._id;
+  }
+
+  loadRecentBlogPosts(): void {
+    this.isLoadingBlogs.set(true);
+    this.blogLoadError.set(false);
+
+    this.http.get<BlogResponse>(this.apiUrl).subscribe({
+      next: (response) => {
+        if (!response?.success || !Array.isArray(response.data)) {
+          this.recentPosts.set([]);
+          this.blogLoadError.set(true);
+          this.isLoadingBlogs.set(false);
+          return;
+        }
+
+        const newestFirst = [...response.data].sort((a, b) => {
+          return new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime();
+        });
+
+        this.recentPosts.set(newestFirst.slice(0, 3));
+        this.isLoadingBlogs.set(false);
+      },
+      error: (err) => {
+        console.error('Error loading recent blog posts:', err);
+        this.recentPosts.set([]);
+        this.blogLoadError.set(true);
+        this.isLoadingBlogs.set(false);
+      }
+    });
+  }
+
+  formatBlogDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  }
+
+  onBlogImageError(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    img.src = 'assets/images/post-1.jpg';
+  }
+
+  trackByBlogId(_index: number, post: BlogPost): string {
+    return post.id;
   }
 }
