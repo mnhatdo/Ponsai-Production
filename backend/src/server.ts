@@ -25,7 +25,8 @@ import momoService from './services/momoService';
 const app: Application = express();
 
 // Environment variables
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const API_PREFIX = process.env.API_PREFIX || '/api';
 const API_VERSION = process.env.API_VERSION || 'v1';
@@ -143,29 +144,37 @@ app.use(errorHandler);
 // Database connection and server start
 const startServer = async () => {
   try {
-    // Connect to MongoDB
-    await connectDatabase();
-
-    // Initialize MOMO service
-    momoService.init();
-    
     // Start server
-    app.listen(PORT, () => {
+    app.listen(PORT, HOST, () => {
       console.log(`
 ╔════════════════════════════════════════════════════════════╗
 ║                                                            ║
 ║   🌱 Ponsai Backend Server Running                    ║
 ║                                                            ║
 ║   Environment: ${NODE_ENV.padEnd(42)}║
+║   Host:        ${HOST.padEnd(42)}║
 ║   Port:        ${String(PORT).padEnd(42)}║
-║   API:         http://localhost:${PORT}${API_PREFIX}/${API_VERSION}${' '.repeat(15)}║
-║   Health:      http://localhost:${PORT}/health${' '.repeat(20)}║
+║   API:         http://${HOST}:${PORT}${API_PREFIX}/${API_VERSION}${' '.repeat(14)}║
+║   Health:      http://${HOST}:${PORT}/health${' '.repeat(19)}║
 ║                                                            ║
-║   Database:    Connected ✓                                ║
+║   Database:    Connecting...                              ║
 ║                                                            ║
 ╚════════════════════════════════════════════════════════════╝
       `);
     });
+
+    // Connect to MongoDB in background so port binding is never blocked.
+    connectDatabase().then(() => {
+      console.log('Database connection established. Service is ready.');
+    }).catch((error) => {
+      console.error('Database connection failed during startup:', error);
+      if (SHOULD_EXIT_ON_FATAL) {
+        console.error('Running without database connection. Readiness endpoint will remain 503.');
+      }
+    });
+
+    // Initialize MOMO service
+    momoService.init();
 
     // Initialize email service in background so SMTP issues do not block startup.
     initEmailService().catch((error) => {
