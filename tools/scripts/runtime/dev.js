@@ -129,7 +129,7 @@ async function runDevelopment() {
   log('\n🌱 Ponsai Full-Stack Development Environment', 'bright');
   log('==========================================\n', 'bright');
   
-  const rootDir = __dirname;
+  const rootDir = path.resolve(__dirname, '..', '..', '..');
   const frontendDir = path.join(rootDir, 'frontend');
   const backendDir = path.join(rootDir, 'backend');
   

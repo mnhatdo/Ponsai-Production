@@ -55,15 +55,15 @@ npm run setup
 
 ```powershell
 # PowerShell
-.\setup-ml-system.ps1
+.\tools\scripts\setup\setup-ml-system.ps1
 
 # Hoặc Batch
-setup-ml-system.bat
+tools\scripts\setup\setup-ml-system.bat
 ```
 
 Tài liệu ML:
 - [FORECAST_QUICKSTART.md](FORECAST_QUICKSTART.md)
-- [ml-service/README.md](ml-service/README.md)
+- [ml-service/README.md](../../ml-service/README.md)
 
 ### Step 3: Start MongoDB
 

@@ -2,10 +2,10 @@
   "name": "ponsai-fullstack",
   "version": "2.0.0",
   "description": "Full-stack bonsai e-commerce application - Ponsai (Angular + Node.js/Express/MongoDB)",
-  "main": "index.js",
+  "main": "tools/scripts/runtime/index.js",
   "scripts": {
-    "setup": "node setup.js",
-    "dev": "node dev.js",
+    "setup": "node tools/scripts/runtime/setup.js",
+    "dev": "node tools/scripts/runtime/dev.js",
     "start": "npm run start:backend",
     "postinstall": "npm --prefix backend install && npm --prefix backend run build",
     "start:backend": "cd backend && npm start",

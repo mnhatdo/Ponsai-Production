@@ -27,7 +27,7 @@ interface AdminNotification {
         <div class="sidebar-header">
           <a routerLink="/admin" class="logo" aria-label="Admin Dashboard Home">
             <span class="logo-mark" aria-hidden="true">
-              <img src="assets/favicon.png" alt="Ponsai logo" class="logo-image">
+              <img src="assets/images/P-logo.png" alt="Ponsai logo" class="logo-image">
             </span>
             <span class="logo-content">
               <span class="logo-text">{{ projectName }}</span>

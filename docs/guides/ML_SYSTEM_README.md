@@ -166,7 +166,7 @@ User-friendly admin interface for:
 
 ```powershell
 # Run automated setup
-.\setup-ml-system.ps1
+.\tools\scripts\setup\setup-ml-system.ps1
 ```
 
 ### Manual Setup
@@ -464,8 +464,8 @@ Where:
 
 1. **aggregate-metrics.js** - Aggregates historical data for ML training
 2. **generate-test-data.js** - Creates realistic test data (90 days)
-3. **setup-ml-system.bat** - Windows automated setup
-4. **setup-ml-system.ps1** - PowerShell setup with color output
+3. **tools/scripts/setup/setup-ml-system.bat** - Windows automated setup
+4. **tools/scripts/setup/setup-ml-system.ps1** - PowerShell setup with color output
 
 ### Files Created/Modified Summary
 
@@ -598,7 +598,7 @@ Response: 200 OK
 - [ ] 2GB+ free disk space
 
 #### Installation Phase
-- [ ] Run `.\setup-ml-system.ps1` OR manual setup completed
+- [ ] Run `.\tools\scripts\setup\setup-ml-system.ps1` OR manual setup completed
 - [ ] Backend dependencies installed (`backend/node_modules`)
 - [ ] Frontend dependencies installed (`frontend/node_modules`)
 - [ ] ML service venv created (`ml-service/venv`)
@@ -974,3 +974,6 @@ MIT License - See LICENSE file for details
 ## 👨‍💻 AUTHORS
 
 Advanced Web Development Project 2026
+
+
+

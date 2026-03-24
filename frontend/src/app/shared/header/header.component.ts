@@ -1,4 +1,4 @@
-import { Component, inject, computed } from '@angular/core';
+import { Component, HostListener, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -12,17 +12,17 @@ import { LanguageSwitcherComponent } from '@core/components/language-switcher/la
   standalone: true,
   imports: [CommonModule, RouterModule, TranslateModule, LanguageSwitcherComponent],
   template: `
-    <nav class="minimal-nav">
+    <nav class="minimal-nav" [class.nav-hidden]="!isHeaderVisible">
       <div class="nav-inner">
 
         <a class="logo-wrap" routerLink="/">
           <div class="logo-tab">
-            <img src="assets/images/logo.png" alt="Ponsai" class="logo-img">
+            <img src="assets/images/P-logo.png" alt="Ponsai" class="logo-img">
           </div>
         </a>
 
         <!-- Hamburger Icon for Mobile -->
-        <div class="hamburger-menu d-md-none" (click)="toggleMobileMenu()">
+        <div class="hamburger-menu" (click)="toggleMobileMenu()">
           <i class="bi" [class.bi-list]="!isMobileMenuOpen" [class.bi-x]="isMobileMenuOpen" style="font-size: 1.5rem;"></i>
         </div>
 
@@ -100,7 +100,6 @@ import { LanguageSwitcherComponent } from '@core/components/language-switcher/la
   `,
   styles: [`
     .minimal-nav {
-      background: transparent;
       position: fixed;
       top: 1rem;
       left: 0;
@@ -108,6 +107,12 @@ import { LanguageSwitcherComponent } from '@core/components/language-switcher/la
       z-index: 3000;
       font-family: Inter, sans-serif;
       padding: 0 1.5rem;
+      transform: translateY(0);
+      transition: transform 0.28s ease;
+    }
+
+    .minimal-nav.nav-hidden {
+      transform: translateY(-140%);
     }
 
     .nav-inner {
@@ -120,11 +125,11 @@ import { LanguageSwitcherComponent } from '@core/components/language-switcher/la
       height: 72px;
       position: relative;
       border-radius: 999px;
-      background: rgba(239, 242, 246, 0.56);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(5px) ;
-      -webkit-backdrop-filter: blur(14px) saturate(1.15);
-      box-shadow: 0 10px 30px rgba(18, 34, 52, 0.16);
+      background: linear-gradient(130deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.14));
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
+      box-shadow: 0 18px 36px rgba(12, 27, 44, 0.2);
     }
 
     .logo-wrap {
@@ -145,6 +150,20 @@ import { LanguageSwitcherComponent } from '@core/components/language-switcher/la
       height: 48px;
       width: auto;
       object-fit: contain;
+    }
+
+    .hamburger-menu {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      color: rgba(11, 30, 48, 0.85);
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      cursor: pointer;
+      justify-self: center;
     }
 
     .nav-links {
@@ -397,8 +416,43 @@ import { LanguageSwitcherComponent } from '@core/components/language-switcher/la
     }
 
     @media (max-width: 860px) {
+      .nav-inner {
+        grid-template-columns: auto auto auto;
+        padding: 0 0.75rem;
+      }
+
+      .hamburger-menu {
+        display: inline-flex;
+      }
+
       .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
         display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.3rem;
+        padding: 0.85rem;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 16px 28px rgba(16, 34, 52, 0.18);
+      }
+
+      .nav-links.mobile-open {
+        display: flex;
+      }
+
+      .nav-links li a {
+        justify-content: flex-start;
+      }
+
+      .nav-actions {
+        gap: 0.35rem;
       }
     }
   `]
@@ -408,6 +462,8 @@ export class HeaderComponent {
   private authService = inject(AuthService);
 
   isMobileMenuOpen = false;
+  isHeaderVisible = true;
+  private lastScrollY = 0;
 
   cartItemCount = computed(() => this.cartService.getItemCount());
   currentUser = toSignal(this.authService.currentUser$, {
@@ -422,7 +478,35 @@ export class HeaderComponent {
     this.authService.logout();
   }
 
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    const currentScrollY = window.scrollY || 0;
+
+    if (currentScrollY <= 70) {
+      this.isHeaderVisible = true;
+      this.lastScrollY = currentScrollY;
+      return;
+    }
+
+    if (this.isMobileMenuOpen) {
+      this.isHeaderVisible = true;
+      this.lastScrollY = currentScrollY;
+      return;
+    }
+
+    this.isHeaderVisible = currentScrollY < this.lastScrollY;
+    this.lastScrollY = currentScrollY;
+  }
+
+  @HostListener('window:mousemove', ['$event'])
+  onWindowMouseMove(event: MouseEvent): void {
+    if (event.clientY <= 90) {
+      this.isHeaderVisible = true;
+    }
+  }
+
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    this.isHeaderVisible = true;
   }
 }

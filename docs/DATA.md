@@ -391,7 +391,7 @@ Or skip duplicates by checking `externalId` before insert.
 
 - [Backend Models](../backend/src/models/Product.ts) - Product schema definition
 - [API Endpoints](API.md#products) - Product API reference
-- [Database Setup](QUICK_START.md#step-3-start-mongodb) - MongoDB configuration
+- [Database Setup](./guides/QUICK_START.md#step-3-start-mongodb) - MongoDB configuration
 
 ---
 
@@ -406,5 +406,6 @@ Or skip duplicates by checking `externalId` before insert.
 ---
 
 *Last Updated: December 31, 2025*
+
 
 

@@ -14,7 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
           <div class="row g-4 footer-content">
             <div class="col-12 col-sm-6 col-lg-3">
               <a routerLink="/" class="footer-logo">
-                <img src="assets/images/logo.png" alt="Ponsai Logo" class="footer-brand-logo">
+                <img src="assets/images/P-logo.png" alt="Ponsai Logo" class="footer-brand-logo">
               </a>
               <p class="copyright mb-0">
                 <small>© {{ currentYear }} Ponsai</small>
@@ -22,7 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
             </div>
 
             <div class="col-6 col-sm-6 col-lg-2">
-              <h3>{{ 'footer.aboutUs' | translate }}</h3>
+              <h3>Company</h3>
               <ul class="list-unstyled links mb-0">
                 <li><a routerLink="/about">{{ 'footer.aboutUs' | translate }}</a></li>
                 <li><a routerLink="/services">{{ 'nav.services' | translate }}</a></li>
@@ -32,38 +32,30 @@ import { TranslateModule } from '@ngx-translate/core';
             </div>
 
             <div class="col-6 col-sm-6 col-lg-2">
-              <h3>{{ 'footer.support' | translate }}</h3>
+              <h3>Shopping</h3>
               <ul class="list-unstyled links mb-0">
-                <li><a href="#">{{ 'footer.support' | translate }}</a></li>
-                <li><a href="#">{{ 'footer.knowledge' | translate }}</a></li>
-                <li><a href="#">{{ 'footer.liveChat' | translate }}</a></li>
+                <li><a routerLink="/shop">{{ 'nav.products' | translate }}</a></li>
+                <li><a routerLink="/cart">Cart</a></li>
+                <li><a routerLink="/profile" [queryParams]="{tab: 'orders'}">My Orders</a></li>
               </ul>
             </div>
 
             <div class="col-6 col-sm-6 col-lg-2">
-              <h3>{{ 'footer.ourTeam' | translate }}</h3>
+              <h3>Support</h3>
               <ul class="list-unstyled links mb-0">
-                <li><a href="#">{{ 'footer.jobs' | translate }}</a></li>
-                <li><a href="#">{{ 'footer.ourTeam' | translate }}</a></li>
-                <li><a href="#">{{ 'footer.leadership' | translate }}</a></li>
-                <li><a href="#">{{ 'footer.privacyPolicy' | translate }}</a></li>
+                <li><a routerLink="/contact">Contact</a></li>
+                <li><a routerLink="/services">Care Services</a></li>
+                <li><a routerLink="/blog">Care Blog</a></li>
               </ul>
             </div>
 
             <div class="col-6 col-sm-6 col-lg-3">
-              <h3>{{ 'footer.followUs' | translate }}</h3>
-              <ul class="list-unstyled social mb-3">
-                <li><a href="#" aria-label="Facebook"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-                <li><a href="#" aria-label="Twitter"><span class="fa fa-brands fa-twitter"></span></a></li>
-                <li><a href="#" aria-label="Instagram"><span class="fa fa-brands fa-instagram"></span></a></li>
-                <li><a href="#" aria-label="LinkedIn"><span class="fa fa-brands fa-linkedin"></span></a></li>
-                <li><a href="#" aria-label="Newsletter"><span class="fa fa-paper-plane"></span></a></li>
-              </ul>
+              <h3>Quick Access</h3>
               <ul class="list-unstyled links mb-0">
-                <li><a routerLink="/shop">{{ 'footer.bonsaiTrees' | translate }}</a></li>
-                <li><a routerLink="/shop">{{ 'footer.pots' | translate }}</a></li>
-                <li><a routerLink="/shop">{{ 'footer.tools' | translate }}</a></li>
-                <li><a href="#">{{ 'footer.termsOfService' | translate }}</a></li>
+                <li><a routerLink="/">Home</a></li>
+                <li><a routerLink="/auth/login">Login</a></li>
+                <li><a routerLink="/profile">Profile</a></li>
+                <li><a routerLink="/admin">Admin</a></li>
               </ul>
             </div>
           </div>
@@ -74,10 +66,13 @@ import { TranslateModule } from '@ngx-translate/core';
   styles: [`
     .footer-20192 {
       position: relative;
-      color: #fff;
-      padding: 7rem 0 4rem;
-      margin-top: 7rem;
-      background-color: var(--deep-space-blue);
+      color: #000;
+      padding: clamp(1.5rem, 3vw, 2.2rem) 0;
+      min-height: 25vh;
+      margin-top: 4rem;
+      display: flex;
+      align-items: center;
+      background-color: #beee62;
     }
 
     .footer-20192 .site-section {
@@ -97,7 +92,7 @@ import { TranslateModule } from '@ngx-translate/core';
       margin-bottom: 10px;
       margin-top: 0;
       line-height: 1.5;
-      color: #fff;
+      color: #000;
       font-weight: 600;
     }
 
@@ -108,7 +103,7 @@ import { TranslateModule } from '@ngx-translate/core';
     }
 
     .footer-20192 .links li a {
-      color: rgba(255, 255, 255, 0.65);
+      color: #000;
       text-decoration: none;
       transition: color 0.3s ease;
     }
@@ -117,51 +112,17 @@ import { TranslateModule } from '@ngx-translate/core';
       color: #fff;
     }
 
-    .footer-20192 .social {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding-left: 0;
-    }
-
-    .footer-20192 .social li {
-      display: inline-block;
-      position: relative;
-    }
-
-    .footer-20192 .social li a {
-      position: relative;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-      background-color: var(--yale-blue);
-      color: #fff;
-      transition: all 0.3s ease;
-    }
-
-    .footer-20192 .social li a:hover {
-      background-color: var(--lemon-lime);
-      color: var(--deep-space-blue);
-      transform: translateY(-2px);
-    }
-
     .footer-20192 .footer-logo {
-      color: #fff;
+      color: #000;
       font-size: 20px;
       letter-spacing: 0.1rem;
       text-decoration: none;
       display: inline-block;
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
     }
 
     .footer-brand-logo {
-      height: 64px;
+      height: 56px;
       width: auto;
       max-width: 240px;
       object-fit: cover;
@@ -171,23 +132,24 @@ import { TranslateModule } from '@ngx-translate/core';
     }
 
     .footer-20192 .copyright {
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(0, 0, 0, 0.72);
       margin-top: 0.75rem;
     }
 
     @media (max-width: 991.98px) {
       .footer-20192 {
-        margin-top: 5rem;
+        margin-top: 3.5rem;
       }
     }
 
     @media (max-width: 767.98px) {
       .footer-20192 {
-        padding-top: 5.5rem;
+        min-height: auto;
+        padding-top: 1.8rem;
       }
 
       .footer-brand-logo {
-        height: 56px;
+        height: 48px;
       }
     }
   `]

@@ -224,7 +224,7 @@ a {
       padding-top: 66.67%; /* 2/3 = 66.67% for 3:2 aspect ratio */
       overflow: hidden;
       background: #f8f9fa;
-      z-index: -2;
+      z-index: 2;
       border-radius: 10px;
       margin-bottom: 30px;
       top: 0;
@@ -240,6 +240,7 @@ a {
       height: 100%;
       object-fit: cover; /* Crop to fit, no distortion */
       object-position: center;
+      z-index: 3;
       margin-bottom: 0;
     }
     /* Product Info - Fixed Structure */
@@ -321,7 +322,7 @@ a {
       content: "";
       background: #e8ffb7;
       height: 0%;
-      z-index: -1;
+      z-index: 0;
       border-radius: 10px;
       -webkit-transition: .3s all ease;
       -o-transition: .3s all ease;

@@ -101,8 +101,8 @@ CI workflow path:
 - docs/ARCHITECTURE.md
 - docs/FRONTEND.md
 - docs/INDEX.md
-- QUICK_START.md
-- FORECAST_QUICKSTART.md
+- docs/guides/QUICK_START.md
+- docs/guides/FORECAST_QUICKSTART.md
 
 ## License
 
@@ -117,4 +117,6 @@ Contributions are welcome! Please read our contributing guidelines before submit
 **Original Template**: Ponsai by [Untree.co](https://untree.co/)  
 **Developed by**: Ki8 Development Team  
 **Last Updated**: January 8, 2026
+
+
 

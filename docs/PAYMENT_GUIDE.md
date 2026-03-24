@@ -307,4 +307,5 @@ Check `paymentStatus` field for current status.
 
 ---
 
-For more information, see the main [README.md](../README.md) or [QUICK_START.md](../QUICK_START.md).
+For more information, see the main [README.md](../README.md) or [QUICK_START.md](./guides/QUICK_START.md).
+

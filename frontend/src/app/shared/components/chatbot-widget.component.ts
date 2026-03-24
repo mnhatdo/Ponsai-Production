@@ -25,7 +25,7 @@ import { ChatbotService, ChatMessage } from '@core/services/chatbot.service';
       <div class="chatbot-header">
         <div class="header-content">
           <div class="chatbot-avatar">
-            <img src="assets/images/logo.png" alt="Ponsai Logo">
+            <img src="assets/images/P-logo.png" alt="Ponsai Logo">
           </div>
           <div class="header-text">
             <h3>Trợ lí Ponsai</h3>

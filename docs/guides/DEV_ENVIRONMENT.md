@@ -36,7 +36,7 @@ Both commands launch the **smart development script** that:
 ```
 Root Package.json
      │
-     ├──> dev.js (Smart Launcher)
+     ├──> tools/scripts/runtime/dev.js (Smart Launcher)
      │       │
      │       ├──> Check Dependencies
      │       │    ├─ Root node_modules
@@ -57,7 +57,7 @@ Root Package.json
 
 ### Smart Dependency Management
 
-The `dev.js` script intelligently:
+The `tools/scripts/runtime/dev.js` script intelligently:
 
 - **Detects** missing `node_modules` directories
 - **Installs** dependencies only where needed
@@ -165,7 +165,7 @@ export const environment = {
 
 To add additional services (e.g., Redis, ElasticSearch):
 
-1. **Update `dev.js`:**
+1. **Update `tools/scripts/runtime/dev.js`:**
 
 ```javascript
 // Around line 90, after backend starts
@@ -188,7 +188,7 @@ process.on('SIGINT', () => {
 {
   "scripts": {
     "dev:redis": "redis-server",
-    "dev:all": "node dev.js"
+    "dev:all": "node tools/scripts/runtime/dev.js"
   }
 }
 ```
@@ -547,5 +547,9 @@ The unified development environment provides:
 **Primary command to remember:** `npm run dev` or `npm start`
 
 Everything else is handled automatically! 🎉
+
+
+
+
 
 

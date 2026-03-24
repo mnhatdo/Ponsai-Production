@@ -14,9 +14,9 @@ This index helps you navigate all documentation and find what you need quickly.
 New to this project? Read these in order:
 
 1. **[README.md](../README.md)** - Project overview, tech stack, features
-2. **[QUICK_START.md](../QUICK_START.md)** - 5-minute setup guide
-3. **[DEV_ENVIRONMENT.md](../DEV_ENVIRONMENT.md)** - Development workflow
-4. **[FORECAST_QUICKSTART.md](../FORECAST_QUICKSTART.md)** - ML forecast quick start
+2. **[QUICK_START.md](./guides/QUICK_START.md)** - 5-minute setup guide
+3. **[DEV_ENVIRONMENT.md](./guides/DEV_ENVIRONMENT.md)** - Development workflow
+4. **[FORECAST_QUICKSTART.md](./guides/FORECAST_QUICKSTART.md)** - ML forecast quick start
 
 Archived root docs (historical):
 - **[docs/changelogs/archive](changelogs/archive)** - Snapshot reports and superseded setup guides
@@ -73,7 +73,7 @@ Archived root docs (historical):
 ### Frontend Developer
 
 **Essential Reading:**
-1. [QUICK_START.md](../QUICK_START.md) - Get setup
+1. [QUICK_START.md](./guides/QUICK_START.md) - Get setup
 2. [ARCHITECTURE.md](ARCHITECTURE.md) - Frontend architecture
 3. [FRONTEND.md](FRONTEND.md) - Angular 18 implementation
 4. [API.md](API.md) - Backend endpoints
@@ -88,7 +88,7 @@ Archived root docs (historical):
 ### Backend Developer
 
 **Essential Reading:**
-1. [QUICK_START.md](../QUICK_START.md) - Get setup
+1. [QUICK_START.md](./guides/QUICK_START.md) - Get setup
 2. [ARCHITECTURE.md](ARCHITECTURE.md) - Backend architecture
 3. [API.md](API.md) - Endpoint specifications
 4. [DATA.md](DATA.md) - MongoDB schema
@@ -124,7 +124,7 @@ Archived root docs (historical):
 **Essential Reading:**
 1. [DEPLOYMENT.md](DEPLOYMENT.md) - Multi-platform deployment
 2. [ARCHITECTURE.md](ARCHITECTURE.md) - System components
-3. [DEV_ENVIRONMENT.md](../DEV_ENVIRONMENT.md) - Local setup
+3. [DEV_ENVIRONMENT.md](./guides/DEV_ENVIRONMENT.md) - Local setup
 
 **Infrastructure:**
 - Node.js 18+ backend
@@ -138,8 +138,8 @@ Archived root docs (historical):
 
 ### Setting Up Development
 
-1. [QUICK_START.md](../QUICK_START.md) - 5-minute quick start
-2. [DEV_ENVIRONMENT.md](../DEV_ENVIRONMENT.md) - Development workflow
+1. [QUICK_START.md](./guides/QUICK_START.md) - 5-minute quick start
+2. [DEV_ENVIRONMENT.md](./guides/DEV_ENVIRONMENT.md) - Development workflow
 3. [CONTRIBUTING.md](CONTRIBUTING.md) - Code conventions
 
 ### Implementing Payment Features
@@ -237,8 +237,8 @@ The following docs have been **consolidated** into newer comprehensive guides:
 ### Getting Started Sequence
 ```
 README.md 
-  → QUICK_START.md 
-  → DEV_ENVIRONMENT.md 
+  → docs/guides/QUICK_START.md 
+  → docs/guides/DEV_ENVIRONMENT.md 
   → ARCHITECTURE.md 
   → API.md
 ```
@@ -288,7 +288,7 @@ When writing new documentation:
 **Read these:**
 1. [Deployment Guide](DEPLOYMENT.md) - All deployment methods
 2. [Architecture](ARCHITECTURE.md) - System design
-3. [Quick Start](../QUICK_START.md) - Environment setup
+3. [Quick Start](./guides/QUICK_START.md) - Environment setup
 
 ### I'm a Business Analyst
 **Read these:**
@@ -301,7 +301,7 @@ When writing new documentation:
 ## 🔍 Find Information By Question
 
 ### "How do I get started?"
-→ [QUICK_START.md](../QUICK_START.md)
+→ [QUICK_START.md](./guides/QUICK_START.md)
 
 ### "What's the project structure?"
 → [WORKSPACE_OVERVIEW.md](../WORKSPACE_OVERVIEW.md)
@@ -329,7 +329,7 @@ When writing new documentation:
 ## 💡 Common Questions
 
 ### "How do I get started?"
-→ [QUICK_START.md](../QUICK_START.md)
+→ [QUICK_START.md](./guides/QUICK_START.md)
 
 ### "How do I deploy?"
 → [DEPLOYMENT.md](DEPLOYMENT.md)
@@ -356,4 +356,9 @@ When writing new documentation:
 **Happy Reading! 📚**
 
 *Your comprehensive guide to the Ponsai full-stack application*
+
+
+
+
+
 
