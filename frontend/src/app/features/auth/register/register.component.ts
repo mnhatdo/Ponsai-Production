@@ -146,8 +146,15 @@ type RegistrationStep = 'form' | 'otp' | 'success';
                       #passwordInput="ngModel"
                     >
                     <button type="button" class="password-toggle" (click)="togglePassword()">
-                      <i *ngIf="!showPassword()" class="gi gi-info-circle" aria-hidden="true"></i>
-                      <i *ngIf="showPassword()" class="gi gi-ui-close" aria-hidden="true"></i>
+                      <svg *ngIf="!showPassword()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                      </svg>
+                      <svg *ngIf="showPassword()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
+                        <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
+                        <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
+                      </svg>
                     </button>
                   </div>
                   <div class="password-strength" *ngIf="registerData.password">
@@ -335,14 +342,14 @@ type RegistrationStep = 'form' | 'otp' | 'success';
   `,
   styles: [`
     :host {
-      --nm-bg: #E0E5EC;
-      --nm-fg: #3D4852;
-      --nm-muted: #6B7280;
-      --nm-accent: #6C63FF;
-      --nm-accent-light: #8B84FF;
-      --nm-success: #38B2AC;
-      --nm-shadow-light: rgba(255, 255, 255, 0.58);
-      --nm-shadow-dark: rgba(163, 177, 198, 0.68);
+      --nm-bg: #f3f7f1;
+      --nm-fg: #1f2c2b;
+      --nm-muted: #5f6b68;
+      --nm-accent: #1e6b52;
+      --nm-accent-light: #2f8a67;
+      --nm-success: #2f8a67;
+      --nm-shadow-light: rgba(255, 255, 255, 0.7);
+      --nm-shadow-dark: rgba(29, 55, 45, 0.12);
       --nm-radius-lg: 24px;
       --nm-radius-md: 14px;
     }
@@ -367,15 +374,14 @@ type RegistrationStep = 'form' | 'otp' | 'success';
     }
 
     .auth-section {
-      padding: 2rem 0 6rem;
+      padding: calc(var(--hero-menu-offset) + 1.25rem) 0 6rem;
     }
 
     .auth-card {
-      background: var(--nm-bg);
+      background: #ffffff;
       border-radius: var(--nm-radius-lg);
-      box-shadow:
-        12px 12px 24px var(--nm-shadow-dark),
-        -12px -12px 24px var(--nm-shadow-light);
+      border: 1px solid #e2ece3;
+      box-shadow: 0 16px 34px rgba(25, 49, 40, 0.11);
       padding: 2rem;
     }
 
@@ -383,12 +389,10 @@ type RegistrationStep = 'form' | 'otp' | 'success';
       display: flex;
       gap: 0.75rem;
       margin-bottom: 1.7rem;
-      background: var(--nm-bg);
+      background: #edf4ec;
       padding: 0.35rem;
       border-radius: 14px;
-      box-shadow:
-        inset 4px 4px 10px var(--nm-shadow-dark),
-        inset -4px -4px 10px var(--nm-shadow-light);
+      border: 1px solid #deeadf;
     }
 
     .auth-tab {
@@ -405,9 +409,8 @@ type RegistrationStep = 'form' | 'otp' | 'success';
     .auth-tab:hover,
     .auth-tab.active {
       color: var(--nm-accent);
-      box-shadow:
-        6px 6px 12px var(--nm-shadow-dark),
-        -6px -6px 12px var(--nm-shadow-light);
+      background: #ffffff;
+      box-shadow: 0 6px 14px rgba(25, 49, 40, 0.08);
     }
 
     .progress-steps {
@@ -526,19 +529,20 @@ type RegistrationStep = 'form' | 'otp' | 'success';
       right: 16px;
       top: 50%;
       transform: translateY(-50%);
-      background: var(--nm-bg);
-      border: none;
+      background: #ffffff;
+      border: 1px solid #dde8df;
       cursor: pointer;
       color: var(--nm-muted);
       width: 30px;
       height: 30px;
+      padding: 0;
+      line-height: 1;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
-        4px 4px 8px var(--nm-shadow-dark),
-        -4px -4px 8px var(--nm-shadow-light);
+      z-index: 2;
+      box-shadow: 0 4px 10px rgba(25, 49, 40, 0.08);
     }
 
     .password-toggle:hover {
@@ -547,14 +551,11 @@ type RegistrationStep = 'form' | 'otp' | 'success';
 
     .form-control {
       height: 52px;
-      border: none;
-      background: var(--nm-bg);
+      border: 1px solid #dbe7dd;
+      background: #f8fbf7;
       border-radius: var(--nm-radius-md);
       font-size: 1rem;
       color: var(--nm-fg);
-      box-shadow:
-        inset 5px 5px 10px var(--nm-shadow-dark),
-        inset -5px -5px 10px var(--nm-shadow-light);
       transition: all 0.25s ease;
     }
 
@@ -563,11 +564,8 @@ type RegistrationStep = 'form' | 'otp' | 'success';
     }
 
     .form-control:focus {
-      border: none;
-      box-shadow:
-        inset 6px 6px 12px var(--nm-shadow-dark),
-        inset -6px -6px 12px var(--nm-shadow-light),
-        0 0 0 2px rgba(108, 99, 255, 0.35);
+      border-color: #8ab29f;
+      box-shadow: 0 0 0 3px rgba(47, 138, 103, 0.18);
     }
 
     .invalid-feedback {
@@ -614,11 +612,9 @@ type RegistrationStep = 'form' | 'otp' | 'success';
       border-radius: var(--nm-radius-md);
       margin-bottom: 1.2rem;
       font-size: 0.88rem;
-      background: #ece1e4;
+      background: #fff1f4;
       color: #a14258;
-      box-shadow:
-        inset 4px 4px 10px rgba(170, 130, 140, 0.22),
-        inset -4px -4px 10px rgba(255, 255, 255, 0.52);
+      border: 1px solid #f2c6d0;
     }
 
     .custom-checkbox {
@@ -638,14 +634,11 @@ type RegistrationStep = 'form' | 'otp' | 'success';
       width: 20px;
       height: 20px;
       min-width: 20px;
-      border: none;
+      border: 1px solid #cdddcf;
       border-radius: 6px;
       margin-right: 0.75rem;
       position: relative;
-      background: var(--nm-bg);
-      box-shadow:
-        inset 3px 3px 8px var(--nm-shadow-dark),
-        inset -3px -3px 8px var(--nm-shadow-light);
+      background: #ffffff;
     }
 
     .terms-text {
@@ -657,10 +650,8 @@ type RegistrationStep = 'form' | 'otp' | 'success';
     }
 
     .custom-checkbox input:checked + .checkmark {
-      box-shadow:
-        inset 2px 2px 6px rgba(56, 178, 172, 0.48),
-        inset -2px -2px 6px rgba(255, 255, 255, 0.7);
-      background: #dcefeb;
+      border-color: #8ab29f;
+      background: #e9f5ef;
     }
 
     .custom-checkbox input:checked + .checkmark::after {
@@ -693,17 +684,13 @@ type RegistrationStep = 'form' | 'otp' | 'success';
       font-weight: 600;
       font-size: 1rem;
       border-radius: var(--nm-radius-md);
-      box-shadow:
-        8px 8px 16px var(--nm-shadow-dark),
-        -8px -8px 16px var(--nm-shadow-light);
+      box-shadow: 0 10px 20px rgba(30, 107, 82, 0.3);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .btn-primary:hover:not(:disabled) {
       transform: translateY(-1px);
-      box-shadow:
-        10px 10px 18px var(--nm-shadow-dark),
-        -10px -10px 18px var(--nm-shadow-light);
+      box-shadow: 0 12px 24px rgba(30, 107, 82, 0.34);
     }
 
     .btn-primary:disabled {

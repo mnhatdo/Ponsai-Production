@@ -96,22 +96,14 @@ import { TranslateModule } from '@ngx-translate/core';
       font-weight: 600;
     }
 
+    .footer-20192 .links {
+      display: block;
+    }
+
     .footer-20192 .links li {
       margin-bottom: 10px;
       line-height: 1.5;
       display: block;
-    }
-
-    .footer-20192 .links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.45rem 1rem;
-    }
-
-    .footer-20192 .links li {
-      margin-bottom: 0;
     }
 
     .footer-20192 .links li a {
@@ -158,10 +150,6 @@ import { TranslateModule } from '@ngx-translate/core';
       .footer-20192 {
         min-height: auto;
         padding-top: 1.8rem;
-      }
-
-      .footer-20192 .links {
-        justify-content: flex-start;
       }
 
       .footer-brand-logo {

@@ -158,13 +158,10 @@ import { ProductTranslatePipe } from '@shared/pipes/product-translate.pipe';
       display: flex;
       flex-direction: column;
       height: 100%;
-      background: #f6faf4;
-      border-radius: 14px;
-      border: 1px solid #deeadf;
-      box-shadow: 0 10px 20px rgba(21, 50, 67, 0.08);
+      background: transparent;
+      border-radius: 10px;
       overflow: visible;
       transition: all 0.3s ease;
-      padding: 0.9rem 0.9rem 1.2rem;
     }
 
     /* Product Image Wrapper - Fixed Aspect Ratio 3:2 (Full-bleed) */
@@ -223,7 +220,6 @@ import { ProductTranslatePipe } from '@shared/pipes/product-translate.pipe';
     /* Hover Effects - Original style */
     .product-card:hover .product-image-wrapper {
       top: -25px;
-      box-shadow: 0 12px 22px rgba(21, 50, 67, 0.13);
     }
 
     /* Pagination styling */

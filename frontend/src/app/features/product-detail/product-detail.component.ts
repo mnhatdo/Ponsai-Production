@@ -256,7 +256,7 @@ declare const MorphSVGPlugin: any;
 
     /* Product Detail Section */
     .product-detail-section {
-      padding: 4rem 0 6rem;
+      padding: calc(var(--hero-menu-offset) + 1.5rem) 0 6rem;
     }
 
     /* Product Gallery - Left Column */
@@ -270,8 +270,9 @@ declare const MorphSVGPlugin: any;
       margin-bottom: 1.5rem;
       border-radius: 16px;
       overflow: hidden;
-      background: #f8f9fa;
-      box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      background: #ffffff;
+      border: 1px solid #e7eeea;
+      box-shadow: 0 14px 30px rgba(21, 50, 67, 0.09);
     }
 
     .main-product-image {
@@ -398,12 +399,10 @@ declare const MorphSVGPlugin: any;
 
     /* Price Section */
     .product-price-section {
-      background: #e0e5ec;
-      padding: 0.6rem;
-      border-radius: 24px;
-      box-shadow:
-        -7px -7px 16px rgba(255, 255, 255, 0.52),
-        7px 7px 16px rgba(163, 177, 198, 0.52);
+      background: #f8fbf8;
+      padding: 0.95rem 1.1rem;
+      border-radius: 16px;
+      border: 1px solid #deeadf;
     }
 
     .price-wrapper {
@@ -411,22 +410,18 @@ declare const MorphSVGPlugin: any;
       align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
-      min-height: 92px;
-      padding: 1.45rem 1.8rem;
-      border-radius: 20px;
-      background: linear-gradient(145deg, #e5eaf1, #d8dde5);
-      box-shadow:
-        inset -7px -7px 14px rgba(255, 255, 255, 0.55),
-        inset 7px 7px 14px rgba(163, 177, 198, 0.34);
+      min-height: 72px;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
     }
 
     .current-price {
       font-size: 2.5rem;
       font-weight: 800;
-      color: #3d4852;
+      color: #153243;
       line-height: 1;
       letter-spacing: -0.04em;
-      text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
     }
 
     .original-price {
@@ -436,15 +431,12 @@ declare const MorphSVGPlugin: any;
     }
 
     .discount-badge {
-      background: linear-gradient(145deg, #8b84ff, #6c63ff);
+      background: #153243;
       color: #f8faff;
       padding: 0.45rem 0.9rem;
       border-radius: 999px;
       font-weight: 700;
       font-size: 0.85rem;
-      box-shadow:
-        -4px -4px 10px rgba(255, 255, 255, 0.24),
-        6px 6px 12px rgba(108, 99, 255, 0.26);
     }
 
     /* Short Description */
@@ -459,24 +451,20 @@ declare const MorphSVGPlugin: any;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
-      background: #e0e5ec;
+      background: #ffffff;
       padding: 1.25rem 1.35rem;
-      border-radius: 24px;
-      box-shadow:
-        -8px -8px 18px rgba(255, 255, 255, 0.56),
-        8px 8px 18px rgba(163, 177, 198, 0.58);
+      border-radius: 16px;
+      border: 1px solid #e3ece6;
+      box-shadow: 0 8px 18px rgba(21, 50, 67, 0.07);
     }
 
     .description-text {
       font-size: 1rem;
       line-height: 1.7;
       color: #6b7280;
-      padding: 1rem 1.1rem;
-      border-radius: 18px;
-      background: linear-gradient(145deg, #e5eaf1, #d8dde5);
-      box-shadow:
-        inset -6px -6px 12px rgba(255, 255, 255, 0.5),
-        inset 6px 6px 12px rgba(163, 177, 198, 0.28);
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
     }
 
     .description-text p {
@@ -495,12 +483,11 @@ declare const MorphSVGPlugin: any;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
-      background: #e0e5ec;
+      background: #ffffff;
       padding: 1.25rem 1.35rem;
-      border-radius: 24px;
-      box-shadow:
-        -8px -8px 18px rgba(255, 255, 255, 0.56),
-        8px 8px 18px rgba(163, 177, 198, 0.58);
+      border-radius: 16px;
+      border: 1px solid #e3ece6;
+      box-shadow: 0 8px 18px rgba(21, 50, 67, 0.07);
     }
 
     .section-label {
@@ -518,15 +505,13 @@ declare const MorphSVGPlugin: any;
     }
 
     .tag-item {
-      background: #e0e5ec;
-      color: #3d4852;
+      background: #eef5ef;
+      color: #2f4a40;
       padding: 0.5rem 0.95rem;
       border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 600;
-      box-shadow:
-        -4px -4px 10px rgba(255, 255, 255, 0.56),
-        4px 4px 10px rgba(163, 177, 198, 0.52);
+      border: 1px solid #d5e5d9;
     }
 
     /* Quantity Section */
@@ -535,12 +520,11 @@ declare const MorphSVGPlugin: any;
       flex-direction: column;
       gap: 0.75rem;
       align-items: center;
-      background: #e0e5ec;
+      background: #ffffff;
       padding: 1rem 1.35rem;
-      border-radius: 24px;
-      box-shadow:
-        -8px -8px 18px rgba(255, 255, 255, 0.56),
-        8px 8px 18px rgba(163, 177, 198, 0.58);
+      border-radius: 16px;
+      border: 1px solid #e3ece6;
+      box-shadow: 0 8px 18px rgba(21, 50, 67, 0.07);
     }
 
     .quantity-section .section-label {
@@ -555,8 +539,8 @@ declare const MorphSVGPlugin: any;
     }
 
     .add-to-cart {
-      --background-default: linear-gradient(145deg, #393939, #5f5f5f);
-      --background-hover: linear-gradient(145deg, #717171, #555555);
+      --background-default: linear-gradient(145deg, #153243, #20495f);
+      --background-hover: linear-gradient(145deg, #1e4356, #2a5c75);
       --background-scale: 1;
       --text-color: #f8faff;
       --text-o: 1;
@@ -590,10 +574,8 @@ declare const MorphSVGPlugin: any;
       font-family: inherit;
       flex: 1;
       min-width: 200px;
-      border-radius: 22px;
-      box-shadow:
-        -14px -14px 28px rgba(255, 255, 255, 0.54),
-        18px 18px 30px rgba(108, 108, 108, 0.34);
+      border-radius: 14px;
+      box-shadow: 0 10px 24px rgba(21, 50, 67, 0.22);
       transition: box-shadow 0.25s ease, transform 0.25s ease;
     }
 
@@ -605,28 +587,22 @@ declare const MorphSVGPlugin: any;
       right: 0;
       bottom: 0;
       left: 0;
-      border-radius: 22px;
+      border-radius: 14px;
       transition: background 0.25s, box-shadow 0.25s ease;
       background: var(--background, var(--background-default));
       transform: scaleX(var(--background-scale)) translateZ(0);
-      box-shadow:
-        inset -6px -6px 14px rgba(255, 255, 255, 0.2),
-        inset 6px 6px 14px rgba(68, 68, 68, 0.3);
     }
 
     .add-to-cart:not(.active):not(:disabled):hover {
       --background: var(--background-hover);
       transform: translateY(-2px);
-      box-shadow:
-        -16px -16px 30px rgba(255, 255, 255, 0.56),
-        20px 20px 34px rgba(166, 166, 166, 0.4);
+      box-shadow: 0 14px 28px rgba(21, 50, 67, 0.26);
     }
 
     .add-to-cart:focus-visible {
       box-shadow:
-        -14px -14px 28px rgba(255, 255, 255, 0.54),
-        18px 18px 30px rgba(159, 159, 159, 0.34),
-        0 0 0 3px rgba(111, 111, 111, 0.18);
+        0 10px 24px rgba(21, 50, 67, 0.22),
+        0 0 0 3px rgba(21, 50, 67, 0.18);
     }
 
     .add-to-cart span {
@@ -735,11 +711,11 @@ declare const MorphSVGPlugin: any;
 
     .btn-back-to-shop {
       flex: 0 0 auto;
-      background: linear-gradient(145deg, #ecf7f6, #d9efec);
+      background: #ffffff;
       color: #2f5f62;
-      border: none;
+      border: 1px solid #d9e9df;
       padding: 1.15rem 2.2rem;
-      border-radius: 22px;
+      border-radius: 14px;
       font-size: 1.05rem;
       font-weight: 700;
       display: flex;
@@ -749,36 +725,29 @@ declare const MorphSVGPlugin: any;
       text-decoration: none;
       cursor: pointer;
       transition: all 0.25s ease;
-      box-shadow:
-        -14px -14px 28px rgba(255, 255, 255, 0.62),
-        18px 18px 30px rgba(91, 170, 163, 0.24),
-        inset -5px -5px 12px rgba(255, 255, 255, 0.44),
-        inset 5px 5px 12px rgba(111, 186, 179, 0.18);
+      box-shadow: 0 8px 20px rgba(21, 50, 67, 0.1);
     }
 
     .btn-back-to-shop:hover {
       color: #38b2ac;
       transform: translateY(-2px);
-      box-shadow:
-        -16px -16px 30px rgba(255, 255, 255, 0.66),
-        20px 20px 34px rgba(91, 170, 163, 0.28),
-        inset -5px -5px 12px rgba(255, 255, 255, 0.44),
-        inset 5px 5px 12px rgba(111, 186, 179, 0.18);
+      box-shadow: 0 10px 22px rgba(21, 50, 67, 0.14);
     }
 
     .btn-back-to-shop:focus-visible {
       outline: none;
       box-shadow:
-        -14px -14px 28px rgba(255, 255, 255, 0.68),
-        14px 14px 28px rgba(163, 177, 198, 0.72),
-        0 0 0 3px rgba(108, 99, 255, 0.18);
+        0 8px 20px rgba(21, 50, 67, 0.1),
+        0 0 0 3px rgba(21, 50, 67, 0.2);
     }
 
     /* Specifications */
     .product-specifications {
-      background: #f8f9fa;
+      background: #ffffff;
       padding: 1.5rem;
-      border-radius: 12px;
+      border-radius: 16px;
+      border: 1px solid #e3ece6;
+      box-shadow: 0 8px 18px rgba(21, 50, 67, 0.07);
     }
 
     .spec-heading {

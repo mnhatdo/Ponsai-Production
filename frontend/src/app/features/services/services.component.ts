@@ -15,11 +15,11 @@ import { SERVICES, STAFF_ZALO_PHONE } from './services.data';
         <div class="row justify-content-between">
           <div class="col-lg-5">
             <div class="intro-excerpt">
-              <h1>Gói Dịch Vụ<br>Bonsai Chuyên Nghiệp</h1>
-              <p class="mb-4">Tùy chỉnh gói chăm sóc hoàn hảo cho bộ sưu tập cây cảnh của bạn. Chúng tôi cung cấp giải pháp toàn diện để cây luôn khỏe mạnh và đẹp mắt.</p>
+              <h1>Professional<br>Bonsai Service Plans</h1>
+              <p class="mb-4">Customize the ideal care package for your bonsai collection. We provide end-to-end solutions to keep every tree healthy, refined, and visually stunning.</p>
               <p>
-                <a routerLink="/shop" class="btn btn-secondary me-2">Sản phẩm</a>
-                <a routerLink="/about" [queryParams]="{ contact: '1' }" class="btn btn-white-outline">Liên hệ</a>
+                <a routerLink="/shop" class="btn btn-secondary me-2">Products</a>
+                <a routerLink="/about" [queryParams]="{ contact: '1' }" class="btn btn-white-outline">Contact</a>
               </p>
             </div>
           </div>
@@ -36,15 +36,15 @@ import { SERVICES, STAFF_ZALO_PHONE } from './services.data';
     <section class="pricing-section py-5 bg-light-pattern">
       <div class="container">
         <div class="text-center mb-5">
-          <h2 class="display-5 fw-bold mb-3">Bảng giá dịch vụ</h2>
-          <p class="text-muted fs-5">Tùy chỉnh gói chăm sóc chính xác theo nhu cầu của bạn.</p>
-          <p class="small text-muted mb-5">Giá được điều chỉnh theo số lượng cây (VNĐ) để mang lại giá trị tốt nhất.</p>
+          <h2 class="display-5 fw-bold mb-3">Service Pricing</h2>
+          <p class="text-muted fs-5">Adjust your care package to match exactly what your collection needs.</p>
+          <p class="small text-muted mb-5">Prices scale by number of trees (VND) to provide the best value.</p>
           
           <!-- Slider Component -->
           <div class="slider-container max-w-600 mx-auto px-4 mb-5">
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <span class="fw-bold">Số lượng cây:</span>
-              <span class="fw-bold text-primary fs-5">{{ sliderValue }} cây</span>
+              <span class="fw-bold">Number of trees:</span>
+              <span class="fw-bold text-primary fs-5">{{ sliderValue }} trees</span>
             </div>
             
             <div class="range-wrap position-relative">
@@ -52,7 +52,7 @@ import { SERVICES, STAFF_ZALO_PHONE } from './services.data';
             </div>
             
             <div class="d-flex justify-content-center mt-3 text-muted small">
-              <span>Trượt để xem giá theo số lượng cây</span>
+              <span>Move the slider to preview pricing by tree count</span>
             </div>
           </div>
         </div>
@@ -65,40 +65,40 @@ import { SERVICES, STAFF_ZALO_PHONE } from './services.data';
                  [class.shadow-lg]="currentPlan === 'basic'" 
                  [class.border-dark]="currentPlan === 'basic'">
               <div class="card-body">
-                <span class="badge bg-light text-dark mb-4 px-3 py-2 fw-bold border">Cơ bản</span>
+                <span class="badge bg-light text-dark mb-4 px-3 py-2 fw-bold border">Basic</span>
                 <h3 class="pricing-price">{{ basicPrice | number }}đ</h3>
                 <p class="text-muted mb-4 d-flex flex-column gap-1">
-                  <span>Phù hợp cho nhu cầu chăm sóc cơ bản (tối đa 3 cây).</span>
-                  <span class="small border-top pt-2 mt-2">{{ basicTrees }} cây &bull; 150,000đ / cây</span>
+                  <span>Perfect for essential maintenance needs (up to 3 trees).</span>
+                  <span class="small border-top pt-2 mt-2">{{ basicTrees }} trees &bull; 150,000đ / tree</span>
                 </p>
                 <ul class="list-unstyled pricing-features mb-5">
-                  <li [class.text-dark]="currentPlan === 'basic'"><i class="bi bi-check-circle translate-icon"></i> Cắt tỉa cành cơ bản</li>
-                  <li [class.text-dark]="currentPlan === 'basic'"><i class="bi bi-check-circle translate-icon"></i> Bón phân định kỳ</li>
-                  <li [class.text-dark]="currentPlan === 'basic'"><i class="bi bi-check-circle translate-icon"></i> Kiểm tra sâu bệnh 1 lần/tuần</li>
-                  <li [class.text-dark]="currentPlan === 'basic'"><i class="bi bi-check-circle translate-icon"></i> Hỗ trợ qua Email/Zalo</li>
+                  <li [class.text-dark]="currentPlan === 'basic'"><i class="bi bi-check-circle translate-icon"></i> Basic branch pruning</li>
+                  <li [class.text-dark]="currentPlan === 'basic'"><i class="bi bi-check-circle translate-icon"></i> Scheduled fertilization</li>
+                  <li [class.text-dark]="currentPlan === 'basic'"><i class="bi bi-check-circle translate-icon"></i> Weekly pest inspection</li>
+                  <li [class.text-dark]="currentPlan === 'basic'"><i class="bi bi-check-circle translate-icon"></i> Support via Email/Zalo</li>
                 </ul>
                 <div class="text-center">
-                  <button *ngIf="currentPlan === 'basic'" type="button" class="package-action-button w-100" [class.is-sending]="sendingPlan === 'basic'" (click)="startPlanSelection('basic')" aria-label="Chọn Cơ Bản">
+                  <button *ngIf="currentPlan === 'basic'" type="button" class="package-action-button w-100" [class.is-sending]="sendingPlan === 'basic'" (click)="startPlanSelection('basic')" aria-label="Choose Basic">
                     <span class="outline"></span>
                     <span class="state state--default">
                       <span class="icon" [innerHTML]="buttonIcon"></span>
                       <span class="button-label">
-                        <span *ngFor="let char of animatedChars('Chọn Cơ Bản'); let i = index" [style.--i]="i">{{ char }}</span>
+                        <span *ngFor="let char of animatedChars('Choose Basic'); let i = index" [style.--i]="i">{{ char }}</span>
                       </span>
                     </span>
                     <span class="state state--sent">
                       <span class="icon" [innerHTML]="sentIcon"></span>
                       <span class="button-label">
-                        <span *ngFor="let char of animatedChars('Đã gửi'); let i = index" [style.--i]="i + 5">{{ char }}</span>
+                        <span *ngFor="let char of animatedChars('Sent'); let i = index" [style.--i]="i + 5">{{ char }}</span>
                       </span>
                     </span>
                   </button>
-                  <button *ngIf="currentPlan !== 'basic'" type="button" class="package-action-button w-100" aria-label="Xem Cơ Bản">
+                  <button *ngIf="currentPlan !== 'basic'" type="button" class="package-action-button w-100" aria-label="View Basic">
                     <span class="outline"></span>
                     <span class="state state--default">
                       <span class="icon" [innerHTML]="buttonIcon"></span>
                       <span class="button-label">
-                        <span *ngFor="let char of animatedChars('Xem Cơ Bản'); let i = index" [style.--i]="i">{{ char }}</span>
+                        <span *ngFor="let char of animatedChars('View Basic'); let i = index" [style.--i]="i">{{ char }}</span>
                       </span>
                     </span>
                   </button>
@@ -115,42 +115,42 @@ import { SERVICES, STAFF_ZALO_PHONE } from './services.data';
                  [class.border-dark]="currentPlan === 'standard'">
               <div class="card-body position-relative">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                  <span class="badge bg-dark text-white px-3 py-2 fw-bold rounded-pill">Tiêu chuẩn</span>
-                  <span class="badge bg-light text-dark px-3 py-2 border rounded-pill" *ngIf="currentPlan === 'standard'">Khuyên dùng</span>
+                  <span class="badge bg-dark text-white px-3 py-2 fw-bold rounded-pill">Standard</span>
+                  <span class="badge bg-light text-dark px-3 py-2 border rounded-pill" *ngIf="currentPlan === 'standard'">Recommended</span>
                 </div>
                 <h3 class="pricing-price">{{ standardPrice | number }}đ</h3>
                 <p class="text-muted mb-4 d-flex flex-column gap-1">
-                  <span>Giải pháp toàn diện (tối đa 10 cây).</span>
-                  <span class="small border-top pt-2 mt-2">{{ standardTrees }} cây &bull; 300,000đ / cây</span>
+                  <span>Comprehensive support for growing collections (up to 10 trees).</span>
+                  <span class="small border-top pt-2 mt-2">{{ standardTrees }} trees &bull; 300,000đ / tree</span>
                 </p>
                 <ul class="list-unstyled pricing-features mb-5">
-                  <li [class.text-dark]="currentPlan === 'standard'"><i class="bi bi-check-circle translate-icon"></i> Chăm sóc tạo dáng chuyên sâu</li>
-                  <li [class.text-dark]="currentPlan === 'standard'"><i class="bi bi-check-circle translate-icon"></i> Thay đất & chậu định kỳ</li>
-                  <li [class.text-dark]="currentPlan === 'standard'"><i class="bi bi-check-circle translate-icon"></i> Xử phòng ngừa bệnh đặc trị</li>
-                  <li [class.text-dark]="currentPlan === 'standard'"><i class="bi bi-check-circle translate-icon"></i> Ưu tiên xử lý sự cố trong 12h</li>
+                  <li [class.text-dark]="currentPlan === 'standard'"><i class="bi bi-check-circle translate-icon"></i> Advanced styling and shaping care</li>
+                  <li [class.text-dark]="currentPlan === 'standard'"><i class="bi bi-check-circle translate-icon"></i> Scheduled soil and pot replacement</li>
+                  <li [class.text-dark]="currentPlan === 'standard'"><i class="bi bi-check-circle translate-icon"></i> Preventive treatment for plant diseases</li>
+                  <li [class.text-dark]="currentPlan === 'standard'"><i class="bi bi-check-circle translate-icon"></i> Priority issue handling within 12 hours</li>
                 </ul>
                 <div class="text-center">
-                  <button *ngIf="currentPlan === 'standard'" type="button" class="package-action-button w-100" [class.is-sending]="sendingPlan === 'standard'" (click)="startPlanSelection('standard')" aria-label="Chọn Tiêu Chuẩn">
+                  <button *ngIf="currentPlan === 'standard'" type="button" class="package-action-button w-100" [class.is-sending]="sendingPlan === 'standard'" (click)="startPlanSelection('standard')" aria-label="Choose Standard">
                     <span class="outline"></span>
                     <span class="state state--default">
                       <span class="icon" [innerHTML]="buttonIcon"></span>
                       <span class="button-label">
-                        <span *ngFor="let char of animatedChars('Chọn Tiêu Chuẩn'); let i = index" [style.--i]="i">{{ char }}</span>
+                        <span *ngFor="let char of animatedChars('Choose Standard'); let i = index" [style.--i]="i">{{ char }}</span>
                       </span>
                     </span>
                     <span class="state state--sent">
                       <span class="icon" [innerHTML]="sentIcon"></span>
                       <span class="button-label">
-                        <span *ngFor="let char of animatedChars('Đã gửi'); let i = index" [style.--i]="i + 5">{{ char }}</span>
+                        <span *ngFor="let char of animatedChars('Sent'); let i = index" [style.--i]="i + 5">{{ char }}</span>
                       </span>
                     </span>
                   </button>
-                  <button *ngIf="currentPlan !== 'standard'" type="button" class="package-action-button w-100" aria-label="Xem Tiêu Chuẩn">
+                  <button *ngIf="currentPlan !== 'standard'" type="button" class="package-action-button w-100" aria-label="View Standard">
                     <span class="outline"></span>
                     <span class="state state--default">
                       <span class="icon" [innerHTML]="buttonIcon"></span>
                       <span class="button-label">
-                        <span *ngFor="let char of animatedChars('Xem Tiêu Chuẩn'); let i = index" [style.--i]="i">{{ char }}</span>
+                        <span *ngFor="let char of animatedChars('View Standard'); let i = index" [style.--i]="i">{{ char }}</span>
                       </span>
                     </span>
                   </button>
@@ -166,40 +166,40 @@ import { SERVICES, STAFF_ZALO_PHONE } from './services.data';
                  [class.shadow-lg]="currentPlan === 'pro'" 
                  [class.border-dark]="currentPlan === 'pro'">
               <div class="card-body">
-                <span class="badge bg-light text-dark mb-4 px-3 py-2 fw-bold border">Cao cấp</span>
+                <span class="badge bg-light text-dark mb-4 px-3 py-2 fw-bold border">Premium</span>
                 <h3 class="pricing-price">{{ proPrice | number }}đ</h3>
                 <p class="text-muted mb-4 d-flex flex-column gap-1">
-                  <span>Chăm sóc đặc biệt nghệ thuật giá trị cao.</span>
-                  <span class="small border-top pt-2 mt-2">{{ proTrees }} cây &bull; 500,000đ / cây</span>
+                  <span>White-glove care for high-value artistic bonsai.</span>
+                  <span class="small border-top pt-2 mt-2">{{ proTrees }} trees &bull; 500,000đ / tree</span>
                 </p>
                 <ul class="list-unstyled pricing-features mb-5">
-                  <li [class.text-dark]="currentPlan === 'pro'"><i class="bi bi-check-circle translate-icon"></i> Chuyên gia thiết kế dáng nghệ thuật</li>
-                  <li [class.text-dark]="currentPlan === 'pro'"><i class="bi bi-check-circle translate-icon"></i> Phân tích vi sinh đất & môi trường</li>
-                  <li [class.text-dark]="currentPlan === 'pro'"><i class="bi bi-check-circle translate-icon"></i> Quản lý hồ sơ từng cây & 3D quét</li>
-                  <li [class.text-dark]="currentPlan === 'pro'"><i class="bi bi-check-circle translate-icon"></i> Bảo hiểm đền bù khi mất/chết cây</li>
+                  <li [class.text-dark]="currentPlan === 'pro'"><i class="bi bi-check-circle translate-icon"></i> Artistic shaping by senior specialists</li>
+                  <li [class.text-dark]="currentPlan === 'pro'"><i class="bi bi-check-circle translate-icon"></i> Soil microbiome and environment analysis</li>
+                  <li [class.text-dark]="currentPlan === 'pro'"><i class="bi bi-check-circle translate-icon"></i> Per-tree records with 3D scan tracking</li>
+                  <li [class.text-dark]="currentPlan === 'pro'"><i class="bi bi-check-circle translate-icon"></i> Compensation insurance for severe loss</li>
                 </ul>
                 <div class="text-center">
-                  <button *ngIf="currentPlan === 'pro'" type="button" class="package-action-button w-100" [class.is-sending]="sendingPlan === 'pro'" (click)="startPlanSelection('pro')" aria-label="Chọn Cao Cấp">
+                  <button *ngIf="currentPlan === 'pro'" type="button" class="package-action-button w-100" [class.is-sending]="sendingPlan === 'pro'" (click)="startPlanSelection('pro')" aria-label="Choose Premium">
                     <span class="outline"></span>
                     <span class="state state--default">
                       <span class="icon" [innerHTML]="buttonIcon"></span>
                       <span class="button-label">
-                        <span *ngFor="let char of animatedChars('Chọn Cao Cấp'); let i = index" [style.--i]="i">{{ char }}</span>
+                        <span *ngFor="let char of animatedChars('Choose Premium'); let i = index" [style.--i]="i">{{ char }}</span>
                       </span>
                     </span>
                     <span class="state state--sent">
                       <span class="icon" [innerHTML]="sentIcon"></span>
                       <span class="button-label">
-                        <span *ngFor="let char of animatedChars('Đã gửi'); let i = index" [style.--i]="i + 5">{{ char }}</span>
+                        <span *ngFor="let char of animatedChars('Sent'); let i = index" [style.--i]="i + 5">{{ char }}</span>
                       </span>
                     </span>
                   </button>
-                  <button *ngIf="currentPlan !== 'pro'" type="button" class="package-action-button w-100" aria-label="Xem Cao Cấp">
+                  <button *ngIf="currentPlan !== 'pro'" type="button" class="package-action-button w-100" aria-label="View Premium">
                     <span class="outline"></span>
                     <span class="state state--default">
                       <span class="icon" [innerHTML]="buttonIcon"></span>
                       <span class="button-label">
-                        <span *ngFor="let char of animatedChars('Xem Cao Cấp'); let i = index" [style.--i]="i">{{ char }}</span>
+                        <span *ngFor="let char of animatedChars('View Premium'); let i = index" [style.--i]="i">{{ char }}</span>
                       </span>
                     </span>
                   </button>
@@ -210,10 +210,10 @@ import { SERVICES, STAFF_ZALO_PHONE } from './services.data';
         </div>
 
         <div class="contact-box mt-5 text-center">
-          <h2 class="h4 mb-3">Bạn có yêu cầu đặc biệt?</h2>
-          <p class="mb-4">Nhấn vào nút bên dưới để nhận tư vấn thiết kế dịch vụ riêng qua Zalo.</p>
+          <h2 class="h4 mb-3">Need a custom solution?</h2>
+          <p class="mb-4">Tap the button below to chat with our specialist team on Zalo for a tailored service design.</p>
           <a class="btn btn-primary" [href]="zaloLink" target="_blank" rel="noopener noreferrer">
-            Nhắn tin với chuyên gia
+            Message an Expert
           </a>
         </div>
       </div>

@@ -203,7 +203,7 @@ import { TranslateModule } from '@ngx-translate/core';
     }
 
     .auth-section {
-      padding: 2rem 0 6rem;
+      padding: calc(var(--hero-menu-offset) + 1.25rem) 0 6rem;
     }
 
     .auth-card {
@@ -283,10 +283,13 @@ import { TranslateModule } from '@ngx-translate/core';
       color: var(--nm-muted);
       width: 30px;
       height: 30px;
+      padding: 0;
+      line-height: 1;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 2;
       box-shadow: 0 4px 10px rgba(25, 49, 40, 0.08);
     }
 

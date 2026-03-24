@@ -34,7 +34,6 @@ import { LanguageSwitcherComponent } from '@core/components/language-switcher/la
           <li routerLinkActive="link-active"><a routerLink="/about">{{ 'nav.about' | translate }}</a></li>
           <li routerLinkActive="link-active"><a routerLink="/services">{{ 'nav.services' | translate }}</a></li>
           <li routerLinkActive="link-active"><a routerLink="/blog">Blog</a></li>
-          <li routerLinkActive="link-active"><a routerLink="/about" [queryParams]="{ contact: '1' }">{{ 'nav.contact' | translate }}</a></li>
         </ul>
 
         <ul class="nav-actions">
@@ -504,7 +503,7 @@ export class HeaderComponent implements OnDestroy {
     const isScrollingUp = currentScrollY < this.lastScrollY;
     if (isScrollingUp) {
       this.isHeaderVisible = true;
-      this.clearHideTimer();
+      this.scheduleAutoHide();
     } else {
       this.isHeaderVisible = true;
       this.scheduleAutoHide();

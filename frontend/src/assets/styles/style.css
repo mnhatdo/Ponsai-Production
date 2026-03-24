@@ -305,6 +305,7 @@ a {
       border-radius: 50%;
       opacity: 0;
       visibility: hidden;
+      z-index: 5;
       -webkit-transition: .3s all ease;
       -o-transition: .3s all ease;
       transition: .3s all ease;
