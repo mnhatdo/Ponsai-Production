@@ -39,7 +39,7 @@ import { ProductTranslatePipe } from '@shared/pipes/product-translate.pipe';
 
         <!-- Results Info -->
         <div class="results-info" *ngIf="!loading() && !error()">
-          <p class="text-muted mb-3">
+          <p class="text-muted mb-0">
             {{ 'shop.showing' | translate }} {{ filteredProducts().length }} {{ 'shop.of' | translate }} {{ allProducts().length }} {{ 'shop.products' | translate }}
             <span *ngIf="currentFilters().searchTerm"> {{ 'shop.for' | translate }} "{{ currentFilters().searchTerm }}"</span>
           </p>
@@ -147,6 +147,10 @@ import { ProductTranslatePipe } from '@shared/pipes/product-translate.pipe';
     .product-grid {
       display: flex;
       flex-wrap: wrap;
+    }
+
+    .results-info {
+      margin-bottom: 2.5rem;
     }
 
     /* Product Card - Fixed Structure with Original Effects */

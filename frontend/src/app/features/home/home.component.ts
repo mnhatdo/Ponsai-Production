@@ -6,6 +6,7 @@ import { ProductService } from '@core/services/product.service';
 import { CartService } from '@core/services/cart.service';
 import { environment } from '@environments/environment';
 import { Product } from '@models/index';
+import { BonsaiLandingComponent } from './components/bonsai-landing/bonsai-landing.component';
 
 interface BlogPost {
   id: string;
@@ -24,8 +25,10 @@ interface BlogResponse {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, BonsaiLandingComponent],
   template: `
+    <app-bonsai-landing></app-bonsai-landing>
+
     @defer (on viewport) {
     <!-- Start Product Section -->
     <div class="product-section">

@@ -317,7 +317,7 @@ a {
       right: 0;
       position: absolute;
       content: "";
-      background: #dce5e4;
+      background: #e8ffb7;
       height: 0%;
       z-index: -1;
       border-radius: 10px;
@@ -333,7 +333,9 @@ a {
     .product-section .product-item:hover .icon-cross {
       bottom: 0;
       opacity: 1;
-      visibility: visible; }
+      visibility: visible;
+      background: transparent;
+      box-shadow: none; }
     .product-section .product-item:hover:before {
       height: 70%; }
 

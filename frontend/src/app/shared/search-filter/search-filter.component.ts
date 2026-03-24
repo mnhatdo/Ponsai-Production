@@ -240,8 +240,9 @@ export interface SearchFilterConfig {
       width: 100%;
       padding: 0.625rem 3rem 0.625rem 3.25rem;
       height: 42px;
-      border: 1px solid #ddd;
+      border: none;
       border-radius: 6px;
+      background: #f2f4f6;
       color: #000;
       font-size: 0.95rem;
       line-height: 1.5;
@@ -250,8 +251,8 @@ export interface SearchFilterConfig {
 
     .search-input:focus {
       outline: none;
-      border-color: #153243;
-      box-shadow: 0 0 0 3px rgba(21, 50, 67, 0.1);
+      border: none;
+      box-shadow: none;
     }
 
     .clear-search-btn {
@@ -357,8 +358,7 @@ export interface SearchFilterConfig {
     }
 
     .search-input-glow:focus {
-      outline: 2px solid #2b2752;
-      outline-offset: 0;
+      outline: none;
       border: none;
       box-shadow: none;
     }
@@ -389,6 +389,15 @@ export interface SearchFilterConfig {
       opacity: 0.8;
       transition: opacity 0.4s ease;
       z-index: 2;
+    }
+
+    .input-mask,
+    .pink-mask,
+    .white,
+    .border,
+    .darkBorderBg,
+    .glow {
+      display: none;
     }
 
     .search-main:hover > .pink-mask {

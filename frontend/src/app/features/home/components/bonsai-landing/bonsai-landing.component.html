@@ -1,0 +1,64 @@
+<section class="bonsai-hero" id="home-hero">
+  <div class="ambient-layer" aria-hidden="true"></div>
+
+  <div class="hero-grid">
+    <header class="hero-copy">
+      <p class="eyebrow">Ponsai Collection</p>
+      <h1>Cultivate Calm, One Tree at a Time</h1>
+      <p class="subtle-copy">
+        Discover handcrafted bonsai, premium tools, and practical care guidance for your everyday space.
+      </p>
+
+      <button class="cta-arrow" type="button" (click)="scrollPastHero()" aria-label="Scroll to explore products and content">
+        <span>Discover</span>
+        <i aria-hidden="true"></i>
+      </button>
+    </header>
+
+    <div class="hero-visual">
+      <div class="stage-wrap">
+        <div class="bonsai-stage" [class.animating]="isAnimating">
+          <img
+            class="bonsai active"
+            [class.exit-left]="isAnimating && direction === 1"
+            [class.exit-right]="isAnimating && direction === -1"
+            [src]="bonsaiImages[activeIndex]"
+            [alt]="treeIndexLabel(activeIndex)"
+          />
+
+          <img
+            *ngIf="incomingIndex !== null"
+            class="bonsai incoming"
+            [class.from-right]="direction === 1"
+            [class.from-left]="direction === -1"
+            [src]="bonsaiImages[incomingIndex]"
+            [alt]="treeIndexLabel(incomingIndex)"
+          />
+
+          <div class="dust-cloud" *ngIf="isAnimating" [class.flow-right]="direction === 1" [class.flow-left]="direction === -1">
+            <span
+              class="grain"
+              *ngFor="let p of dustParticles"
+              [style.left.%]="p.x"
+              [style.top.%]="p.y"
+              [style.width.px]="p.size"
+              [style.height.px]="p.size"
+              [style.animationDelay.s]="p.delay"
+              [style.animationDuration.s]="p.duration"
+              [style.--drift]="p.drift + 'px'"
+              [style.--spin]="p.spin + 'deg'"
+              [style.--alpha]="p.alpha"
+            ></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-dots" aria-hidden="true">
+        <span
+          *ngFor="let image of bonsaiImages; index as i"
+          [class.active]="i === activeIndex"
+        ></span>
+      </div>
+    </div>
+  </div>
+</section>
