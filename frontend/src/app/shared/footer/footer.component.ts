@@ -66,6 +66,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styles: [`
     .footer-20192 {
       position: relative;
+      width: 100%;
       color: #000;
       padding: clamp(1.5rem, 3vw, 2.2rem) 0;
       min-height: 25vh;
@@ -110,6 +111,8 @@ import { TranslateModule } from '@ngx-translate/core';
       color: #000;
       text-decoration: none;
       transition: color 0.3s ease;
+      display: inline-block;
+      white-space: nowrap;
     }
 
     .footer-20192 .links li a:hover {
@@ -143,6 +146,14 @@ import { TranslateModule } from '@ngx-translate/core';
     @media (max-width: 991.98px) {
       .footer-20192 {
         margin-top: 3.5rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .footer-20192 .footer-content {
+        display: grid;
+        grid-template-columns: minmax(200px, 1.15fr) repeat(4, minmax(170px, 1fr));
+        column-gap: clamp(2rem, 4vw, 4rem);
       }
     }
 

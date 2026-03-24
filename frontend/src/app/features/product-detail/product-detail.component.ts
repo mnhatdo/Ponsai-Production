@@ -94,7 +94,6 @@ declare const MorphSVGPlugin: any;
                   <i class="bi bi-star-fill text-warning" *ngFor="let star of getStars(product()!.rating!)"></i>
                   <i class="bi bi-star text-warning" *ngFor="let star of getEmptyStars(product()!.rating!)"></i>
                 </span>
-                <span class="rating-count">({{ product()!.reviews || 0 }} {{ 'product.reviews' | translate }})</span>
               </div>
 
               <!-- Price -->

@@ -505,8 +505,8 @@ export class HeaderComponent implements OnDestroy {
       this.isHeaderVisible = true;
       this.scheduleAutoHide();
     } else {
-      this.isHeaderVisible = true;
-      this.scheduleAutoHide();
+      this.clearHideTimer();
+      this.isHeaderVisible = false;
     }
 
     this.lastScrollY = currentScrollY;

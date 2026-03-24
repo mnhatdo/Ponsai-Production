@@ -27,7 +27,6 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
                     <i class="star bi" [class.bi-heart-fill]="star <= stats()!.averageRating" [class.bi-heart]="star > stats()!.averageRating" [class.filled]="star <= stats()!.averageRating" aria-hidden="true"></i>
                   }
                 </div>
-                <div class="total-reviews">{{ stats()!.total }} {{ 'reviews.reviews' | translate }}</div>
               </div>
             </div>
             
@@ -180,11 +179,10 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
       max-width: 1200px;
       margin: 0 auto;
       padding: 2rem;
-      border-radius: 32px;
-      background: #e0e5ec;
-      box-shadow:
-        -14px -14px 32px rgba(255, 255, 255, 0.58),
-        14px 14px 32px rgba(163, 177, 198, 0.58);
+      border-radius: 20px;
+      background: #ffffff;
+      border: 1px solid #e3ece6;
+      box-shadow: 0 14px 30px rgba(21, 50, 67, 0.08);
     }
 
     .reviews-summary h2 {
@@ -200,11 +198,9 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
       gap: 3rem;
       margin-bottom: 2rem;
       padding: 2rem;
-      background: linear-gradient(145deg, #e5eaf1, #d8dde5);
-      border-radius: 28px;
-      box-shadow:
-        inset -8px -8px 16px rgba(255, 255, 255, 0.54),
-        inset 8px 8px 16px rgba(163, 177, 198, 0.24);
+      background: #f8fbf8;
+      border-radius: 14px;
+      border: 1px solid #e0e9e3;
     }
 
     .average-rating {
@@ -243,12 +239,6 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
       color: #6fdda1;
     }
 
-    .total-reviews {
-      color: #73799c;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
     .rating-distribution {
       display: flex;
       flex-direction: column;
@@ -274,9 +264,7 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
       background: #edf0f7;
       border-radius: 999px;
       overflow: hidden;
-      box-shadow:
-        inset -3px -3px 8px rgba(255, 255, 255, 0.58),
-        inset 3px 3px 8px rgba(163, 177, 198, 0.18);
+      border: 1px solid #e1e8e4;
     }
 
     .bar-fill {
@@ -299,22 +287,20 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
 
     .write-review-btn {
       padding: 1rem 1.8rem;
-      background: linear-gradient(145deg, #2a2a31, #17171b);
+      background: #153243;
       color: #f8faff;
       border: none;
-      border-radius: 18px;
+      border-radius: 12px;
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
       margin-bottom: 2rem;
       transition: all 0.25s ease;
-      box-shadow:
-        -10px -10px 22px rgba(255, 255, 255, 0.4),
-        12px 12px 24px rgba(23, 23, 27, 0.28);
+      box-shadow: 0 10px 20px rgba(21, 50, 67, 0.24);
     }
 
     .write-review-btn:hover {
-      background: linear-gradient(145deg, #1f1f25, #0f0f12);
+      background: #1b455d;
       transform: translateY(-2px);
     }
 
@@ -325,11 +311,9 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
       margin-bottom: 2rem;
       align-items: stretch;
       padding: 1.2rem;
-      border-radius: 22px;
-      background: linear-gradient(145deg, #e5eaf1, #d8dde5);
-      box-shadow:
-        inset -6px -6px 12px rgba(255, 255, 255, 0.48),
-        inset 6px 6px 12px rgba(163, 177, 198, 0.2);
+      border-radius: 14px;
+      background: #f8fbf8;
+      border: 1px solid #e0e9e3;
     }
 
     .reviews-filter-main {
@@ -341,14 +325,11 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
 
     .filter-select {
       padding: 0.9rem 1rem;
-      border: none;
-      border-radius: 16px;
+      border: 1px solid #d9e5de;
+      border-radius: 12px;
       font-size: 0.9rem;
-      background: #e0e5ec;
+      background: #ffffff;
       color: #3d4852;
-      box-shadow:
-        -5px -5px 12px rgba(255, 255, 255, 0.56),
-        5px 5px 12px rgba(163, 177, 198, 0.5);
     }
 
     .verified-filter {
@@ -398,11 +379,10 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
 
     .review-card {
       padding: 1.5rem;
-      border-radius: 24px;
-      background: #e0e5ec;
-      box-shadow:
-        -10px -10px 22px rgba(255, 255, 255, 0.56),
-        10px 10px 22px rgba(163, 177, 198, 0.52);
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #e0e9e3;
+      box-shadow: 0 8px 18px rgba(21, 50, 67, 0.06);
     }
 
     .review-header {
@@ -456,11 +436,9 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
 
     .review-comment-shell {
       padding: 1rem 1.1rem;
-      border-radius: 18px;
-      background: linear-gradient(145deg, #e5eaf1, #d8dde5);
-      box-shadow:
-        inset -6px -6px 12px rgba(255, 255, 255, 0.52),
-        inset 6px 6px 12px rgba(163, 177, 198, 0.22);
+      border-radius: 12px;
+      background: #f8fbf8;
+      border: 1px solid #e0e9e3;
       margin-bottom: 1rem;
     }
 
@@ -503,17 +481,15 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
 
     .helpful-btn, .edit-btn, .delete-btn {
       padding: 0.75rem 1rem;
-      border: none;
-      border-radius: 16px;
-      background: #e0e5ec;
+      border: 1px solid #d9e5de;
+      border-radius: 12px;
+      background: #ffffff;
       cursor: pointer;
       font-size: 0.875rem;
       font-weight: 600;
       color: #46506d;
       transition: all 0.25s ease;
-      box-shadow:
-        -5px -5px 12px rgba(255, 255, 255, 0.52),
-        5px 5px 12px rgba(163, 177, 198, 0.4);
+      box-shadow: 0 6px 14px rgba(21, 50, 67, 0.08);
     }
 
     .helpful-btn:hover {
@@ -541,16 +517,14 @@ import { ReviewFormComponent } from '@shared/components/review-form.component';
 
     .page-btn {
       padding: 0.8rem 1.2rem;
-      border: none;
-      border-radius: 16px;
-      background: #e0e5ec;
+      border: 1px solid #d9e5de;
+      border-radius: 12px;
+      background: #ffffff;
       cursor: pointer;
       color: #46506d;
       font-weight: 600;
       transition: all 0.25s ease;
-      box-shadow:
-        -5px -5px 12px rgba(255, 255, 255, 0.52),
-        5px 5px 12px rgba(163, 177, 198, 0.4);
+      box-shadow: 0 6px 14px rgba(21, 50, 67, 0.08);
     }
 
     .page-btn:hover:not(:disabled) {

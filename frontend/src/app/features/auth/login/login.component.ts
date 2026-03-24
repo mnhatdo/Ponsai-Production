@@ -269,20 +269,20 @@ import { TranslateModule } from '@ngx-translate/core';
 
     .input-icon-wrapper .form-control {
       padding-left: 48px;
-      padding-right: 48px;
+      padding-right: 56px;
     }
 
     .password-toggle {
       position: absolute;
-      right: 16px;
+      right: 12px;
       top: 50%;
       transform: translateY(-50%);
-      background: #ffffff;
-      border: 1px solid #dde8df;
+      background: transparent;
+      border: none;
       cursor: pointer;
       color: var(--nm-muted);
-      width: 30px;
-      height: 30px;
+      width: 36px;
+      height: 36px;
       padding: 0;
       line-height: 1;
       border-radius: 50%;
@@ -290,11 +290,17 @@ import { TranslateModule } from '@ngx-translate/core';
       align-items: center;
       justify-content: center;
       z-index: 2;
-      box-shadow: 0 4px 10px rgba(25, 49, 40, 0.08);
     }
 
     .password-toggle:hover {
       color: var(--nm-accent);
+    }
+
+    .password-toggle svg {
+      display: block;
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
     }
 
     .form-control {

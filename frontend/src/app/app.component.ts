@@ -15,13 +15,26 @@ import { TranslationService } from '@core/services/translation.service';
     @if (!isAdminRoute) {
       <app-header></app-header>
     }
-    <router-outlet></router-outlet>
+    <main class="app-main">
+      <router-outlet></router-outlet>
+    </main>
     @if (!isAdminRoute) {
       <app-footer></app-footer>
       <app-chatbot-widget></app-chatbot-widget>
     }
   `,
-  styles: []
+  styles: [`
+    :host {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-main {
+      flex: 1 0 auto;
+      display: block;
+    }
+  `]
 })
 export class AppComponent {
   title = 'Ponsai';

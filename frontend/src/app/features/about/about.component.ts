@@ -33,6 +33,9 @@ import { TranslateModule } from '@ngx-translate/core';
         <div class="row justify-content-between align-items-center">
           <div class="col-lg-6">
             <h2 class="section-title">{{ 'about.whatWeBelieve' | translate }}</h2>
+            <button type="button" class="about-contact-trigger" (click)="openContactPopup()">
+              {{ 'nav.contact' | translate }}
+            </button>
             <p>{{ 'about.belief' | translate }}</p>
             <div class="row my-5">
               <div class="col-6 col-md-6" *ngFor="let feature of features">
@@ -311,6 +314,26 @@ import { TranslateModule } from '@ngx-translate/core';
 
     .popup-submit:hover {
       background: #1b455d;
+    }
+
+    .about-contact-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.5rem 1.2rem;
+      margin-bottom: 0.85rem;
+      border-radius: 999px;
+      border: 1px solid #153243;
+      background: #153243;
+      color: #ffffff;
+      font-weight: 700;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .about-contact-trigger:hover {
+      background: #1b455d;
+      transform: translateY(-1px);
     }
 
     @media (max-width: 768px) {

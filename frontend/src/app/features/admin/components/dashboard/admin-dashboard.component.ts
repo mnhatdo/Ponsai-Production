@@ -191,12 +191,12 @@ type SortDirection = 'asc' | 'desc' | null;
                     <!-- Gradient definition -->
                     <defs>
                       <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#17a2b8;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#138496;stop-opacity:1" />
+                        <stop offset="0%" style="stop-color:#153243;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#284b63;stop-opacity:1" />
                       </linearGradient>
                       <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#17a2b8;stop-opacity:0.3" />
-                        <stop offset="100%" style="stop-color:#17a2b8;stop-opacity:0.05" />
+                        <stop offset="0%" style="stop-color:#284b63;stop-opacity:0.28" />
+                        <stop offset="100%" style="stop-color:#284b63;stop-opacity:0.04" />
                       </linearGradient>
                     </defs>
                     
@@ -218,7 +218,7 @@ type SortDirection = 'asc' | 'desc' | null;
                         [attr.cx]="getPointX($index)" 
                         [attr.cy]="getPointY(point.value)"
                         r="5" 
-                        fill="#17a2b8"
+                        fill="#153243"
                         stroke="#fff"
                         stroke-width="2"
                         class="chart-point"
@@ -807,7 +807,7 @@ type SortDirection = 'asc' | 'desc' | null;
     }
 
     .insight-icon.info {
-      border-left-color: #17a2b8;
+      border-left-color: #284b63;
     }
 
     .insight-text {
@@ -997,7 +997,7 @@ type SortDirection = 'asc' | 'desc' | null;
     .month-bar {
       width: 100%;
       height: 2px;
-      background: linear-gradient(to right, #153243, #17a2b8, #153243);
+      background: linear-gradient(to right, #153243, #284b63, #c3d350);
       border-radius: 1px;
     }
 
@@ -2309,11 +2309,11 @@ export class AdminDashboardComponent implements OnInit {
 
     const total = Object.values(statusCounts).reduce((sum, count) => sum + count, 0) || 1;
     const statusData = [
-      { label: this.translate.instant('admin.status.pending'), value: statusCounts['pending'], color: '#ffc107' },
-      { label: this.translate.instant('admin.status.processing'), value: statusCounts['processing'], color: '#17a2b8' },
-      { label: this.translate.instant('admin.status.shipped'), value: statusCounts['shipped'], color: '#fd7e14' },
-      { label: this.translate.instant('admin.status.delivered'), value: statusCounts['delivered'], color: '#28a745' },
-      { label: this.translate.instant('admin.status.cancelled'), value: statusCounts['cancelled'], color: '#dc3545' }
+      { label: this.translate.instant('admin.status.pending'), value: statusCounts['pending'], color: '#c3d350' },
+      { label: this.translate.instant('admin.status.processing'), value: statusCounts['processing'], color: '#284b63' },
+      { label: this.translate.instant('admin.status.shipped'), value: statusCounts['shipped'], color: '#3a5f7a' },
+      { label: this.translate.instant('admin.status.delivered'), value: statusCounts['delivered'], color: '#2f8a67' },
+      { label: this.translate.instant('admin.status.cancelled'), value: statusCounts['cancelled'], color: '#c1121f' }
     ];
 
     const circumference = 2 * Math.PI * 80;
@@ -2339,11 +2339,11 @@ export class AdminDashboardComponent implements OnInit {
     
     // Use backend aggregated data (already filtered by date range and top 5)
     const gradientColors = [
-      'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-      'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+      'linear-gradient(135deg, #153243 0%, #284b63 100%)',
+      'linear-gradient(135deg, #284b63 0%, #3a5f7a 100%)',
+      'linear-gradient(135deg, #3a5f7a 0%, #4b718a 100%)',
+      'linear-gradient(135deg, #8da730 0%, #c3d350 100%)',
+      'linear-gradient(135deg, #a8b839 0%, #d4e176 100%)'
     ];
     
     return stats.topProductsByRevenue.map((product: any, index: number) => ({
@@ -2704,30 +2704,30 @@ export class AdminDashboardComponent implements OnInit {
 
   getHeatmapColor(count: number): string {
     const { max } = this.heatmapData();
-    if (count === 0) return '#e9ecef';
+    if (count === 0) return '#e6e6ea';
     
     const intensity = count / max;
     
     // Color scale from light blue to dark blue
-    if (intensity < 0.2) return '#cfe2ff';
-    if (intensity < 0.4) return '#9ec5fe';
-    if (intensity < 0.6) return '#6ea8fe';
-    if (intensity < 0.8) return '#3d8bfd';
-    return '#0d6efd';
+    if (intensity < 0.2) return '#dfe5ce';
+    if (intensity < 0.4) return '#c3d350';
+    if (intensity < 0.6) return '#8ea454';
+    if (intensity < 0.8) return '#3a5f7a';
+    return '#153243';
   }
 
   getColumnColor(count: number): string {
     const max = this.maxDailyOrders();
-    if (count === 0) return '#e9ecef';
+    if (count === 0) return '#e6e6ea';
     
     const intensity = count / max;
     
     // Same color scale as heatmap
-    if (intensity < 0.2) return '#cfe2ff';
-    if (intensity < 0.4) return '#9ec5fe';
-    if (intensity < 0.6) return '#6ea8fe';
-    if (intensity < 0.8) return '#3d8bfd';
-    return '#0d6efd';
+    if (intensity < 0.2) return '#dfe5ce';
+    if (intensity < 0.4) return '#c3d350';
+    if (intensity < 0.6) return '#8ea454';
+    if (intensity < 0.8) return '#3a5f7a';
+    return '#153243';
   }
 
   sortTable(column: string) {
