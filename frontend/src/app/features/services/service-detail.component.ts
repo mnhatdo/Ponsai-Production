@@ -25,7 +25,7 @@ import { SERVICES, STAFF_ZALO_PHONE, ServiceItem } from './services.data';
             <p class="detail-description mb-4">{{ service.detailDescription }}</p>
 
             <a class="btn btn-dark mb-4" [href]="zaloLink" target="_blank" rel="noopener noreferrer">
-              Liên hệ với nhân viên
+              Contact a Specialist
             </a>
 
             <div class="detail-panel mb-4">

@@ -95,6 +95,7 @@ import { TranslateModule } from '@ngx-translate/core';
       line-height: 1.5;
       color: #000;
       font-weight: 600;
+      white-space: nowrap;
     }
 
     .footer-20192 .links {
@@ -143,6 +144,11 @@ import { TranslateModule } from '@ngx-translate/core';
       margin-top: 0.75rem;
     }
 
+    .footer-20192 .copyright small {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
     @media (max-width: 991.98px) {
       .footer-20192 {
         margin-top: 3.5rem;
@@ -161,6 +167,10 @@ import { TranslateModule } from '@ngx-translate/core';
       .footer-20192 {
         min-height: auto;
         padding-top: 1.8rem;
+      }
+
+      .footer-20192 .footer-content > [class*='col-'] {
+        min-width: 0;
       }
 
       .footer-brand-logo {

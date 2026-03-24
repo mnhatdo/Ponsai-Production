@@ -62,12 +62,12 @@ import { TranslateModule } from '@ngx-translate/core';
       <div class="contact-popup" (click)="$event.stopPropagation()">
         <button type="button" class="contact-popup-close" (click)="closeContactPopup()" aria-label="Close contact popup">×</button>
         <h3 class="contact-popup-title">{{ 'footer.contactUs' | translate }}</h3>
-        <p class="contact-popup-subtitle">Hãy để lại thông tin, đội ngũ Ponsai sẽ liên hệ trong thời gian sớm nhất.</p>
+        <p class="contact-popup-subtitle">Share your details and our Ponsai team will get back to you as soon as possible.</p>
 
         <div class="contact-popup-info">
-          <div class="info-chip"><i class="bi bi-geo-alt-fill"></i><span>1428 Industrial Way, Portland, OR 97209</span></div>
-          <div class="info-chip"><i class="bi bi-envelope-fill"></i><span>care&#64;ponsai.co</span></div>
-          <div class="info-chip"><i class="bi bi-telephone-fill"></i><span>+1 (503) 555-0142</span></div>
+          <div class="info-chip"><i class="bi bi-geo-alt-fill"></i><span>699 Do Muoi, Linh Xuan Ward, Ho Chi Minh City</span></div>
+          <div class="info-chip"><i class="bi bi-envelope-fill"></i><span>ponsai&#64;gmail.com</span></div>
+          <div class="info-chip"><i class="bi bi-telephone-fill"></i><span>0987654321</span></div>
         </div>
 
         <form class="contact-popup-form">

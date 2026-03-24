@@ -33,10 +33,10 @@ interface BlogResponse {
     <!-- Start Product Section -->
     <div class="product-section">
       <div class="container">
-        <div class="row">
+        <div class="row row-cols-1 row-cols-md-3 g-4 featured-products-row">
 
           <!-- Featured Products from API -->
-          <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" *ngFor="let product of featuredProducts().slice(0, 3); trackBy: trackByProductId">
+          <div class="col d-flex" *ngFor="let product of featuredProducts(); trackBy: trackByProductId">
             <a class="product-item product-card" [routerLink]="['/product', product._id]">
               <div class="product-image-wrapper">
                 <img
@@ -308,9 +308,14 @@ interface BlogResponse {
       scroll-behavior: smooth;
     }
 
+    .featured-products-row {
+      align-items: stretch;
+    }
+
     .product-card {
       display: flex;
       flex-direction: column;
+      width: 100%;
       height: 100%;
       background: transparent;
       border-radius: 10px;
@@ -611,18 +616,38 @@ export class HomeComponent implements OnInit {
     this.isLoading.set(true);
     this.hasError.set(false);
 
-    this.productService.getProducts({ limit: 6, featured: true }).subscribe({
+    this.productService.getProducts({ limit: 12, featured: true }).subscribe({
       next: (response) => {
-        this.featuredProducts.set(response.data as any);
-        this.isLoading.set(false);
+        const featuredProducts = this.normalizeProducts(response.data);
+
+        if (featuredProducts.length >= 3) {
+          this.featuredProducts.set(featuredProducts.slice(0, 3));
+          this.isLoading.set(false);
+          return;
+        }
+
+        this.productService.getProducts({ limit: 12 }).subscribe({
+          next: (fallbackResponse) => {
+            const fallbackProducts = this.normalizeProducts(fallbackResponse.data);
+            const mergedProducts = this.mergeUniqueProducts(featuredProducts, fallbackProducts);
+            this.featuredProducts.set(mergedProducts.slice(0, 3));
+            this.isLoading.set(false);
+            this.hasError.set(false);
+          },
+          error: () => {
+            this.featuredProducts.set(featuredProducts.slice(0, 3));
+            this.isLoading.set(false);
+          }
+        });
       },
       error: (err) => {
         console.error('Error loading featured products:', err);
         this.hasError.set(true);
         this.isLoading.set(false);
-        this.productService.getProducts({ limit: 6 }).subscribe({
+        this.productService.getProducts({ limit: 12 }).subscribe({
           next: (response) => {
-            this.featuredProducts.set(response.data as any);
+            const fallbackProducts = this.normalizeProducts(response.data);
+            this.featuredProducts.set(fallbackProducts.slice(0, 3));
             this.hasError.set(false);
           },
           error: () => {
@@ -663,6 +688,26 @@ export class HomeComponent implements OnInit {
 
   trackByProductId(_index: number, product: Product): string {
     return product._id;
+  }
+
+  private normalizeProducts(data: unknown): Product[] {
+    if (!Array.isArray(data)) {
+      return [];
+    }
+
+    return (data as Product[]).filter((product) => !!product?._id);
+  }
+
+  private mergeUniqueProducts(primary: Product[], secondary: Product[]): Product[] {
+    const uniqueProducts = new Map<string, Product>();
+
+    [...primary, ...secondary].forEach((product) => {
+      if (product?._id && !uniqueProducts.has(product._id)) {
+        uniqueProducts.set(product._id, product);
+      }
+    });
+
+    return Array.from(uniqueProducts.values());
   }
 
   loadRecentBlogPosts(): void {
