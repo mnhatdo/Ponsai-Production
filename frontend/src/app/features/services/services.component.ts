@@ -19,7 +19,7 @@ import { SERVICES, STAFF_ZALO_PHONE } from './services.data';
               <p class="mb-4">Tùy chỉnh gói chăm sóc hoàn hảo cho bộ sưu tập cây cảnh của bạn. Chúng tôi cung cấp giải pháp toàn diện để cây luôn khỏe mạnh và đẹp mắt.</p>
               <p>
                 <a routerLink="/shop" class="btn btn-secondary me-2">Sản phẩm</a>
-                <a routerLink="/contact" class="btn btn-white-outline">Liên hệ</a>
+                <a routerLink="/about" [queryParams]="{ contact: '1' }" class="btn btn-white-outline">Liên hệ</a>
               </p>
             </div>
           </div>
@@ -371,35 +371,81 @@ import { SERVICES, STAFF_ZALO_PHONE } from './services.data';
     }
 
     .bg-light-pattern {
-      background-color: #fcfbf9;
-      background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
-      background-size: 20px 20px;
+      background: #f4f7f1;
     }
 
     .pricing-card {
-      background: #faf9f6;
-      border: 1px solid #eaeaec;
+      background: #f9fcf7;
+      border: 1px solid #dce7d8;
       border-radius: 12px;
       padding: 1.4rem 0.85rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 10px 24px rgba(18, 40, 32, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       height: 100%;
     }
 
     .pricing-card:hover {
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(18, 40, 32, 0.12);
     }
 
     .pricing-card-featured {
-      background: #fdfdfc;
-      border: 2px solid #212529 !important;
-      transform: scale(1.05);
+      background: #ffffff;
+      border: 2px solid #153243 !important;
+      transform: none;
       z-index: 10;
+      box-shadow: 0 16px 30px rgba(21, 50, 67, 0.16);
     }
 
     @media (max-width: 991px) {
       .pricing-card-featured {
         transform: scale(1);
       }
+    }
+
+    .package-action-button {
+      min-width: 200px;
+      height: 52px;
+      border-radius: 12px;
+      background: #153243;
+      color: #ffffff;
+      border: 1px solid #153243;
+      text-shadow: none;
+      box-shadow: 0 10px 20px rgba(21, 50, 67, 0.24);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .package-action-button::before,
+    .package-action-button::after,
+    .package-action-button .outline,
+    .package-action-button .icon {
+      display: none !important;
+    }
+
+    .package-action-button .state {
+      padding-left: 0;
+    }
+
+    .package-action-button .button-label span {
+      opacity: 1;
+      animation: none !important;
+      transform: none !important;
+      filter: none !important;
+      color: currentColor;
+    }
+
+    .package-action-button .state--sent {
+      display: none !important;
+    }
+
+    .package-action-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(21, 50, 67, 0.3);
+    }
+
+    .package-action-button.is-sending {
+      opacity: 0.85;
     }
 
     .pricing-price {

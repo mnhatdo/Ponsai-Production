@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, computed } from '@angular/core';
+import { Component, HostListener, OnDestroy, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -34,7 +34,7 @@ import { LanguageSwitcherComponent } from '@core/components/language-switcher/la
           <li routerLinkActive="link-active"><a routerLink="/about">{{ 'nav.about' | translate }}</a></li>
           <li routerLinkActive="link-active"><a routerLink="/services">{{ 'nav.services' | translate }}</a></li>
           <li routerLinkActive="link-active"><a routerLink="/blog">Blog</a></li>
-          <li routerLinkActive="link-active"><a routerLink="/contact">{{ 'nav.contact' | translate }}</a></li>
+          <li routerLinkActive="link-active"><a routerLink="/about" [queryParams]="{ contact: '1' }">{{ 'nav.contact' | translate }}</a></li>
         </ul>
 
         <ul class="nav-actions">
@@ -457,13 +457,14 @@ import { LanguageSwitcherComponent } from '@core/components/language-switcher/la
     }
   `]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnDestroy {
   private cartService = inject(CartService);
   private authService = inject(AuthService);
 
   isMobileMenuOpen = false;
   isHeaderVisible = true;
   private lastScrollY = 0;
+  private hideTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   cartItemCount = computed(() => this.cartService.getItemCount());
   currentUser = toSignal(this.authService.currentUser$, {
@@ -478,23 +479,37 @@ export class HeaderComponent {
     this.authService.logout();
   }
 
+  ngOnDestroy(): void {
+    this.clearHideTimer();
+  }
+
   @HostListener('window:scroll')
   onWindowScroll(): void {
     const currentScrollY = window.scrollY || 0;
 
     if (currentScrollY <= 70) {
       this.isHeaderVisible = true;
+      this.clearHideTimer();
       this.lastScrollY = currentScrollY;
       return;
     }
 
     if (this.isMobileMenuOpen) {
       this.isHeaderVisible = true;
+      this.clearHideTimer();
       this.lastScrollY = currentScrollY;
       return;
     }
 
-    this.isHeaderVisible = currentScrollY < this.lastScrollY;
+    const isScrollingUp = currentScrollY < this.lastScrollY;
+    if (isScrollingUp) {
+      this.isHeaderVisible = true;
+      this.clearHideTimer();
+    } else {
+      this.isHeaderVisible = true;
+      this.scheduleAutoHide();
+    }
+
     this.lastScrollY = currentScrollY;
   }
 
@@ -502,11 +517,36 @@ export class HeaderComponent {
   onWindowMouseMove(event: MouseEvent): void {
     if (event.clientY <= 90) {
       this.isHeaderVisible = true;
+      if (!this.isMobileMenuOpen) {
+        this.scheduleAutoHide();
+      }
     }
   }
 
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
     this.isHeaderVisible = true;
+
+    if (this.isMobileMenuOpen) {
+      this.clearHideTimer();
+    } else if ((window.scrollY || 0) > 70) {
+      this.scheduleAutoHide();
+    }
+  }
+
+  private scheduleAutoHide(): void {
+    this.clearHideTimer();
+    this.hideTimeoutId = window.setTimeout(() => {
+      if (!this.isMobileMenuOpen && (window.scrollY || 0) > 70) {
+        this.isHeaderVisible = false;
+      }
+    }, 2300);
+  }
+
+  private clearHideTimer(): void {
+    if (this.hideTimeoutId !== null) {
+      window.clearTimeout(this.hideTimeoutId);
+      this.hideTimeoutId = null;
+    }
   }
 }

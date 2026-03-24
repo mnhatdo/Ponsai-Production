@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -15,7 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
             <div class="intro-excerpt">
               <h1>{{ 'about.title' | translate }}</h1>
               <p class="mb-4">{{ 'about.subtitle' | translate }}</p>
-              <p class="hero-cta-group"><a routerLink="/shop" class="hero-cta-btn hero-cta-btn-primary">{{ 'about.browseCollection' | translate }}</a><a routerLink="/services" class="hero-cta-btn hero-cta-btn-secondary">{{ 'about.whatWeOffer' | translate }}<span aria-hidden="true">→</span></a></p>
+              <p class="hero-cta-group"><a routerLink="/shop" class="hero-cta-btn hero-cta-btn-primary">{{ 'about.browseCollection' | translate }}</a><a routerLink="/services" class="hero-cta-btn hero-cta-btn-secondary">{{ 'about.whatWeOffer' | translate }}<span aria-hidden="true">→</span></a><button type="button" class="hero-cta-btn hero-cta-btn-contact" (click)="openContactPopup()">{{ 'nav.contact' | translate }}</button></p>
             </div>
           </div>
           <div class="col-lg-7">
@@ -51,6 +52,38 @@ import { TranslateModule } from '@ngx-translate/core';
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="contact-popup-backdrop" *ngIf="isContactPopupOpen()" (click)="closeContactPopup()">
+      <div class="contact-popup" (click)="$event.stopPropagation()">
+        <button type="button" class="contact-popup-close" (click)="closeContactPopup()" aria-label="Close contact popup">×</button>
+        <h3 class="contact-popup-title">{{ 'footer.contactUs' | translate }}</h3>
+        <p class="contact-popup-subtitle">Hãy để lại thông tin, đội ngũ Ponsai sẽ liên hệ trong thời gian sớm nhất.</p>
+
+        <div class="contact-popup-info">
+          <div class="info-chip"><i class="bi bi-geo-alt-fill"></i><span>1428 Industrial Way, Portland, OR 97209</span></div>
+          <div class="info-chip"><i class="bi bi-envelope-fill"></i><span>care&#64;ponsai.co</span></div>
+          <div class="info-chip"><i class="bi bi-telephone-fill"></i><span>+1 (503) 555-0142</span></div>
+        </div>
+
+        <form class="contact-popup-form">
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <input type="text" class="form-control popup-input" placeholder="First name">
+            </div>
+            <div class="col-12 col-md-6">
+              <input type="text" class="form-control popup-input" placeholder="Last name">
+            </div>
+            <div class="col-12">
+              <input type="email" class="form-control popup-input" placeholder="Email">
+            </div>
+            <div class="col-12">
+              <textarea class="form-control popup-input popup-textarea" rows="4" placeholder="Message"></textarea>
+            </div>
+          </div>
+          <button type="button" class="popup-submit">Send Message</button>
+        </form>
       </div>
     </div>
 
@@ -162,14 +195,169 @@ import { TranslateModule } from '@ngx-translate/core';
       color: #ffd24a;
     }
 
+    .hero-cta-btn-contact {
+      background: #153243;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .hero-cta-btn-contact::before,
+    .hero-cta-btn-contact::after {
+      display: none;
+    }
+
+    .hero-cta-btn-contact:hover {
+      color: #fff;
+      background: #1a4258;
+    }
+
+    .contact-popup-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 30, 42, 0.58);
+      z-index: 4200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .contact-popup {
+      width: min(760px, 100%);
+      background: #f8fbf6;
+      border-radius: 18px;
+      border: 1px solid #dfe9db;
+      box-shadow: 0 22px 44px rgba(14, 35, 28, 0.26);
+      padding: 1.4rem;
+      position: relative;
+    }
+
+    .contact-popup-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.9rem;
+      border: none;
+      background: transparent;
+      font-size: 1.6rem;
+      line-height: 1;
+      color: #425652;
+      cursor: pointer;
+    }
+
+    .contact-popup-title {
+      margin-bottom: 0.35rem;
+      color: #172a27;
+      font-weight: 700;
+    }
+
+    .contact-popup-subtitle {
+      color: #576763;
+      margin-bottom: 1rem;
+    }
+
+    .contact-popup-info {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-chip {
+      background: #eef4ea;
+      border: 1px solid #d8e5d1;
+      border-radius: 10px;
+      min-height: 72px;
+      padding: 0.65rem;
+      color: #2d3d39;
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+
+    .info-chip i {
+      margin-top: 0.1rem;
+      color: #1e6b52;
+    }
+
+    .popup-input {
+      background: #ffffff;
+      border: 1px solid #d6e2d3;
+      border-radius: 10px;
+      min-height: 46px;
+    }
+
+    .popup-input:focus {
+      border-color: #88b3a0;
+      box-shadow: 0 0 0 3px rgba(47, 138, 103, 0.16);
+    }
+
+    .popup-textarea {
+      min-height: 118px;
+      resize: vertical;
+    }
+
+    .popup-submit {
+      margin-top: 0.95rem;
+      width: 100%;
+      min-height: 46px;
+      border-radius: 10px;
+      border: 1px solid #153243;
+      background: #153243;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .popup-submit:hover {
+      background: #1b455d;
+    }
+
+    @media (max-width: 768px) {
+      .contact-popup-info {
+        grid-template-columns: 1fr;
+      }
+    }
+
   `]
 })
 export class AboutComponent {
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
+
+  isContactPopupOpen = signal(false);
+
+  constructor() {
+    this.route.queryParamMap
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(params => {
+        if (params.get('contact') === '1') {
+          this.isContactPopupOpen.set(true);
+        }
+      });
+  }
+
   features = [
     { icon: 'truck.svg', title: 'about.features.shipped.title', description: 'about.features.shipped.desc' },
     { icon: 'bag.svg', title: 'about.features.selection.title', description: 'about.features.selection.desc' },
     { icon: 'support.svg', title: 'about.features.guidance.title', description: 'about.features.guidance.desc' },
     { icon: 'return.svg', title: 'about.features.returns.title', description: 'about.features.returns.desc' }
   ];
+
+  openContactPopup(): void {
+    this.isContactPopupOpen.set(true);
+  }
+
+  closeContactPopup(): void {
+    this.isContactPopupOpen.set(false);
+    if (this.route.snapshot.queryParamMap.get('contact') === '1') {
+      this.router.navigate([], {
+        queryParams: { contact: null },
+        queryParamsHandling: 'merge',
+        replaceUrl: true
+      });
+    }
+  }
 
 }

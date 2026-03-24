@@ -251,6 +251,8 @@ a {
       flex-grow: 1;
       min-height: 85px;
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
     .product-section .product-item .product-info .product-title {
       font-size: 16px;
@@ -322,7 +324,7 @@ a {
       content: "";
       background: #e8ffb7;
       height: 0%;
-      z-index: 0;
+      z-index: 1;
       border-radius: 10px;
       -webkit-transition: .3s all ease;
       -o-transition: .3s all ease;

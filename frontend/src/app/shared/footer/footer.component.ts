@@ -27,7 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
                 <li><a routerLink="/about">{{ 'footer.aboutUs' | translate }}</a></li>
                 <li><a routerLink="/services">{{ 'nav.services' | translate }}</a></li>
                 <li><a routerLink="/blog">Blog</a></li>
-                <li><a routerLink="/contact">{{ 'footer.contactUs' | translate }}</a></li>
+                <li><a routerLink="/about" [queryParams]="{ contact: '1' }">{{ 'footer.contactUs' | translate }}</a></li>
               </ul>
             </div>
 
@@ -43,7 +43,7 @@ import { TranslateModule } from '@ngx-translate/core';
             <div class="col-6 col-sm-6 col-lg-2">
               <h3>Support</h3>
               <ul class="list-unstyled links mb-0">
-                <li><a routerLink="/contact">Contact</a></li>
+                <li><a routerLink="/about" [queryParams]="{ contact: '1' }">Contact</a></li>
                 <li><a routerLink="/services">Care Services</a></li>
                 <li><a routerLink="/blog">Care Blog</a></li>
               </ul>
@@ -102,6 +102,18 @@ import { TranslateModule } from '@ngx-translate/core';
       display: block;
     }
 
+    .footer-20192 .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.45rem 1rem;
+    }
+
+    .footer-20192 .links li {
+      margin-bottom: 0;
+    }
+
     .footer-20192 .links li a {
       color: #000;
       text-decoration: none;
@@ -146,6 +158,10 @@ import { TranslateModule } from '@ngx-translate/core';
       .footer-20192 {
         min-height: auto;
         padding-top: 1.8rem;
+      }
+
+      .footer-20192 .links {
+        justify-content: flex-start;
       }
 
       .footer-brand-logo {

@@ -171,14 +171,14 @@ import { TranslateModule } from '@ngx-translate/core';
   `,
   styles: [`
     :host {
-      --nm-bg: #E0E5EC;
-      --nm-fg: #3D4852;
-      --nm-muted: #6B7280;
-      --nm-accent: #6C63FF;
-      --nm-accent-light: #8B84FF;
-      --nm-success: #38B2AC;
-      --nm-shadow-light: rgba(255, 255, 255, 0.58);
-      --nm-shadow-dark: rgba(163, 177, 198, 0.68);
+      --nm-bg: #f3f7f1;
+      --nm-fg: #1f2c2b;
+      --nm-muted: #5f6b68;
+      --nm-accent: #1e6b52;
+      --nm-accent-light: #2f8a67;
+      --nm-success: #2f8a67;
+      --nm-shadow-light: rgba(255, 255, 255, 0.7);
+      --nm-shadow-dark: rgba(29, 55, 45, 0.12);
       --nm-radius-lg: 24px;
       --nm-radius-md: 14px;
     }
@@ -207,11 +207,10 @@ import { TranslateModule } from '@ngx-translate/core';
     }
 
     .auth-card {
-      background: var(--nm-bg);
+      background: #ffffff;
       border-radius: var(--nm-radius-lg);
-      box-shadow:
-        12px 12px 24px var(--nm-shadow-dark),
-        -12px -12px 24px var(--nm-shadow-light);
+      border: 1px solid #e2ece3;
+      box-shadow: 0 16px 34px rgba(25, 49, 40, 0.11);
       padding: 2rem;
     }
 
@@ -219,12 +218,10 @@ import { TranslateModule } from '@ngx-translate/core';
       display: flex;
       gap: 0.75rem;
       margin-bottom: 1.7rem;
-      background: var(--nm-bg);
+      background: #edf4ec;
       padding: 0.35rem;
       border-radius: 14px;
-      box-shadow:
-        inset 4px 4px 10px var(--nm-shadow-dark),
-        inset -4px -4px 10px var(--nm-shadow-light);
+      border: 1px solid #deeadf;
     }
 
     .auth-tab {
@@ -241,9 +238,8 @@ import { TranslateModule } from '@ngx-translate/core';
     .auth-tab:hover,
     .auth-tab.active {
       color: var(--nm-accent);
-      box-shadow:
-        6px 6px 12px var(--nm-shadow-dark),
-        -6px -6px 12px var(--nm-shadow-light);
+      background: #ffffff;
+      box-shadow: 0 6px 14px rgba(25, 49, 40, 0.08);
     }
 
     .form-group {
@@ -281,8 +277,8 @@ import { TranslateModule } from '@ngx-translate/core';
       right: 16px;
       top: 50%;
       transform: translateY(-50%);
-      background: var(--nm-bg);
-      border: none;
+      background: #ffffff;
+      border: 1px solid #dde8df;
       cursor: pointer;
       color: var(--nm-muted);
       width: 30px;
@@ -291,9 +287,7 @@ import { TranslateModule } from '@ngx-translate/core';
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
-        4px 4px 8px var(--nm-shadow-dark),
-        -4px -4px 8px var(--nm-shadow-light);
+      box-shadow: 0 4px 10px rgba(25, 49, 40, 0.08);
     }
 
     .password-toggle:hover {
@@ -302,14 +296,11 @@ import { TranslateModule } from '@ngx-translate/core';
 
     .form-control {
       height: 52px;
-      border: none;
-      background: var(--nm-bg);
+      border: 1px solid #dbe7dd;
+      background: #f8fbf7;
       border-radius: var(--nm-radius-md);
       font-size: 1rem;
       color: var(--nm-fg);
-      box-shadow:
-        inset 5px 5px 10px var(--nm-shadow-dark),
-        inset -5px -5px 10px var(--nm-shadow-light);
       transition: all 0.25s ease;
     }
 
@@ -318,11 +309,8 @@ import { TranslateModule } from '@ngx-translate/core';
     }
 
     .form-control:focus {
-      border: none;
-      box-shadow:
-        inset 6px 6px 12px var(--nm-shadow-dark),
-        inset -6px -6px 12px var(--nm-shadow-light),
-        0 0 0 2px rgba(108, 99, 255, 0.35);
+      border-color: #8ab29f;
+      box-shadow: 0 0 0 3px rgba(47, 138, 103, 0.18);
     }
 
     .invalid-feedback {
@@ -340,11 +328,9 @@ import { TranslateModule } from '@ngx-translate/core';
       border-radius: var(--nm-radius-md);
       margin-bottom: 1.3rem;
       font-size: 0.88rem;
-      background: #ece1e4;
+      background: #fff1f4;
       color: #a14258;
-      box-shadow:
-        inset 4px 4px 10px rgba(170, 130, 140, 0.22),
-        inset -4px -4px 10px rgba(255, 255, 255, 0.52);
+      border: 1px solid #f2c6d0;
     }
 
     .form-options {
@@ -369,21 +355,16 @@ import { TranslateModule } from '@ngx-translate/core';
     .checkmark {
       width: 20px;
       height: 20px;
-      border: none;
+      border: 1px solid #cdddcf;
       border-radius: 6px;
       margin-right: 0.5rem;
       position: relative;
-      background: var(--nm-bg);
-      box-shadow:
-        inset 3px 3px 8px var(--nm-shadow-dark),
-        inset -3px -3px 8px var(--nm-shadow-light);
+      background: #ffffff;
     }
 
     .custom-checkbox input:checked + .checkmark {
-      box-shadow:
-        inset 2px 2px 6px rgba(56, 178, 172, 0.48),
-        inset -2px -2px 6px rgba(255, 255, 255, 0.7);
-      background: #dcefeb;
+      border-color: #8ab29f;
+      background: #e9f5ef;
     }
 
     .custom-checkbox input:checked + .checkmark::after {
@@ -416,17 +397,13 @@ import { TranslateModule } from '@ngx-translate/core';
       font-weight: 600;
       font-size: 1rem;
       border-radius: var(--nm-radius-md);
-      box-shadow:
-        8px 8px 16px var(--nm-shadow-dark),
-        -8px -8px 16px var(--nm-shadow-light);
+      box-shadow: 0 10px 20px rgba(30, 107, 82, 0.3);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .btn-primary:hover:not(:disabled) {
       transform: translateY(-1px);
-      box-shadow:
-        10px 10px 18px var(--nm-shadow-dark),
-        -10px -10px 18px var(--nm-shadow-light);
+      box-shadow: 0 12px 24px rgba(30, 107, 82, 0.34);
     }
 
     .btn-primary:disabled {
@@ -490,16 +467,14 @@ import { TranslateModule } from '@ngx-translate/core';
       justify-content: center;
       gap: 0.5rem;
       height: 48px;
-      border: none;
+      border: 1px solid #dbe7dd;
       border-radius: var(--nm-radius-md);
-      background: var(--nm-bg);
+      background: #ffffff;
       color: var(--nm-fg);
       font-weight: 500;
       font-size: 0.9rem;
       cursor: pointer;
-      box-shadow:
-        6px 6px 14px var(--nm-shadow-dark),
-        -6px -6px 14px var(--nm-shadow-light);
+      box-shadow: 0 6px 14px rgba(25, 49, 40, 0.08);
       transition: all 0.25s ease;
     }
 
