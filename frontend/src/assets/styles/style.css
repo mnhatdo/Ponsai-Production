@@ -224,6 +224,7 @@ a {
       padding-top: 66.67%; /* 2/3 = 66.67% for 3:2 aspect ratio */
       overflow: hidden;
       background: #f8f9fa;
+      z-index: -2;
       border-radius: 10px;
       margin-bottom: 30px;
       top: 0;

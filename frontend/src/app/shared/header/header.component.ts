@@ -21,7 +21,12 @@ import { LanguageSwitcherComponent } from '@core/components/language-switcher/la
           </div>
         </a>
 
-        <ul class="nav-links">
+        <!-- Hamburger Icon for Mobile -->
+        <div class="hamburger-menu d-md-none" (click)="toggleMobileMenu()">
+          <i class="bi" [class.bi-list]="!isMobileMenuOpen" [class.bi-x]="isMobileMenuOpen" style="font-size: 1.5rem;"></i>
+        </div>
+
+        <ul class="nav-links" [class.mobile-open]="isMobileMenuOpen">
           <li routerLinkActive="link-active" [routerLinkActiveOptions]="{exact: true}">
             <a routerLink="/">{{ 'nav.home' | translate }}</a>
           </li>
@@ -402,6 +407,8 @@ export class HeaderComponent {
   private cartService = inject(CartService);
   private authService = inject(AuthService);
 
+  isMobileMenuOpen = false;
+
   cartItemCount = computed(() => this.cartService.getItemCount());
   currentUser = toSignal(this.authService.currentUser$, {
     initialValue: this.authService.currentUser()
@@ -413,5 +420,9 @@ export class HeaderComponent {
 
   logout(): void {
     this.authService.logout();
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 }
